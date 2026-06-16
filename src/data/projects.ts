@@ -150,10 +150,10 @@ export const projects: Project[] = [
     featured: true,
     year: '2569',
     grade: {
-      th: 'ม.4',
-      en: 'Grade 10',
-      lo: 'ມ.4',
-      zh: '高一',
+      th: 'ม.5',
+      en: 'Grade 11',
+      lo: 'ມ.5',
+      zh: '高二',
     },
   },
 ];
