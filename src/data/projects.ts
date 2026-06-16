@@ -18,6 +18,7 @@ export interface Project {
   codeUrl?: string;
   featured: boolean;
   award?: 'gold' | 'silver' | 'bronze';
+  year?: string;
 }
 
 export const projects: Project[] = [
@@ -39,6 +40,7 @@ export const projects: Project[] = [
     tags: ['HTML', 'CSS', 'JavaScript'],
     featured: true,
     award: 'gold',
+    year: '2569',
   },
   {
     id: 'restaurant-website',

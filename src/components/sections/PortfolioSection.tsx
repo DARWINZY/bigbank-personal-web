@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { FiExternalLink, FiGithub, FiAward } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiAward, FiCalendar } from 'react-icons/fi';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import { projects } from '@/data/projects';
@@ -62,27 +62,36 @@ export default function PortfolioSection() {
                     ))}
                   </div>
                   <div className={uiStyles.projectCardLinks}>
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={uiStyles.projectCardLink}
-                      >
-                        <FiExternalLink size={14} />
-                        {t('view_live')}
-                      </a>
-                    )}
-                    {project.codeUrl && (
-                      <a
-                        href={project.codeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={uiStyles.projectCardLink}
-                      >
-                        <FiGithub size={14} />
-                        {t('view_code')}
-                      </a>
+                    {project.year ? (
+                      <div className={uiStyles.projectCardLink} style={{ cursor: 'default' }}>
+                        <FiCalendar size={14} />
+                        {project.year}
+                      </div>
+                    ) : (
+                      <>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={uiStyles.projectCardLink}
+                          >
+                            <FiExternalLink size={14} />
+                            {t('view_live')}
+                          </a>
+                        )}
+                        {project.codeUrl && (
+                          <a
+                            href={project.codeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={uiStyles.projectCardLink}
+                          >
+                            <FiGithub size={14} />
+                            {t('view_code')}
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
