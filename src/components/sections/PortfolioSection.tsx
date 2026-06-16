@@ -65,7 +65,7 @@ export default function PortfolioSection() {
                     {project.year ? (
                       <div className={uiStyles.projectCardLink} style={{ cursor: 'default' }}>
                         <FiCalendar size={14} />
-                        {project.year}
+                        {project.year} {project.grade && `(${project.grade[locale]})`}
                       </div>
                     ) : (
                       <>

@@ -19,6 +19,12 @@ export interface Project {
   featured: boolean;
   award?: 'gold' | 'silver' | 'bronze';
   year?: string;
+  grade?: {
+    th: string;
+    en: string;
+    lo: string;
+    zh: string;
+  };
 }
 
 export const projects: Project[] = [
@@ -41,6 +47,12 @@ export const projects: Project[] = [
     featured: true,
     award: 'gold',
     year: '2569',
+    grade: {
+      th: 'ม.4',
+      en: 'Grade 10',
+      lo: 'ມ.4',
+      zh: '高一',
+    },
   },
   {
     id: 'restaurant-website',
@@ -61,6 +73,12 @@ export const projects: Project[] = [
     featured: true,
     award: 'silver',
     year: '2568',
+    grade: {
+      th: 'ม.3',
+      en: 'Grade 9',
+      lo: 'ມ.3',
+      zh: '初三',
+    },
   },
   {
     id: 'portfolio-agency',
@@ -81,6 +99,12 @@ export const projects: Project[] = [
     featured: true,
     award: 'bronze',
     year: '2568',
+    grade: {
+      th: 'ม.3',
+      en: 'Grade 9',
+      lo: 'ມ.3',
+      zh: '初三',
+    },
   },
   {
     id: 'fitness-app',
@@ -100,5 +124,11 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'PostgreSQL', 'Chart.js'],
     featured: true,
     year: '2567',
+    grade: {
+      th: 'ม.2',
+      en: 'Grade 8',
+      lo: 'ມ.2',
+      zh: '初二',
+    },
   },
 ];
