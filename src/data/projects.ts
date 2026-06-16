@@ -36,7 +36,7 @@ export const projects: Project[] = [
       zh: '凭借 LiveVerse 平台荣获 Thailand Metaverse and Exhibition 大赛冠军——该平台将元宇宙技术与娱乐完美融合。',
     },
     image: '/images/projects/thailand-metaverse.jpg',
-    tags: ['Metaverse', 'LiveVerse', 'Innovation', 'Award Winner'],
+    tags: ['HTML', 'CSS', 'JavaScript'],
     featured: true,
     award: 'gold',
   },
