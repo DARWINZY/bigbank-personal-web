@@ -53,8 +53,9 @@
   },
   "contact": {
     "label": "联系",
-    "title": "准备好与我们合作了吗？",
-    "description": "有兴趣开发软件、应用程序，或是想把您的好点子变成现实？请立即与我和 Nightbears Technology 团队联系。我们提供免费咨询服务！",
+    "title": "准备好开始您的项目了吗？",
+    "description": "有兴趣开发软件、应用程序，或是想将您的想法变为现实？请随时联系我和 Nightbears Technology 团队。我们提供免费咨询！",
+    "recommended": "推荐",
     "form": {
       "name": "姓名",
       "name_placeholder": "你的姓名",

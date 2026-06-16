@@ -10,6 +10,12 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/darwinzy_xz/',
+    icon: FaInstagram,
+    label: 'Instagram Profile',
+  },
+  {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/nattapong-pongnukrohsiri/',
     icon: FaLinkedin,
@@ -21,12 +27,7 @@ export const socialLinks: SocialLink[] = [
     icon: FaFacebook,
     label: 'Facebook Page',
   },
-  {
-    name: 'Instagram',
-    url: 'https://www.instagram.com/darwinzy_xz/',
-    icon: FaInstagram,
-    label: 'Instagram Profile',
-  },
+
   {
     name: 'X',
     url: 'https://x.com/darwinzy_xz',

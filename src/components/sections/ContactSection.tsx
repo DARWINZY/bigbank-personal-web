@@ -107,9 +107,12 @@ export default function ContactSection() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.contactSocialLink}
+                    className={`${styles.contactSocialLink} ${link.name === 'Instagram' ? styles.contactSocialLinkGold : ''}`}
                   >
-                    <div className={styles.contactSocialIcon}>
+                    {link.name === 'Instagram' && (
+                      <span className={styles.contactSocialBadge}>{t('recommended')}</span>
+                    )}
+                    <div className={`${styles.contactSocialIcon} ${link.name === 'Instagram' ? styles.contactSocialIconGold : ''}`}>
                       <link.icon size={18} />
                     </div>
                     {link.name}

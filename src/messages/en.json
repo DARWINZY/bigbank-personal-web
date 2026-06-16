@@ -64,8 +64,9 @@
   },
   "contact": {
     "label": "Contact",
-    "title": "Ready to build with us?",
-    "description": "Interested in developing software, an app, or bringing your idea to life? Contact me and the Nightbears Technology team today. Free consultation available!",
+    "title": "Ready to Start Your Project?",
+    "description": "Interested in developing software, an application, or bringing an idea to life? Reach out to me and the Nightbears Technology team. We offer free consultations!",
+    "recommended": "Recommended",
     "form": {
       "name": "Name",
       "name_placeholder": "Your name",
