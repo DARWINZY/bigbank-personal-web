@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useTranslations, useLocale } from 'next-intl';
 import { FiExternalLink, FiGithub, FiAward, FiCalendar } from 'react-icons/fi';
 import AnimatedSection from '@/components/ui/AnimatedSection';
@@ -35,11 +37,12 @@ export default function PortfolioSection() {
                     </div>
                   )}
                   {project.image ? (
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title[locale]}
                       width={640}
                       height={400}
+                      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                     />
                   ) : (
                     <div className={styles.portfolioPlaceholder}>
