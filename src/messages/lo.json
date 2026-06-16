@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Bigbank — High School Software Engineer @ Nightbears Technology",
-    "description": "ພອດໂຟລິໂອຂອງ Bigbank (Nattapong Pongnukrohsiri) — High School Software Engineer @ Nightbears Technology ຮັບພັດທະນາຊອບແວຄົບວົງຈອນ"
+    "description": "ພອດໂຟລິໂອຂອງ ບິກແບ້ງ (Nattapong Pongnukrohsiri) — High School Software Engineer @ Nightbears Technology ຮັບພັດທະນາຊອບແວຄົບວົງຈອນ"
   },
   "nav": {
     "home": "ໜ້າຫຼັກ",
@@ -14,7 +14,7 @@
   "hero": {
     "badge": "ຮັບພັດທະນາຊອບແວຜ່ານ Nightbears Tech",
     "greeting": "ສະບາຍດີ ຂ້ອຍແມ່ນ",
-    "name": "Bigbank",
+    "name": "ບິກແບ້ງ",
     "tagline1": "High School",
     "tagline2": "Software Engineer",
     "description": "ນັກຮຽນມັດທະຍົມທີ່ມີແພສຊັນດ້ານການຂຽນໂປຣແກຣມ ແລະເປັນ Software Engineer ທີ່ Nightbears Technology ເຖິງຈະອາຍຸນ້ອຍ ແຕ່ພ້ອມລຸຍໂປຣເຈັກລະດັບ Enterprise ສ້າງສັນໄອເດຍຂອງທ່ານໃຫ້ເປັນແອັບພລິເຄຊັນ ແລະເວັບໄຊທ໌ທີ່ໃຊ້ງານໄດ້ຈິງ",
@@ -25,7 +25,7 @@
   "about": {
     "label": "ກ່ຽວກັບ",
     "title": "ຍິນດີທີ່ໄດ້ຮູ້ຈັກ!",
-    "description1": "ຂ້ອຍແມ່ນ Nattapong Pongnukrohsiri (Bigbank) Software Engineer ໄວມັດທະຍົມຈາກ Nightbears Technology (ບໍລິສັດ ໄນທ໌ແບຣ໌ ເທັກໂນໂລຢີ ຈຳກັດ). ຂ້ອຍເລີ່ມຕົ້ນຈາກຄວາມຫຼົງໄຫຼໃນການຂຽນໂຄດ, ພັດທະນາຕົນເອງຈົນໄດ້ຮ່ວມງານຈິງກັບ Software House ທີ່ພ້ອມສ້າງໂຊລູຊັນທີ່ດີທີ່ສຸດໃຫ້ລູກຄ້າ.",
+    "description1": "ຂ້ອຍແມ່ນ Nattapong Pongnukrohsiri (ບິກແບ້ງ) Software Engineer ໄວມັດທະຍົມຈາກ Nightbears Technology (ບໍລິສັດ ໄນທ໌ແບຣ໌ ເທັກໂນໂລຢີ ຈຳກັດ). ຂ້ອຍເລີ່ມຕົ້ນຈາກຄວາມຫຼົງໄຫຼໃນການຂຽນໂຄດ, ພັດທະນາຕົນເອງຈົນໄດ້ຮ່ວມງານຈິງກັບ Software House ທີ່ພ້ອມສ້າງໂຊລູຊັນທີ່ດີທີ່ສຸດໃຫ້ລູກຄ້າ.",
     "description2": "ອາຍຸບໍ່ແມ່ນຂໍ້ຈຳກັດໃນການສ້າງສັນນວັດຕະກຳ! ຕັ້ງແຕ່ການພັດທະນາເວັບໄຊທ໌ (Next.js, React) ໄປຈົນເຖິງແອັບພລິເຄຊັນ (Flutter), ຂ້ອຍ ແລະທີມງານຜູ້ຊ່ຽວຊານຈາກ Nightbears ພ້ອມດູແລໂປຣເຈັກຂອງທ່ານຕັ້ງແຕ່ຕົ້ນຈົນຈົບ.",
     "stats": {
       "projects": "ໂປຣເຈັກ",
