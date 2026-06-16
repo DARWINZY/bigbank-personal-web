@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
+import profileImg from '@/../public/images/profile.jpg';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -105,7 +106,7 @@ export default function HeroSection() {
         >
           <div className={styles.heroImageContainer}>
             <img
-              src="/images/profile.jpg"
+              src={profileImg.src}
               alt="Bigbank — Freelance Web Developer"
               width={440}
               height={587}

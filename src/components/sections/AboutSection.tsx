@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import styles from '@/styles/about.module.css';
+import aboutImg from '@/../public/images/about-photo.jpg';
 
 const stats = [
   { value: '10+', key: 'projects' },
@@ -31,7 +32,7 @@ export default function AboutSection() {
             <div className={styles.aboutImageWrapper}>
               <div className={styles.aboutImage}>
                 <img
-                  src="/images/about-photo.jpg"
+                  src={aboutImg.src}
                   alt="Bigbank — About Me"
                   width={400}
                   height={500}
