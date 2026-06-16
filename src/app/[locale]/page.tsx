@@ -4,7 +4,12 @@ import PortfolioSection from '@/components/sections/PortfolioSection';
 import BlogPreview from '@/components/sections/BlogPreview';
 import ContactSection from '@/components/sections/ContactSection';
 
-export default function HomePage() {
+import { setRequestLocale } from 'next-intl/server';
+
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <HeroSection />
