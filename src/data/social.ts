@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaFacebook, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 export interface SocialLink {
@@ -10,32 +10,26 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   {
-    name: 'GitHub',
-    url: 'https://github.com/bigbank',
-    icon: FaGithub,
-    label: 'GitHub Profile',
-  },
-  {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/bigbank',
+    url: 'https://www.linkedin.com/in/nattapong-pongnukrohsiri/',
     icon: FaLinkedin,
     label: 'LinkedIn Profile',
   },
   {
     name: 'Facebook',
-    url: 'https://facebook.com/bigbank',
+    url: 'https://www.facebook.com/9bank.photography',
     icon: FaFacebook,
     label: 'Facebook Page',
   },
   {
     name: 'Instagram',
-    url: 'https://instagram.com/bigbank',
+    url: 'https://www.instagram.com/darwinzy_xz/',
     icon: FaInstagram,
     label: 'Instagram Profile',
   },
   {
     name: 'X',
-    url: 'https://x.com/bigbank',
+    url: 'https://x.com/darwinzy_xz',
     icon: FaXTwitter,
     label: 'X (Twitter) Profile',
   },

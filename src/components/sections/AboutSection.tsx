@@ -31,7 +31,7 @@ export default function AboutSection() {
             <div className={styles.aboutImageWrapper}>
               <div className={styles.aboutImage}>
                 <img
-                  src="/images/profile.jpg"
+                  src="/images/about-photo.jpg"
                   alt="Bigbank — About Me"
                   width={400}
                   height={500}
