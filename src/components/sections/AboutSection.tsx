@@ -30,16 +30,15 @@ export default function AboutSection() {
         <div className={styles.aboutGrid}>
           <AnimatedSection direction="left" delay={0.1}>
             <div className={styles.aboutImageWrapper}>
-              <div className={styles.aboutImage}>
-                <img
-                  src={aboutImg.src}
-                  alt="Bigbank — About Me"
-                  width={400}
-                  height={500}
-                />
-              </div>
-              <div className={styles.aboutImageAccent} />
+            <div className={styles.aboutImage}>
+              <img
+                src={aboutImg.src}
+                alt="Bigbank — About Me"
+                width={400}
+                height={500}
+              />
             </div>
+          </div>
           </AnimatedSection>
 
           <AnimatedSection direction="right" delay={0.2}>

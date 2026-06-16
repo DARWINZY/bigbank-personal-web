@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiBookOpen } from 'react-icons/fi';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import { blogPosts } from '@/data/blog';
@@ -27,7 +27,11 @@ export default function BlogPreview() {
           {blogPosts.map((post, index) => (
             <AnimatedSection key={post.id} delay={index * 0.1}>
               <article className={uiStyles.blogCard}>
-
+                <div className={uiStyles.blogCardImage}>
+                  <div className={styles.blogPlaceholder}>
+                    <FiBookOpen />
+                  </div>
+                </div>
                 <div className={uiStyles.blogCardContent}>
                   <div className={uiStyles.blogCardMeta}>
                     <span className={uiStyles.blogCardCategory}>{post.category}</span>

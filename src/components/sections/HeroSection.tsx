@@ -112,8 +112,6 @@ export default function HeroSection() {
               height={587}
             />
           </div>
-          <div className={styles.heroImageDecor} />
-          <div className={styles.heroImageDecor2} />
         </motion.div>
       </div>
 
