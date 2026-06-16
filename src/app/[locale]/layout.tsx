@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Inter, Noto_Sans_Thai, Noto_Sans_Lao, Playfair_Display } from 'next/font/google';
+import ClickRippleEffect from '@/components/ui/ClickRippleEffect';
 import type { Metadata } from 'next';
 
 const inter = Inter({
@@ -129,6 +130,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <ClickRippleEffect />
           <Header />
           <main>{children}</main>
           <Footer />
