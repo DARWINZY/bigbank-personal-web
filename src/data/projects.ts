@@ -58,10 +58,9 @@ export const projects: Project[] = [
     },
     image: '/images/projects/project-2.webp',
     tags: ['React', 'Node.js', 'Firebase', 'CSS Modules'],
-    liveUrl: '#',
-    codeUrl: '#',
     featured: true,
     award: 'silver',
+    year: '2568',
   },
   {
     id: 'portfolio-agency',
@@ -79,9 +78,9 @@ export const projects: Project[] = [
     },
     image: '/images/projects/project-3.webp',
     tags: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'Sanity CMS'],
-    liveUrl: '#',
     featured: true,
     award: 'bronze',
+    year: '2568',
   },
   {
     id: 'fitness-app',
@@ -99,8 +98,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/project-4.webp',
     tags: ['React', 'TypeScript', 'PostgreSQL', 'Chart.js'],
-    liveUrl: '#',
-    codeUrl: '#',
     featured: true,
+    year: '2567',
   },
 ];
