@@ -29,31 +29,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'sirindhorn-good-deeds',
-    title: {
-      th: 'ระบบสมุดบันทึกความดี โรงเรียนสิรินธร',
-      en: 'Sirindhorn School Good Deeds System',
-      lo: 'ລະບົບສະໝຸດບັນທຶກຄວາມດີ ໂຮງຮຽນສິຣິນທອນ',
-      zh: 'Sirindhorn 学校好人好事记录系统',
-    },
-    description: {
-      th: 'พัฒนาระบบสมุดบันทึกความดีออนไลน์สำหรับโรงเรียนสิรินธร เพื่อยกระดับการจัดการข้อมูลนักเรียนสู่รูปแบบดิจิทัล (Paperless) ช่วยลดการใช้ทรัพยากรกระดาษและเพิ่มประสิทธิภาพในการตรวจสอบ',
-      en: 'Developed an online Good Deeds Record system for Sirindhorn School, transitioning student data management to a paperless format to reduce resource consumption and enhance verification efficiency.',
-      lo: 'ພັດທະນາລະບົບສະໝຸດບັນທຶກຄວາມດີອອນລາຍສຳລັບໂຮງຮຽນສິຣິນທອນ ເພື່ອຍົກລະດັບການຈັດການຂໍ້ມູນນັກຮຽນສູ່ຮູບແບບດິຈິຕອລ (Paperless) ຊ່ວຍລຸດຜ່ອນການໃຊ້ຊັບພະຍາກອນເຈ້ຍ ແລະເພີ່ມປະສິດທິພາບໃນການກວດສອບ',
-      zh: '为 Sirindhorn 学校开发了在线“好人好事记录”系统，将学生数据管理升级为无纸化模式，以减少纸张浪费并提高审核效率。',
-    },
-    image: '/images/projects/sirindhorn-good-deeds.png',
-    tags: ['Nest.js', 'TypeScript', 'Cloudflare'],
-    featured: true,
-    year: '2569',
-    grade: {
-      th: 'ม.5',
-      en: 'Grade 11',
-      lo: 'ມ.5',
-      zh: '高二',
-    },
-  },
-  {
     id: 'thailand-metaverse',
     title: {
       th: 'Thailand Metaverse and Exhibition',
@@ -172,6 +147,31 @@ export const projects: Project[] = [
     },
     image: '/images/projects/it-clash.jpg',
     tags: ['Python'],
+    featured: true,
+    year: '2569',
+    grade: {
+      th: 'ม.5',
+      en: 'Grade 11',
+      lo: 'ມ.5',
+      zh: '高二',
+    },
+  },
+  {
+    id: 'sirindhorn-good-deeds',
+    title: {
+      th: 'ระบบสมุดบันทึกความดี โรงเรียนสิรินธร',
+      en: 'Sirindhorn School Good Deeds System',
+      lo: 'ລະບົບສະໝຸດບັນທຶກຄວາມດີ ໂຮງຮຽນສິຣິນທອນ',
+      zh: 'Sirindhorn 学校好人好事记录系统',
+    },
+    description: {
+      th: 'พัฒนาระบบสมุดบันทึกความดีออนไลน์สำหรับโรงเรียนสิรินธร เพื่อยกระดับการจัดการข้อมูลนักเรียนสู่รูปแบบดิจิทัล (Paperless) ช่วยลดการใช้ทรัพยากรกระดาษและเพิ่มประสิทธิภาพในการตรวจสอบ',
+      en: 'Developed an online Good Deeds Record system for Sirindhorn School, transitioning student data management to a paperless format to reduce resource consumption and enhance verification efficiency.',
+      lo: 'ພັດທະນາລະບົບສະໝຸດບັນທຶກຄວາມດີອອນລາຍສຳລັບໂຮງຮຽນສິຣິນທອນ ເພື່ອຍົກລະດັບການຈັດການຂໍ້ມູນນັກຮຽນສູ່ຮູບແບບດິຈິຕອລ (Paperless) ຊ່ວຍລຸດຜ່ອນການໃຊ້ຊັບພະຍາກອນເຈ້ຍ ແລະເພີ່ມປະສິດທິພາບໃນການກວດສອບ',
+      zh: '为 Sirindhorn 学校开发了在线“好人好事记录”系统，将学生数据管理升级为无纸化模式，以减少纸张浪费并提高审核效率。',
+    },
+    image: '/images/projects/sirindhorn-good-deeds.png',
+    tags: ['Nest.js', 'TypeScript', 'Cloudflare'],
     featured: true,
     year: '2569',
     grade: {
