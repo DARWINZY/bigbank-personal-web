@@ -113,6 +113,15 @@
   color: var(--color-accent);
 }
 
+.heroFullName {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  letter-spacing: normal;
+}
+
 .heroTagline {
   font-size: var(--text-3xl);
   font-weight: 600;
@@ -250,6 +259,10 @@
     font-size: var(--text-5xl);
   }
 
+  .heroFullName {
+    font-size: var(--text-xl);
+  }
+
   .heroTagline {
     font-size: var(--text-2xl);
   }
@@ -283,6 +296,10 @@
 
   .heroName {
     font-size: var(--text-3xl);
+  }
+
+  .heroFullName {
+    font-size: var(--text-lg);
   }
 
   .heroTagline {

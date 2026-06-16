@@ -53,6 +53,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <span className={styles.heroNameAccent}>{t('name')}</span>
+            <div className={styles.heroFullName}>{t('fullName')}</div>
           </motion.h1>
 
           <motion.div
