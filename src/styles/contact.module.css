@@ -166,7 +166,29 @@
 }
 
 @media (max-width: 480px) {
+  .contactGrid {
+    gap: 32px;
+  }
+
   .contactSocialGrid {
     grid-template-columns: 1fr;
+  }
+
+  .contactSocialLink {
+    padding: 14px 16px;
+  }
+
+  .contactInfoText {
+    font-size: var(--text-base);
+  }
+
+  .formInput,
+  .formTextarea {
+    padding: 12px 14px;
+    font-size: var(--text-sm);
+  }
+
+  .formSubmit {
+    width: 100%;
   }
 }

@@ -384,11 +384,96 @@
 }
 
 @media (max-width: 768px) {
+  .sectionTitle {
+    margin-bottom: 40px;
+  }
+
   .sectionHeading {
     font-size: var(--text-3xl);
   }
 
   .sectionDescription {
     font-size: var(--text-base);
+  }
+
+  .projectCardContent {
+    padding: 20px;
+  }
+
+  .blogCardContent {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    margin-bottom: 32px;
+  }
+
+  .sectionHeading {
+    font-size: var(--text-2xl);
+  }
+
+  .sectionLabel {
+    font-size: var(--text-xs);
+    margin-bottom: 8px;
+  }
+
+  .sectionDescription {
+    font-size: var(--text-sm);
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btnSmall {
+    padding: 8px 16px;
+    font-size: var(--text-xs);
+    width: auto;
+  }
+
+  .projectCardTitle {
+    font-size: var(--text-lg);
+  }
+
+  .projectCardDesc {
+    font-size: var(--text-xs);
+  }
+
+  .projectCardTag {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .projectCardContent {
+    padding: 16px;
+  }
+
+  .projectCardLinks {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .blogCardTitle {
+    font-size: var(--text-base);
+  }
+
+  .blogCardMeta {
+    gap: 8px;
+    font-size: 10px;
+    flex-wrap: wrap;
+  }
+
+  .blogCardContent {
+    padding: 16px;
+  }
+
+  .blogCardDesc {
+    font-size: var(--text-xs);
   }
 }

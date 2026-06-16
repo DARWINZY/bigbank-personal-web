@@ -109,12 +109,33 @@
 }
 
 @media (max-width: 480px) {
+  .aboutGrid {
+    gap: 32px;
+  }
+
+  .aboutImageWrapper {
+    max-width: 280px;
+  }
+
+  .aboutText {
+    font-size: var(--text-base);
+    line-height: 1.7;
+  }
+
   .aboutStats {
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 
   .aboutStat {
-    padding: 16px;
+    padding: 14px 10px;
+  }
+
+  .aboutStatNumber {
+    font-size: var(--text-2xl);
+  }
+
+  .aboutStatLabel {
+    font-size: var(--text-xs);
   }
 }
