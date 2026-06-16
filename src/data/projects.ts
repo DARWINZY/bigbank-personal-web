@@ -1,0 +1,106 @@
+export interface Project {
+  id: string;
+  title: {
+    th: string;
+    en: string;
+    lo: string;
+    zh: string;
+  };
+  description: {
+    th: string;
+    en: string;
+    lo: string;
+    zh: string;
+  };
+  image: string;
+  tags: string[];
+  liveUrl?: string;
+  codeUrl?: string;
+  featured: boolean;
+  award?: 'gold' | 'silver' | 'bronze';
+}
+
+export const projects: Project[] = [
+  {
+    id: 'ecommerce-platform',
+    title: {
+      th: 'แพลตฟอร์มอีคอมเมิร์ซ',
+      en: 'E-Commerce Platform',
+      lo: 'ແພລດຟອມອີຄອມເມີຊ',
+      zh: '电子商务平台',
+    },
+    description: {
+      th: 'เว็บไซต์ร้านค้าออนไลน์ครบวงจร ระบบตะกร้าสินค้า ชำระเงิน และจัดการสต็อก พร้อมแดชบอร์ดผู้ดูแล',
+      en: 'Full-featured online store with shopping cart, payment integration, inventory management, and admin dashboard.',
+      lo: 'ເວັບໄຊທ໌ຮ້ານຄ້າອອນລາຍຄົບວົງຈອນ ລະບົບກະຕ່າສິນຄ້າ ຈ່າຍເງິນ ແລະຈັດການສະຕັອກ ພ້ອມແດຊບອດຜູ້ເບິ່ງແຍງ',
+      zh: '全功能在线商店，包含购物车、支付集成、库存管理和后台管理面板。',
+    },
+    image: '/images/projects/project-1.webp',
+    tags: ['Next.js', 'TypeScript', 'MongoDB', 'Tailwind CSS'],
+    liveUrl: '#',
+    codeUrl: '#',
+    featured: true,
+    award: 'gold',
+  },
+  {
+    id: 'restaurant-website',
+    title: {
+      th: 'เว็บไซต์ร้านอาหาร',
+      en: 'Restaurant Website',
+      lo: 'ເວັບໄຊທ໌ຮ້ານອາຫານ',
+      zh: '餐厅网站',
+    },
+    description: {
+      th: 'เว็บไซต์ร้านอาหารสุดพรีเมียม พร้อมระบบจองโต๊ะออนไลน์ เมนูแบบ interactive และ Google Maps',
+      en: 'Premium restaurant website with online reservation system, interactive menu display, and Google Maps integration.',
+      lo: 'ເວັບໄຊທ໌ຮ້ານອາຫານສຸດພຣີມຽມ ພ້ອມລະບົບຈອງໂຕະອອນລາຍ ເມນູແບບ interactive ແລະ Google Maps',
+      zh: '提供在线预订系统、交互式菜单显示和 Google 地图集成的高级餐厅网站。',
+    },
+    image: '/images/projects/project-2.webp',
+    tags: ['React', 'Node.js', 'Firebase', 'CSS Modules'],
+    liveUrl: '#',
+    codeUrl: '#',
+    featured: true,
+    award: 'silver',
+  },
+  {
+    id: 'portfolio-agency',
+    title: {
+      th: 'เว็บไซต์ Agency ครีเอทีฟ',
+      en: 'Creative Agency Website',
+      lo: 'ເວັບໄຊທ໌ Agency ຄຣີເອທີຟ',
+      zh: '创意代理网站',
+    },
+    description: {
+      th: 'เว็บไซต์โชว์ผลงานสำหรับบริษัทออกแบบ พร้อม animation สุดเจ๋ง และ CMS สำหรับจัดการเนื้อหา',
+      en: 'Portfolio website for a design agency with stunning animations and CMS for content management.',
+      lo: 'ເວັບໄຊທ໌ໂຊຜົນງານສຳລັບບໍລິສັດອອກແບບ ພ້ອມ animation ສຸດເຈ໋ງ ແລະ CMS ສຳລັບຈັດການເນື້ອຫາ',
+      zh: '设计机构的作品集网站，拥有惊艳的动画效果和内容管理系统。',
+    },
+    image: '/images/projects/project-3.webp',
+    tags: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'Sanity CMS'],
+    liveUrl: '#',
+    featured: true,
+    award: 'bronze',
+  },
+  {
+    id: 'fitness-app',
+    title: {
+      th: 'แอปฟิตเนส',
+      en: 'Fitness Tracker App',
+      lo: 'ແອັບຟິດເນສ',
+      zh: '健身追踪应用',
+    },
+    description: {
+      th: 'เว็บแอปติดตามการออกกำลังกาย บันทึกเวิร์กเอาท์ แสดงสถิติแบบกราฟ และตั้งเป้าหมาย',
+      en: 'Fitness tracking web app with workout logging, visual statistics, and goal setting features.',
+      lo: 'ເວັບແອັບຕິດຕາມການອອກກຳລັງກາຍ ບັນທຶກເວີກເອົາ ສະແດງສະຖິຕິແບບກຣາຟ ແລະຕັ້ງເປົ້າໝາຍ',
+      zh: '健身追踪网页应用，具有锻炼记录、可视化统计和目标设定功能。',
+    },
+    image: '/images/projects/project-4.webp',
+    tags: ['React', 'TypeScript', 'PostgreSQL', 'Chart.js'],
+    liveUrl: '#',
+    codeUrl: '#',
+    featured: true,
+  },
+];

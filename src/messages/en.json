@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "title": "Bigbank — High School Software Engineer @ Nightbears Technology",
+    "description": "Portfolio of Bigbank (Nattapong Pongnukrohsiri) — High School Software Engineer @ Nightbears Technology delivering full-service digital solutions."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "hero": {
+    "badge": "Available for Projects via Nightbears Tech",
+    "greeting": "Hi, I'm",
+    "name": "Bigbank",
+    "tagline1": "High School",
+    "tagline2": "Software Engineer",
+    "description": "A high schooler passionate about coding and a Software Engineer at Nightbears Technology. Despite my age, I'm ready to tackle enterprise-level projects, turning your ideas into functional apps and websites.",
+    "cta_primary": "Our Work",
+    "cta_secondary": "Consult Project",
+    "scroll_hint": "Scroll down to explore"
+  },
+  "about": {
+    "label": "About",
+    "title": "Nice to meet you!",
+    "description1": "I'm Nattapong Pongnukrohsiri (Bigbank), a High School Software Engineer from Nightbears Technology. I started with a deep passion for coding and developed my skills until I earned the opportunity to work at a real Software House, delivering top-tier solutions.",
+    "description2": "Age is no barrier to innovation! From web development (Next.js, React) to mobile applications (Flutter), my expert team at Nightbears and I are ready to handle your project from start to finish.",
+    "stats": {
+      "projects": "Projects",
+      "experience": "Years Exp.",
+      "clients": "Clients",
+      "satisfaction": "Satisfaction"
+    }
+  },
+  "skills": {
+    "label": "Skills",
+    "title": "Tech Stack",
+    "description": "I use modern technologies to build high-performance websites.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools"
+    }
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "title": "Featured Projects",
+    "description": "A showcase of websites I've designed and developed for clients.",
+    "view_live": "Live Demo",
+    "view_code": "Source Code",
+    "view_all": "View All"
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "Knowledge Sharing",
+    "description": "Articles about web development, tips, tricks, and experiences.",
+    "read_more": "Read More",
+    "view_all": "View All Posts",
+    "min_read": "min read"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Ready to build with us?",
+    "description": "Interested in developing software, an app, or bringing your idea to life? Contact me and the Nightbears Technology team today. Free consultation available!",
+    "form": {
+      "name": "Name",
+      "name_placeholder": "Your name",
+      "email": "Email",
+      "email_placeholder": "email@example.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent! I'll get back to you ASAP.",
+      "error": "Something went wrong. Please try again."
+    },
+    "or": "Or reach me via"
+  },
+  "footer": {
+    "copyright": "© 2026 Bigbank. Made with ❤️",
+    "built_with": "Built with Next.js"
+  },
+  "common": {
+    "language": "EN",
+    "switch_language": "TH"
+  }
+}

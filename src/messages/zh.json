@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "title": "Bigbank — 高中生软件工程师 @ Nightbears Technology",
+    "description": "Bigbank (Nattapong Pongnukrohsiri) 的作品集 — Nightbears Technology 的高中生软件工程师，提供全方位的数字解决方案。"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "portfolio": "作品",
+    "blog": "博客",
+    "contact": "联系",
+    "resume": "简历"
+  },
+  "hero": {
+    "badge": "可通过 Nightbears Tech 承接项目",
+    "greeting": "你好，我是",
+    "name": "Bigbank",
+    "tagline1": "High School",
+    "tagline2": "Software Engineer",
+    "description": "一名热爱编程的高中生，同时也是 Nightbears Technology 的软件工程师。尽管我年纪不大，但我已经准备好迎接企业级项目的挑战，将您的想法转化为功能强大的应用程序和网站。",
+    "cta_primary": "我们的作品",
+    "cta_secondary": "项目咨询",
+    "scroll_hint": "向下滚动查看更多"
+  },
+  "about": {
+    "label": "关于",
+    "title": "很高兴认识你！",
+    "description1": "我是 Nattapong Pongnukrohsiri (Bigbank)，一名来自 Nightbears Technology 的高中生软件工程师。出于对编程的极度热爱，我不断提升自己，直到获得在真正的软件公司工作的机会，为客户提供顶级的解决方案。",
+    "description2": "年龄绝不是创新的障碍！从网站开发 (Next.js, React) 到移动应用程序 (Flutter)，我与 Nightbears 的专家团队随时准备为您提供从头到尾的项目支持。",
+    "stats": {
+      "projects": "个项目",
+      "experience": "年经验",
+      "clients": "个客户",
+      "satisfaction": "满意度"
+    }
+  },
+  "portfolio": {
+    "label": "作品",
+    "title": "引以为傲的项目",
+    "description": "为客户设计和开发的网站作品案例。",
+    "view_live": "访问网站",
+    "view_code": "查看源码",
+    "view_all": "查看全部"
+  },
+  "blog": {
+    "label": "博客",
+    "title": "知识分享",
+    "description": "关于网页开发、技术和经验的分享文章。",
+    "read_more": "阅读更多",
+    "view_all": "查看所有文章",
+    "min_read": "分钟阅读"
+  },
+  "contact": {
+    "label": "联系",
+    "title": "准备好与我们合作了吗？",
+    "description": "有兴趣开发软件、应用程序，或是想把您的好点子变成现实？请立即与我和 Nightbears Technology 团队联系。我们提供免费咨询服务！",
+    "form": {
+      "name": "姓名",
+      "name_placeholder": "你的姓名",
+      "email": "邮箱",
+      "email_placeholder": "email@example.com",
+      "message": "信息",
+      "message_placeholder": "请告诉我项目的详细信息...",
+      "send": "发送信息",
+      "sending": "发送中...",
+      "success": "发送成功！我会尽快回复。",
+      "error": "发生错误，请重试"
+    },
+    "or": "或通过以下方式联系"
+  },
+  "footer": {
+    "copyright": "© 2026 Bigbank. 用 ❤️ 制作",
+    "built_with": "使用 Next.js 构建"
+  },
+  "common": {
+    "language": "ZH"
+  }
+}

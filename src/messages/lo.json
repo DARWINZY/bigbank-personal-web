@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "title": "Bigbank — High School Software Engineer @ Nightbears Technology",
+    "description": "ພອດໂຟລິໂອຂອງ Bigbank (Nattapong Pongnukrohsiri) — High School Software Engineer @ Nightbears Technology ຮັບພັດທະນາຊອບແວຄົບວົງຈອນ"
+  },
+  "nav": {
+    "home": "ໜ້າຫຼັກ",
+    "about": "ກ່ຽວກັບ",
+    "portfolio": "ຜົນງານ",
+    "blog": "ບົດຄວາມ",
+    "contact": "ຕິດຕໍ່",
+    "resume": "ຊີວະປະຫວັດ"
+  },
+  "hero": {
+    "badge": "ຮັບພັດທະນາຊອບແວຜ່ານ Nightbears Tech",
+    "greeting": "ສະບາຍດີ ຂ້ອຍແມ່ນ",
+    "name": "Bigbank",
+    "tagline1": "High School",
+    "tagline2": "Software Engineer",
+    "description": "ນັກຮຽນມັດທະຍົມທີ່ມີແພສຊັນດ້ານການຂຽນໂປຣແກຣມ ແລະເປັນ Software Engineer ທີ່ Nightbears Technology ເຖິງຈະອາຍຸນ້ອຍ ແຕ່ພ້ອມລຸຍໂປຣເຈັກລະດັບ Enterprise ສ້າງສັນໄອເດຍຂອງທ່ານໃຫ້ເປັນແອັບພລິເຄຊັນ ແລະເວັບໄຊທ໌ທີ່ໃຊ້ງານໄດ້ຈິງ",
+    "cta_primary": "ຜົນງານຂອງພວກເຮົາ",
+    "cta_secondary": "ປຶກສາໂປຣເຈັກ",
+    "scroll_hint": "ເລື່ອນລົງເພື່ອເບິ່ງເພີ່ມເຕີມ"
+  },
+  "about": {
+    "label": "ກ່ຽວກັບ",
+    "title": "ຍິນດີທີ່ໄດ້ຮູ້ຈັກ!",
+    "description1": "ຂ້ອຍແມ່ນ Nattapong Pongnukrohsiri (Bigbank) Software Engineer ໄວມັດທະຍົມຈາກ Nightbears Technology (ບໍລິສັດ ໄນທ໌ແບຣ໌ ເທັກໂນໂລຢີ ຈຳກັດ). ຂ້ອຍເລີ່ມຕົ້ນຈາກຄວາມຫຼົງໄຫຼໃນການຂຽນໂຄດ, ພັດທະນາຕົນເອງຈົນໄດ້ຮ່ວມງານຈິງກັບ Software House ທີ່ພ້ອມສ້າງໂຊລູຊັນທີ່ດີທີ່ສຸດໃຫ້ລູກຄ້າ.",
+    "description2": "ອາຍຸບໍ່ແມ່ນຂໍ້ຈຳກັດໃນການສ້າງສັນນວັດຕະກຳ! ຕັ້ງແຕ່ການພັດທະນາເວັບໄຊທ໌ (Next.js, React) ໄປຈົນເຖິງແອັບພລິເຄຊັນ (Flutter), ຂ້ອຍ ແລະທີມງານຜູ້ຊ່ຽວຊານຈາກ Nightbears ພ້ອມດູແລໂປຣເຈັກຂອງທ່ານຕັ້ງແຕ່ຕົ້ນຈົນຈົບ.",
+    "stats": {
+      "projects": "ໂປຣເຈັກ",
+      "experience": "ປີປະສົບການ",
+      "clients": "ລູກຄ້າ",
+      "satisfaction": "ຄວາມເພິ່ງພໍໃຈ"
+    }
+  },
+  "portfolio": {
+    "label": "ຜົນງານ",
+    "title": "ໂປຣເຈັກທີ່ພູມໃຈ",
+    "description": "ຕົວຢ່າງຜົນງານເວັບໄຊທ໌ທີ່ອອກແບບແລະພັດທະນາໃຫ້ລູກຄ້າ",
+    "view_live": "ເຂົ້າຊົມເວັບ",
+    "view_code": "ຊອສໂຄດ",
+    "view_all": "ເບິ່ງທັງໝົດ"
+  },
+  "blog": {
+    "label": "ບົດຄວາມ",
+    "title": "ແບ່ງປັນຄວາມຮູ້",
+    "description": "ບົດຄວາມກ່ຽວກັບການພັດທະນາເວັບໄຊທ໌ ເທັກນິກ ແລະປະສົບການຕ່າງໆ",
+    "read_more": "ອ່ານຕໍ່",
+    "view_all": "ເບິ່ງບົດຄວາມທັງໝົດ",
+    "min_read": "ນາທີອ່ານ"
+  },
+  "contact": {
+    "label": "ຕິດຕໍ່",
+    "title": "ພ້ອມໃຫ້ພວກເຮົາດູແລໂປຣເຈັກຂອງທ່ານ?",
+    "description": "ສົນໃຈພັດທະນາຊອບແວ, ແອັບພລິເຄຊັນ ຫຼືມີໄອເດຍທີ່ຢາກເຮັດໃຫ້ເປັນຈິງ? ຕິດຕໍ່ເພື່ອໂອ້ລົມກັບຂ້ອຍ ແລະທີມງານ Nightbears Technology ໄດ້ເລີຍ. ພວກເຮົາຍິນດີໃຫ້ຄຳປຶກສາຟຣີ!",
+    "form": {
+      "name": "ຊື່",
+      "name_placeholder": "ຊື່ຂອງທ່ານ",
+      "email": "ອີເມວ",
+      "email_placeholder": "email@example.com",
+      "message": "ຂໍ້ຄວາມ",
+      "message_placeholder": "ເລົ່າລາຍລະອຽດໂປຣເຈັກໃຫ້ຟັງແດ່...",
+      "send": "ສົ່ງຂໍ້ຄວາມ",
+      "sending": "ກຳລັງສົ່ງ...",
+      "success": "ສົ່ງຂໍ້ຄວາມສຳເລັດ! ຈະຕອບກັບໄວທີ່ສຸດ",
+      "error": "ເກີດຂໍ້ຜິດພາດ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ"
+    },
+    "or": "ຫຼືຕິດຕໍ່ຜ່ານ"
+  },
+  "footer": {
+    "copyright": "© 2026 Bigbank. ສ້າງດ້ວຍ ❤️",
+    "built_with": "ສ້າງດ້ວຍ Next.js"
+  },
+  "common": {
+    "language": "LO"
+  }
+}

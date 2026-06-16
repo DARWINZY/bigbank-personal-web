@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "title": "Bigbank — High School Software Engineer @ Nightbears Technology",
+    "description": "พอร์ตโฟลิโอของ Bigbank (ณัฐพงษ์ พงษ์นุเคราะห์ศิริ) High School Software Engineer @ Nightbears Technology รับพัฒนาซอฟต์แวร์ครบวงจร"
+  },
+  "nav": {
+    "home": "หน้าหลัก",
+    "about": "เกี่ยวกับ",
+    "skills": "ทักษะ",
+    "portfolio": "ผลงาน",
+    "blog": "บทความ",
+    "contact": "ติดต่อ",
+    "resume": "เรซูเม่"
+  },
+  "hero": {
+    "badge": "รับพัฒนาซอฟต์แวร์ผ่าน Nightbears Tech",
+    "greeting": "สวัสดีครับ ผม",
+    "name": "บิ๊กแบงค์",
+    "tagline1": "High School",
+    "tagline2": "Software Engineer",
+    "description": "นักเรียนมัธยมที่มีแพสชันด้านการเขียนโปรแกรม และเป็น Software Engineer ที่ Nightbears Technology แม้จะอายุน้อย แต่พร้อมลุยโปรเจกต์ระดับ Enterprise สร้างสรรค์ไอเดียของคุณให้เป็นแอปพลิเคชันและเว็บไซต์ที่ใช้งานได้จริง",
+    "cta_primary": "ผลงานของเรา",
+    "cta_secondary": "ปรึกษาโปรเจกต์",
+    "scroll_hint": "เลื่อนลงเพื่อดูเพิ่มเติม"
+  },
+  "about": {
+    "label": "เกี่ยวกับ",
+    "title": "ยินดีที่ได้รู้จักครับ!",
+    "description1": "ผมคือ ณัฐพงษ์ พงษ์นุเคราะห์ศิริ (บิ๊กแบงค์) Software Engineer วัยมัธยมจาก Nightbears Technology (บริษัท ไนท์แบร์ เทคโนโลยี จำกัด) ผมเริ่มต้นจากความหลงใหลในการเขียนโค้ด พัฒนาตัวเองจนได้ร่วมงานจริงกับ Software House ที่พร้อมสร้างโซลูชันที่ดีที่สุดให้ลูกค้า",
+    "description2": "อายุไม่ใช่ข้อจำกัดในการสร้างสรรค์นวัตกรรม! ตั้งแต่การพัฒนาเว็บไซต์ (Next.js, React) ไปจนถึงแอปพลิเคชัน (Flutter) ผมและทีมงานผู้เชี่ยวชาญจาก Nightbears พร้อมดูแลโปรเจกต์ของคุณตั้งแต่ต้นจนจบ",
+    "stats": {
+      "projects": "โปรเจกต์",
+      "experience": "ปีประสบการณ์",
+      "clients": "ลูกค้า",
+      "satisfaction": "ความพึงพอใจ"
+    }
+  },
+  "skills": {
+    "label": "ทักษะ",
+    "title": "เทคโนโลยีที่ใช้",
+    "description": "ผมใช้เทคโนโลยีทันสมัยในการสร้างเว็บไซต์ที่มีประสิทธิภาพ",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "เครื่องมือ"
+    }
+  },
+  "portfolio": {
+    "label": "ผลงาน",
+    "title": "โปรเจกต์ที่ภูมิใจ",
+    "description": "ตัวอย่างผลงานเว็บไซต์ที่ออกแบบและพัฒนาให้ลูกค้า",
+    "view_live": "เข้าชมเว็บ",
+    "view_code": "ซอร์สโค้ด",
+    "view_all": "ดูทั้งหมด"
+  },
+  "blog": {
+    "label": "บทความ",
+    "title": "แชร์ความรู้",
+    "description": "บทความเกี่ยวกับการพัฒนาเว็บไซต์ เทคนิค และประสบการณ์ต่างๆ",
+    "read_more": "อ่านต่อ",
+    "view_all": "ดูบทความทั้งหมด",
+    "min_read": "นาทีอ่าน"
+  },
+  "contact": {
+    "label": "ติดต่อ",
+    "title": "พร้อมให้เราดูแลโปรเจกต์ของคุณ?",
+    "description": "สนใจพัฒนาซอฟต์แวร์ แอปพลิเคชัน หรือมีไอเดียที่อยากทำให้เป็นจริง? ติดต่อเพื่อพูดคุยกับผมและทีมงาน Nightbears Technology ได้เลย เรายินดีให้คำปรึกษาฟรี!",
+    "form": {
+      "name": "ชื่อ",
+      "name_placeholder": "ชื่อของคุณ",
+      "email": "อีเมล",
+      "email_placeholder": "email@example.com",
+      "message": "ข้อความ",
+      "message_placeholder": "เล่ารายละเอียดโปรเจกต์ให้ฟังหน่อยครับ...",
+      "send": "ส่งข้อความ",
+      "sending": "กำลังส่ง...",
+      "success": "ส่งข้อความสำเร็จ! จะตอบกลับเร็วที่สุดครับ",
+      "error": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง"
+    },
+    "or": "หรือติดต่อผ่าน"
+  },
+  "footer": {
+    "copyright": "© 2026 Bigbank. สร้างด้วย ❤️",
+    "built_with": "สร้างด้วย Next.js"
+  },
+  "common": {
+    "language": "TH",
+    "switch_language": "EN"
+  }
+}
