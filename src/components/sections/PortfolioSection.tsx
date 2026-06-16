@@ -34,9 +34,18 @@ export default function PortfolioSection() {
                       {project.award === 'gold' ? (locale === 'th' ? 'เหรียญทอง' : locale === 'lo' ? 'ຫຼຽນຄຳ' : locale === 'zh' ? '金奖' : 'Gold') : project.award === 'silver' ? (locale === 'th' ? 'เหรียญเงิน' : locale === 'lo' ? 'ຫຼຽນເງິນ' : locale === 'zh' ? '银奖' : 'Silver') : (locale === 'th' ? 'เหรียญทองแดง' : locale === 'lo' ? 'ຫຼຽນທອງແດງ' : locale === 'zh' ? '铜奖' : 'Bronze')}
                     </div>
                   )}
-                  <div className={styles.portfolioPlaceholder}>
-                    {project.title.en.charAt(0)}
-                  </div>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title[locale]}
+                      width={640}
+                      height={400}
+                    />
+                  ) : (
+                    <div className={styles.portfolioPlaceholder}>
+                      {project.title.en.charAt(0)}
+                    </div>
+                  )}
                 </div>
                 <div className={uiStyles.projectCardContent}>
                   <h3 className={uiStyles.projectCardTitle}>
