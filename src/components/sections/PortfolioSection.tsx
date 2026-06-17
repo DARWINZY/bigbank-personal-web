@@ -33,7 +33,9 @@ export default function PortfolioSection() {
                   {project.award && (
                     <div className={`${uiStyles.awardBadge} ${project.award === 'gold' ? uiStyles.awardBadgeGold : project.award === 'silver' ? uiStyles.awardBadgeSilver : uiStyles.awardBadgeBronze}`}>
                       <FiAward size={14} />
-                      {project.award === 'gold' ? (locale === 'th' ? 'เหรียญทอง' : locale === 'lo' ? 'ຫຼຽນຄຳ' : locale === 'zh' ? '金奖' : 'Gold') : project.award === 'silver' ? (locale === 'th' ? 'เหรียญเงิน' : locale === 'lo' ? 'ຫຼຽນເງິນ' : locale === 'zh' ? '银奖' : 'Silver') : (locale === 'th' ? 'เหรียญทองแดง' : locale === 'lo' ? 'ຫຼຽນທອງແດງ' : locale === 'zh' ? '铜奖' : 'Bronze')}
+                      {!project.badgeIconOnly && (
+                        project.award === 'gold' ? (locale === 'th' ? 'เหรียญทอง' : locale === 'lo' ? 'ຫຼຽນຄຳ' : locale === 'zh' ? '金奖' : 'Gold') : project.award === 'silver' ? (locale === 'th' ? 'เหรียญเงิน' : locale === 'lo' ? 'ຫຼຽນເງິນ' : locale === 'zh' ? '银奖' : 'Silver') : (locale === 'th' ? 'เหรียญทองแดง' : locale === 'lo' ? 'ຫຼຽນທອງແດງ' : locale === 'zh' ? '铜奖' : 'Bronze')
+                      )}
                     </div>
                   )}
                   {project.image ? (
