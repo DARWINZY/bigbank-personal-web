@@ -95,7 +95,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${inter.variable} ${notoSansThai.variable} ${notoSansLao.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.png" type="image/png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
