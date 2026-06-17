@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import { Inter, Noto_Sans_Thai, Noto_Sans_Lao, Playfair_Display } from 'next/font/google';
 import ClickRippleEffect from '@/components/ui/ClickRippleEffect';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import CustomCursor from '@/components/ui/CustomCursor';
 import BackToTop from '@/components/ui/BackToTop';
 import type { Metadata } from 'next';
 
@@ -132,6 +133,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <CustomCursor />
           <ScrollProgress />
           <ClickRippleEffect />
           <Header />

@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import FloatingParticles from '@/components/ui/FloatingParticles';
 import RotatingText from '@/components/ui/RotatingText';
+import TextReveal from '@/components/ui/TextReveal';
+import MagneticButton from '@/components/ui/MagneticButton';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
 import profileImg from '@/../public/images/profile.jpg';
@@ -56,7 +58,9 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <span className={styles.heroNameAccent}>{t('name')}</span>
+            <span className={styles.heroNameAccent}>
+              <TextReveal text={t('name')} delay={0.4} />
+            </span>
             <div className={styles.heroFullName}>{t('fullName')}</div>
           </motion.h1>
 
@@ -89,18 +93,22 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <button
-              className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}
-              onClick={() => scrollToSection('portfolio')}
-            >
-              {t('cta_primary')}
-            </button>
-            <button
-              className={`${uiStyles.btn} ${uiStyles.btnSecondary}`}
-              onClick={() => scrollToSection('contact')}
-            >
-              {t('cta_secondary')}
-            </button>
+            <MagneticButton>
+              <button
+                className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}
+                onClick={() => scrollToSection('portfolio')}
+              >
+                {t('cta_primary')}
+              </button>
+            </MagneticButton>
+            <MagneticButton>
+              <button
+                className={`${uiStyles.btn} ${uiStyles.btnSecondary}`}
+                onClick={() => scrollToSection('contact')}
+              >
+                {t('cta_secondary')}
+              </button>
+            </MagneticButton>
           </motion.div>
         </div>
 

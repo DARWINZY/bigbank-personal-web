@@ -1,12 +1,12 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { FiArrowRight, FiBookOpen } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import { blogPosts } from '@/data/blog';
+import HoverImageReveal from '@/components/ui/HoverImageReveal';
 import styles from '@/styles/blog.module.css';
-import uiStyles from '@/styles/ui.module.css';
 
 export default function BlogPreview() {
   const t = useTranslations('blog');
@@ -23,30 +23,21 @@ export default function BlogPreview() {
           />
         </AnimatedSection>
 
-        <div className={styles.blogGrid}>
+        <div className={styles.blogList}>
           {blogPosts.map((post, index) => (
             <AnimatedSection key={post.id} delay={index * 0.1}>
-              <article className={uiStyles.blogCard}>
-                <div className={uiStyles.blogCardImage}>
-                  <div className={styles.blogPlaceholder}>
-                    <FiBookOpen />
-                  </div>
-                </div>
-                <div className={uiStyles.blogCardContent}>
-                  <div className={uiStyles.blogCardMeta}>
-                    <span className={uiStyles.blogCardCategory}>{post.category}</span>
-                    <span>•</span>
+              <HoverImageReveal imageSrc={post.image} imageAlt={post.title[locale]}>
+                <div className={styles.blogListItem}>
+                  <div className={styles.blogListMeta}>
+                    <span className={styles.blogListCategory}>{post.category}</span>
                     <span>{post.date}</span>
-                    <span>•</span>
-                    <span>{post.readTime} {t('min_read')}</span>
                   </div>
-                  <h3 className={uiStyles.blogCardTitle}>{post.title[locale]}</h3>
-                  <p className={uiStyles.blogCardDesc}>{post.description[locale]}</p>
-                  <span className={uiStyles.blogCardLink}>
-                    {t('read_more')} <FiArrowRight size={14} />
-                  </span>
+                  <h3 className={styles.blogListTitle}>{post.title[locale]}</h3>
+                  <div className={styles.blogListArrow}>
+                    <FiArrowRight size={24} />
+                  </div>
                 </div>
-              </article>
+              </HoverImageReveal>
             </AnimatedSection>
           ))}
         </div>

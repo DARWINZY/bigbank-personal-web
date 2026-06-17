@@ -1,4 +1,5 @@
 import styles from '@/styles/ui.module.css';
+import TextReveal from '@/components/ui/TextReveal';
 
 interface SectionTitleProps {
   label: string;
@@ -11,7 +12,9 @@ export default function SectionTitle({ label, title, description, align = 'cente
   return (
     <div className={`${styles.sectionTitle} ${align === 'center' ? styles.sectionTitleCenter : ''}`}>
       <span className={styles.sectionLabel}>{label}</span>
-      <h2 className={styles.sectionHeading}>{title}</h2>
+      <h2 className={styles.sectionHeading}>
+        <TextReveal text={title} />
+      </h2>
       {description && <p className={styles.sectionDescription}>{description}</p>}
     </div>
   );

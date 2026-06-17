@@ -6,38 +6,90 @@
   background: var(--color-bg-primary);
 }
 
-.blogGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-bottom: 48px;
+.blogList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
 }
 
-.blogPlaceholder {
+.blogListItem {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.blogListItem:hover {
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: var(--color-bg-secondary);
+}
+
+.blogListMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.blogListCategory {
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blogListTitle {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  transition: color var(--transition-fast);
+}
+
+.blogListItem:hover .blogListTitle {
+  color: var(--color-accent);
+}
+
+.blogListArrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  min-height: 180px;
-  background: linear-gradient(135deg, var(--color-accent-ultra-light) 0%, var(--color-bg-secondary) 100%);
-  color: var(--color-accent);
-  font-size: var(--text-3xl);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
 }
 
-.blogViewAll {
-  display: flex;
-  justify-content: center;
+.blogListItem:hover .blogListArrow {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+  transform: translateX(8px);
 }
 
 @media (max-width: 900px) {
-  .blogGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .blogGrid {
+  .blogListItem {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 0;
+  }
+  .blogListItem:hover {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+  }
+  .blogListTitle {
+    font-size: var(--text-xl);
+  }
+  .blogListArrow {
+    display: none;
   }
 }
