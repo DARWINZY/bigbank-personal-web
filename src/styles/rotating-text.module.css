@@ -1,0 +1,27 @@
+.container {
+  display: inline-block;
+  position: relative;
+  min-width: 250px;
+  height: 1.2em;
+  vertical-align: bottom;
+}
+
+.text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .container {
+    min-width: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+  .text {
+    position: relative;
+    display: inline-block;
+  }
+}

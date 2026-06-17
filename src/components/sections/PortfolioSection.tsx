@@ -7,8 +7,19 @@ import { FiExternalLink, FiGithub, FiAward, FiCalendar } from 'react-icons/fi';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import { projects } from '@/data/projects';
+import { useTiltEffect } from '@/hooks/useTiltEffect';
 import styles from '@/styles/portfolio.module.css';
 import uiStyles from '@/styles/ui.module.css';
+
+function TiltCard({ children, className }: { children: React.ReactNode, className?: string }) {
+  const tiltRef = useTiltEffect();
+  return (
+    <div ref={tiltRef} className={`${className} ${uiStyles.tiltCard}`}>
+      {children}
+      <div className={`tilt-shine ${uiStyles.tiltShine}`}></div>
+    </div>
+  );
+}
 
 export default function PortfolioSection() {
   const t = useTranslations('portfolio');
@@ -28,7 +39,7 @@ export default function PortfolioSection() {
         <div className={styles.portfolioGrid}>
           {projects.filter(p => p.featured).map((project, index) => (
             <AnimatedSection key={project.id} delay={index * 0.1}>
-              <div className={`${uiStyles.projectCard} ${project.award === 'gold' ? uiStyles.projectCardGold : project.award === 'silver' ? uiStyles.projectCardSilver : project.award === 'bronze' ? uiStyles.projectCardBronze : ''}`}>
+              <TiltCard className={`${uiStyles.projectCard} ${project.award === 'gold' ? uiStyles.projectCardGold : project.award === 'silver' ? uiStyles.projectCardSilver : project.award === 'bronze' ? uiStyles.projectCardBronze : ''}`}>
                 <div className={uiStyles.projectCardImage}>
                   {project.award && (
                     <div className={`${uiStyles.awardBadge} ${project.award === 'gold' ? uiStyles.awardBadgeGold : project.award === 'silver' ? uiStyles.awardBadgeSilver : uiStyles.awardBadgeBronze}`}>
@@ -100,7 +111,7 @@ export default function PortfolioSection() {
                     )}
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </AnimatedSection>
           ))}
         </div>

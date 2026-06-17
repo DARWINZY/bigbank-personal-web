@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import FloatingParticles from '@/components/ui/FloatingParticles';
+import RotatingText from '@/components/ui/RotatingText';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
 import profileImg from '@/../public/images/profile.jpg';
@@ -23,6 +25,7 @@ export default function HeroSection() {
       <div className={styles.heroBg}>
         <div className={styles.heroBgGlow1} />
         <div className={styles.heroBgGlow2} />
+        <FloatingParticles />
       </div>
 
       <div className={`container ${styles.heroContent}`}>
@@ -65,7 +68,9 @@ export default function HeroSection() {
             <h2 className={styles.heroTagline}>
               {t('tagline1')}
               <br />
-              <span className={styles.heroTaglineLight}>{t('tagline2')}</span>
+              <span className={styles.heroTaglineLight}>
+                <RotatingText words={[t('tagline2'), 'Web Developer', 'Researcher', 'Problem Solver']} />
+              </span>
             </h2>
           </motion.div>
 

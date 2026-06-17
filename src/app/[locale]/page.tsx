@@ -1,5 +1,6 @@
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
+import TechMarquee from '@/components/sections/TechMarquee';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import BlogPreview from '@/components/sections/BlogPreview';
 import ContactSection from '@/components/sections/ContactSection';
@@ -14,6 +15,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <HeroSection />
       <AboutSection />
+      <TechMarquee />
       <PortfolioSection />
       <BlogPreview />
       <ContactSection />

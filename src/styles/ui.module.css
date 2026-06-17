@@ -170,6 +170,23 @@
   transform: scale(1.05);
 }
 
+/* Tilt Effect */
+.tiltCard {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tiltShine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: background 0.4s ease;
+}
+
 .awardBadge {
   position: absolute;
   top: 16px;
