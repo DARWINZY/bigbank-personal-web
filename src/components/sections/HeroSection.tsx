@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
@@ -106,7 +107,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.3 }}
         >
           <div className={styles.heroImageContainer}>
-            <img
+            <Image
               src={profileImg.src}
               alt="Bigbank — Freelance Web Developer"
               width={440}

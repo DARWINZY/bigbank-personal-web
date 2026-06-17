@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import styles from '@/styles/about.module.css';
@@ -31,7 +32,7 @@ export default function AboutSection() {
           <AnimatedSection direction="left" delay={0.1}>
             <div className={styles.aboutImageWrapper}>
             <div className={styles.aboutImage}>
-              <img
+              <Image
                 src={aboutImg.src}
                 alt="Bigbank — About Me"
                 width={400}
