@@ -96,6 +96,28 @@ export const projects: Project[] = [
   },
   // ══ 🥈 SILVER ════════════════════════════════════════════
   {
+    id: 'click-camp-16',
+    title: {
+      th: 'Click Camp 16',
+      en: 'Click Camp 16',
+      lo: 'Click Camp 16',
+      zh: 'Click Camp 16',
+    },
+    description: {
+      th: 'เข้าร่วมค่ายโดยคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยมหิดล เรียนรู้การสร้าง AI พื้นฐาน และเจาะลึก Cyber Security ด้วยเครื่องมือจริง',
+      en: 'Attended a camp hosted by the Computer Engineering department at Mahidol University. Learned foundational AI development and explored Cyber Security with industry-standard tools.',
+      lo: 'ເຂົ້າຮ່ວມຄ່າຍໂດຍຄະນະວິສະວະກຳສາດ ສາຂາວິສະວະກຳຄອມພິວເຕີ ມະຫາວິທະຍາໄລມະຫິດົນ ຮຽນຮູ້ການສ້າງ AI ພື້ນຖານ ແລະ ສຳຫຼວດ Cyber Security ດ້ວຍເຄື່ອງມືຈິງ',
+      zh: '参加玛希隆大学计算机工程系举办的营地，学习基础AI开发，并使用专业工具深入探索网络安全。',
+    },
+    image: '/images/projects/cc16.jpg',
+    tags: ['Python', 'Streamlit', 'WireShark', 'Burp Suite'],
+    featured: true,
+    award: 'silver',
+    badgeIconOnly: true,
+    year: '2568',
+    grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
+  },
+  {
     id: 'silpahattakam-71',
     title: {
       th: 'ศิลปหัตถกรรม ครั้งที่ 71',
@@ -239,26 +261,7 @@ export const projects: Project[] = [
     year: '2568',
     grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
   },
-  {
-    id: 'click-camp-16',
-    title: {
-      th: 'Click Camp 16',
-      en: 'Click Camp 16',
-      lo: 'Click Camp 16',
-      zh: 'Click Camp 16',
-    },
-    description: {
-      th: 'เข้าร่วมค่ายโดยคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยมหิดล เรียนรู้การสร้าง AI พื้นฐาน และเจาะลึก Cyber Security ด้วยเครื่องมือจริง',
-      en: 'Attended a camp hosted by the Computer Engineering department at Mahidol University. Learned foundational AI development and explored Cyber Security with industry-standard tools.',
-      lo: 'ເຂົ້າຮ່ວມຄ່າຍໂດຍຄະນະວິສະວະກຳສາດ ສາຂາວິສະວະກຳຄອມພິວເຕີ ມະຫາວິທະຍາໄລມະຫິດົນ ຮຽນຮູ້ການສ້າງ AI ພື້ນຖານ ແລະ ສຳຫຼວດ Cyber Security ດ້ວຍເຄື່ອງມືຈິງ',
-      zh: '参加玛希隆大学计算机工程系举办的营地，学习基础AI开发，并使用专业工具深入探索网络安全。',
-    },
-    image: '/images/projects/cc16.jpg',
-    tags: ['Python', 'WireShark', 'Burp Suite'],
-    featured: true,
-    year: '2568',
-    grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
-  },
+
   {
     id: 'scientist-path-thammasat',
     title: {
