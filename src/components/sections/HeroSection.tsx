@@ -9,7 +9,7 @@ import TextReveal from '@/components/ui/TextReveal';
 import MagneticButton from '@/components/ui/MagneticButton';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
-import profileImg from '@/../public/images/hero_profile.png';
+import profileImg from '@/../public/images/profile.png';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -122,14 +122,15 @@ export default function HeroSection() {
           <motion.div 
             className={styles.heroImageContainer}
             animate={{
-              y: [0, -15, 0],
-              rotate: [0, -2, 2, 0]
+              y: [0, -10, 0],
+              rotate: [-1.5, 1.5, -1.5],
             }}
             transition={{
-              duration: 6,
+              duration: 5,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
+            style={{ originY: 1 }}
           >
             <Image
               src={profileImg.src}
