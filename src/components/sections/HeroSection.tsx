@@ -9,7 +9,7 @@ import TextReveal from '@/components/ui/TextReveal';
 import MagneticButton from '@/components/ui/MagneticButton';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
-import profileImg from '@/../public/images/profile.jpg';
+import profileImg from '@/../public/images/hero_profile.png';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -119,14 +119,26 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          <div className={styles.heroImageContainer}>
+          <motion.div 
+            className={styles.heroImageContainer}
+            animate={{
+              y: [0, -15, 0],
+              rotate: [0, -2, 2, 0]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
             <Image
               src={profileImg.src}
               alt="Bigbank — Freelance Web Developer"
               width={440}
               height={587}
+              priority
             />
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
