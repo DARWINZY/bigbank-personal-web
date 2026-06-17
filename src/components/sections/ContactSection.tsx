@@ -27,8 +27,9 @@ export default function ContactSection() {
     });
 
     try {
-      // Using FormSubmit.co which allows sending directly to an email without an access key
-      const response = await fetch("https://formsubmit.co/ajax/bankntp8@gmail.com", {
+      // Using FormSubmit.co which allows sending directly to an email or via token
+      const formSubmitTarget = process.env.NEXT_PUBLIC_FORMSUBMIT_TOKEN || "bankntp8@gmail.com";
+      const response = await fetch(`https://formsubmit.co/ajax/${formSubmitTarget}`, {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',

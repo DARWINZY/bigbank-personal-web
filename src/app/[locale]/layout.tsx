@@ -101,6 +101,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${inter.variable} ${notoSansThai.variable} ${notoSansLao.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co;"
+        />
         <link rel="icon" href="/icon.png" type="image/png" />
         <script
           type="application/ld+json"
