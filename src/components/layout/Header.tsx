@@ -38,9 +38,13 @@ export default function Header() {
 
   const scrollToSection = (id: string) => {
     setIsMobileOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (pathname === `/${locale}`) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      router.push(`/${locale}/#${id}`);
     }
   };
 
