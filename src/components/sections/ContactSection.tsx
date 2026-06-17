@@ -19,19 +19,30 @@ export default function ContactSection() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
-    // TODO: Replace with your actual Web3Forms Access Key
-    // Get it for free at: https://web3forms.com/
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+    // Convert FormData to JSON
+    const object: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      object[key] = value.toString();
+    });
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Using FormSubmit.co which allows sending directly to an email without an access key
+      const response = await fetch("https://formsubmit.co/ajax/bankntp8@gmail.com", {
         method: "POST",
-        body: formData
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            ...object,
+            _subject: "New message from your Portfolio!",
+            _template: "table"
+        })
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok) {
         setStatus('success');
         form.reset();
         setTimeout(() => setStatus('idle'), 4000);
