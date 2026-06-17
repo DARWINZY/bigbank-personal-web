@@ -36,7 +36,8 @@ export default function ContactSection() {
         body: JSON.stringify({
             ...object,
             _subject: "New message from your Portfolio!",
-            _template: "table"
+            _template: "table",
+            _captcha: "false" // MUST be false for AJAX to work on production domains
         })
       });
 
