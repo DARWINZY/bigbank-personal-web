@@ -1,4 +1,4 @@
-import { FaLinkedin, FaFacebook, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 export interface SocialLink {
@@ -33,11 +33,5 @@ export const socialLinks: SocialLink[] = [
     url: 'https://x.com/darwinzy_xz',
     icon: FaXTwitter,
     label: 'X (Twitter) Profile',
-  },
-  {
-    name: 'Email',
-    url: 'mailto:bigbank@example.com',
-    icon: FaEnvelope,
-    label: 'Send Email',
   },
 ];
