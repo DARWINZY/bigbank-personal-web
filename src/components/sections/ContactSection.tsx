@@ -16,11 +16,35 @@ export default function ContactSection() {
     e.preventDefault();
     setStatus('sending');
     
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus('success');
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // TODO: Replace with your actual Web3Forms Access Key
+    // Get it for free at: https://web3forms.com/
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        form.reset();
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        console.error("Form submission error:", data);
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus('error');
       setTimeout(() => setStatus('idle'), 4000);
-    }, 1500);
+    }
   };
 
   return (
@@ -44,6 +68,7 @@ export default function ContactSection() {
                 </label>
                 <input
                   id="contact-name"
+                  name="name"
                   type="text"
                   className={styles.formInput}
                   placeholder={t('form.name_placeholder')}
@@ -56,6 +81,7 @@ export default function ContactSection() {
                 </label>
                 <input
                   id="contact-email"
+                  name="email"
                   type="email"
                   className={styles.formInput}
                   placeholder={t('form.email_placeholder')}
@@ -68,6 +94,7 @@ export default function ContactSection() {
                 </label>
                 <textarea
                   id="contact-message"
+                  name="message"
                   className={styles.formTextarea}
                   placeholder={t('form.message_placeholder')}
                   required
