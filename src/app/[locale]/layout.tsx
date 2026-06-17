@@ -47,6 +47,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t('title'),
     description: t('description'),
+    keywords: ['Bigbank', 'Nattapong Pongnukrohsiri', 'Software Engineer', 'Portfolio', 'Nightbears Technology', 'Web Developer', 'React', 'Next.js', 'รับทำเว็บไซต์', 'รับเขียนโปรแกรม', 'ณัฐพงษ์ พงษ์นุเคราะห์ศิริ', 'บิ๊กแบงค์'],
+    authors: [{ name: 'Nattapong Pongnukrohsiri', url: 'https://bigbank.nightbears.co' }],
+    creator: 'Nattapong Pongnukrohsiri',
     alternates: {
       canonical: `https://bigbank.nightbears.co/${locale}`,
       languages: {
