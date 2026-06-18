@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 import styles from '@/styles/header.module.css';
 
 const navItems = ['about', 'portfolio', 'blog', 'contact'] as const;
@@ -71,6 +72,7 @@ export default function Header() {
 
           {/* Right Controls */}
           <div className={styles.headerRight}>
+            <ThemeToggle />
             {/* Language Switcher */}
             <div className={styles.langSwitcher}>
               <button

@@ -9,6 +9,8 @@ import ClickRippleEffect from '@/components/ui/ClickRippleEffect';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import CustomCursor from '@/components/ui/CustomCursor';
 import BackToTop from '@/components/ui/BackToTop';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { LenisProvider } from '@/components/providers/LenisProvider';
 import type { Metadata } from 'next';
 
 const inter = Inter({
@@ -139,15 +141,19 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <CustomCursor />
-          <ScrollProgress />
-          <ClickRippleEffect />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <BackToTop />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <LenisProvider>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <CustomCursor />
+              <ScrollProgress />
+              <ClickRippleEffect />
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <BackToTop />
+            </NextIntlClientProvider>
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

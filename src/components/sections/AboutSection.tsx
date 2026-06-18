@@ -28,39 +28,33 @@ export default function AboutSection() {
           />
         </AnimatedSection>
 
-        <div className={styles.aboutGrid}>
-          <AnimatedSection direction="left" delay={0.1}>
-            <div className={styles.aboutImageWrapper}>
-            <div className={styles.aboutImage}>
-              <Image
-                src={aboutImg.src}
-                alt="Bigbank — About Me"
-                width={400}
-                height={500}
-              />
-            </div>
-          </div>
+        <div className={styles.bentoGrid}>
+          {/* Main Photo Cell */}
+          <AnimatedSection delay={0.1} className={`${styles.bentoCell} ${styles.bentoCellPhoto}`}>
+            <Image
+              src={aboutImg.src}
+              alt="Bigbank — About Me"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </AnimatedSection>
 
-          <AnimatedSection direction="right" delay={0.2}>
-            <div className={styles.aboutContent}>
-              <p className={styles.aboutText}>{t('description1')}</p>
-              <p className={styles.aboutText}>{t('description2')}</p>
+          {/* Intro Cell */}
+          <AnimatedSection delay={0.2} className={`${styles.bentoCell} ${styles.bentoCellIntro}`}>
+            <p className={styles.aboutText}>{t('description1')}</p>
+            <p className={styles.aboutText}>{t('description2')}</p>
+          </AnimatedSection>
 
-              <div className={styles.aboutStats}>
-                {stats.map((stat, index) => (
-                  <AnimatedSection key={stat.key} delay={0.3 + index * 0.1}>
-                    <div className={styles.aboutStat}>
-                      <div className={styles.aboutStatNumber}>{stat.value}</div>
-                      <div className={styles.aboutStatLabel}>
-                        {t(`stats.${stat.key}`)}
-                      </div>
-                    </div>
-                  </AnimatedSection>
-                ))}
+          {/* Stats Cells */}
+          {stats.map((stat, index) => (
+            <AnimatedSection key={stat.key} delay={0.3 + index * 0.1} className={`${styles.bentoCell} ${styles.bentoCellStat}`}>
+              <div className={styles.aboutStatNumber}>{stat.value}</div>
+              <div className={styles.aboutStatLabel}>
+                {t(`stats.${stat.key}`)}
               </div>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          ))}
         </div>
       </div>
     </section>

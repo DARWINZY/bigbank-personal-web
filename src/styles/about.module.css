@@ -6,76 +6,73 @@
   background: var(--color-bg-secondary);
 }
 
-.aboutGrid {
+.bentoGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 24px;
 }
 
-.aboutImageWrapper {
-  position: relative;
-}
-
-.aboutImage {
-  position: relative;
+.bentoCell {
+  background: var(--color-card-bg);
   border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
   overflow: hidden;
-  aspect-ratio: 4 / 5;
-  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 1;
 }
 
-.aboutImage img {
+.bentoCell:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent-light);
+  transform: translateY(-2px);
+}
+
+.bentoCellPhoto {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 450px;
+  position: relative;
+}
+
+.bentoCellPhoto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.aboutImageAccent {
-  position: absolute;
-  bottom: -12px;
-  right: -12px;
-  width: 60%;
-  height: 60%;
-  border: 3px solid var(--color-accent-light);
-  border-radius: var(--radius-xl);
-  z-index: -1;
+.bentoCellPhoto:hover img {
+  transform: scale(1.05);
 }
 
-.aboutContent {
+.bentoCellIntro {
+  grid-column: span 2;
+  grid-row: span 1;
+  padding: 32px 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  gap: 16px;
 }
 
 .aboutText {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   color: var(--color-text-secondary);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
-/* Stats */
-.aboutStats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 16px;
-}
-
-.aboutStat {
+.bentoCellStat {
+  grid-column: span 1;
+  grid-row: span 1;
   padding: 24px;
-  background: var(--color-card-bg);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  transition: all var(--transition-base);
-}
-
-.aboutStat:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  border-color: var(--color-accent-light);
 }
 
 .aboutStatNumber {
@@ -83,7 +80,7 @@
   font-weight: 800;
   color: var(--color-accent);
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .aboutStatLabel {
@@ -93,49 +90,37 @@
 }
 
 @media (max-width: 900px) {
-  .aboutGrid {
-    grid-template-columns: 1fr;
-    gap: 48px;
+  .bentoGrid {
+    grid-template-columns: 1fr 1fr;
   }
-
-  .aboutImageWrapper {
-    max-width: 350px;
-    margin: 0 auto;
-  }
-
-  .aboutStats {
-    grid-template-columns: repeat(2, 1fr);
+  
+  .bentoCellPhoto {
+    min-height: 350px;
   }
 }
 
 @media (max-width: 480px) {
-  .aboutGrid {
-    gap: 32px;
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .aboutImageWrapper {
-    max-width: 280px;
+  .bentoCellPhoto,
+  .bentoCellIntro,
+  .bentoCellStat {
+    grid-column: span 1;
   }
 
-  .aboutText {
-    font-size: var(--text-base);
-    line-height: 1.7;
+  .bentoCellPhoto {
+    min-height: 250px;
+    grid-row: span 1;
   }
-
-  .aboutStats {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  
+  .bentoCellIntro {
+    padding: 24px;
   }
-
-  .aboutStat {
-    padding: 14px 10px;
-  }
-
-  .aboutStatNumber {
-    font-size: var(--text-2xl);
-  }
-
-  .aboutStatLabel {
-    font-size: var(--text-xs);
+  
+  .bentoCellStat {
+    padding: 20px;
   }
 }

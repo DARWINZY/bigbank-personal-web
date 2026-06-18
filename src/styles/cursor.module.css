@@ -38,6 +38,26 @@
   height: 0px;
 }
 
+.cursorGlow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  margin-left: -200px;
+  margin-top: -200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-accent-ultra-light) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+[data-theme='dark'] .cursorGlow {
+  opacity: 0.15;
+}
+
 @media (max-width: 1024px) {
   .cursorDot, .cursorOutline {
     display: none !important;

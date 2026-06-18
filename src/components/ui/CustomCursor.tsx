@@ -66,6 +66,18 @@ export default function CustomCursor() {
         }}
       />
       <motion.div
+        className={styles.cursorGlow}
+        animate={{
+          x: mousePosition.x,
+          y: mousePosition.y,
+        }}
+        transition={{
+          type: 'tween',
+          ease: 'linear',
+          duration: 0,
+        }}
+      />
+      <motion.div
         className={styles.cursorDot}
         animate={{
           x: mousePosition.x,
