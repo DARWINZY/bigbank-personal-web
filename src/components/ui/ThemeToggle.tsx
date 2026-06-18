@@ -1,6 +1,6 @@
 'use client';
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/components/providers/ThemeProvider';
 import { useEffect, useState } from 'react';
 import { BsSun, BsMoon } from 'react-icons/bs';
 import styles from '@/styles/header.module.css';

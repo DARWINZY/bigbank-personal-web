@@ -105,8 +105,9 @@
   font-size: var(--text-6xl);
   font-weight: 700;
   color: var(--color-text-primary);
-  line-height: 1.05;
+  line-height: 1.25;
   letter-spacing: -0.02em;
+  padding-top: 0.1em;
 }
 
 .heroNameAccent {
@@ -127,6 +128,8 @@
   background-clip: text;
   animation: rgbFlow 3s linear infinite;
   display: inline-block;
+  padding-bottom: 0.1em;
+  padding-top: 0.1em;
 }
 
 @keyframes rgbFlow {
