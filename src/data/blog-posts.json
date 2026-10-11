@@ -1,5 +1,22 @@
 [
   {
+    "id": "testing",
+    "slug": "testing",
+    "title": {
+      "th": "ทดสอบ"
+    },
+    "description": {
+      "th": "กำลังทดสอบ"
+    },
+    "content": {
+      "th": "ลองทดสอบวันนี้ ยาวๆไปสาดไปสมาชิก"
+    },
+    "date": "2026-10-11",
+    "readTime": 1,
+    "tag": "experience",
+    "image": "/images/blog/testing-1791741772249.webp"
+  },
+  {
     "id": "2b-kmutt-camp",
     "slug": "2b-kmutt",
     "title": {
