@@ -52,7 +52,13 @@
     "min_read": "分钟阅读",
     "filter_all": "全部",
     "filter_label": "按标签筛选",
-    "empty": "暂无文章"
+    "empty": "暂无文章",
+    "read_time": "阅读 {minutes} 分钟",
+    "pagination": "分页",
+    "prev_page": "上一页",
+    "next_page": "下一页",
+    "back_to_all": "全部文章",
+    "toc": "目录"
   },
   "contact": {
     "label": "联系",

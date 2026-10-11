@@ -26,9 +26,6 @@ export interface BlogPost {
   image: string;
 }
 
-/** Posts whose page is a hand-built component instead of `content`. */
-export const CUSTOM_POST_SLUGS = ['2b-kmutt'];
-
 export const blogPosts: BlogPost[] = [...(postsData as BlogPost[])].sort((a, b) =>
   b.date.localeCompare(a.date)
 );
@@ -39,6 +36,17 @@ const FALLBACK_TAG_COLOR = '#64748B';
 
 export function getTag(id: string, tags: BlogTag[] = blogTags): BlogTag {
   return tags.find((t) => t.id === id) ?? { id, label: id, color: FALLBACK_TAG_COLOR };
+}
+
+const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-LA', zh: 'zh-CN' };
+
+/** e.g. "11 ตุลาคม 2569" in Thai, "11 October 2026" in English. */
+export function formatPostDate(date: string, locale: string): string {
+  return new Intl.DateTimeFormat(dateLocales[locale] ?? locale, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(date));
 }
 
 export function localize(text: LocalizedText, locale: string): string {

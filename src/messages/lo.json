@@ -52,7 +52,13 @@
     "min_read": "ນາທີອ່ານ",
     "filter_all": "ທັງໝົດ",
     "filter_label": "ກັ່ນຕອງຕາມແທັກ",
-    "empty": "ຍັງບໍ່ມີບົດຄວາມ"
+    "empty": "ຍັງບໍ່ມີບົດຄວາມ",
+    "read_time": "ອ່ານ {minutes} ນາທີ",
+    "pagination": "ເລືອກໜ້າ",
+    "prev_page": "ໜ້າກ່ອນ",
+    "next_page": "ໜ້າຕໍ່ໄປ",
+    "back_to_all": "ບົດຄວາມທັງໝົດ",
+    "toc": "ສາລະບານ"
   },
   "contact": {
     "label": "ຕິດຕໍ່",

@@ -63,7 +63,13 @@
     "min_read": "min read",
     "filter_all": "All",
     "filter_label": "Filter by tag",
-    "empty": "No posts yet"
+    "empty": "No posts yet",
+    "read_time": "{minutes} min read",
+    "pagination": "Pages",
+    "prev_page": "Previous page",
+    "next_page": "Next page",
+    "back_to_all": "All posts",
+    "toc": "Contents"
   },
   "contact": {
     "label": "Contact",

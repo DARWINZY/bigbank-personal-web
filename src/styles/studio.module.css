@@ -563,3 +563,32 @@
     align-items: stretch;
   }
 }
+
+/* Markdown cheat sheet */
+.mdHint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.mdHint summary {
+  cursor: pointer;
+  color: var(--color-accent);
+  width: fit-content;
+}
+
+.mdHint table {
+  margin: 8px 0;
+  border-collapse: collapse;
+}
+
+.mdHint td {
+  padding: 4px 16px 4px 0;
+  vertical-align: top;
+  color: var(--color-text-secondary);
+}
+
+.mdHint code {
+  padding: 1px 6px;
+  background: var(--color-bg-secondary);
+  border-radius: 4px;
+}

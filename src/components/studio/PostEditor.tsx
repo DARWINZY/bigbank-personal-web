@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import {
-  CUSTOM_POST_SLUGS,
   type BlogPost,
   type BlogTag,
   type Locale,
@@ -55,6 +54,28 @@ function fieldsFor(post: BlogPost | null, lang: Locale): Fields {
   };
 }
 
+/** Cheat sheet for the Markdown the post page understands. */
+function MarkdownHint() {
+  return (
+    <details className={styles.mdHint}>
+      <summary>วิธีจัดรูปแบบเนื้อหา</summary>
+      <table>
+        <tbody>
+          <tr><td><code>## หัวข้อ</code></td><td>หัวข้อใหญ่ (ขึ้นในสารบัญ)</td></tr>
+          <tr><td><code>### หัวข้อย่อย</code></td><td>หัวข้อย่อย</td></tr>
+          <tr><td><code>**ตัวหนา**</code></td><td><strong>ตัวหนา</strong></td></tr>
+          <tr><td><code>- รายการ</code></td><td>รายการแบบจุด</td></tr>
+          <tr><td><code>1. รายการ</code></td><td>รายการแบบตัวเลข</td></tr>
+          <tr><td><code>[ข้อความ](https://...)</code></td><td>ลิงก์</td></tr>
+          <tr><td><code>![คำอธิบายรูป](https://...)</code></td><td>รูปภาพจากลิงก์</td></tr>
+          <tr><td><code>&gt; ข้อความ</code></td><td>ข้อความอ้างอิง</td></tr>
+        </tbody>
+      </table>
+      <p>เว้นบรรทัดว่าง 1 บรรทัดเพื่อขึ้นย่อหน้าใหม่</p>
+    </details>
+  );
+}
+
 interface Props {
   post: BlogPost | null;
   tags: BlogTag[];
@@ -66,7 +87,6 @@ interface Props {
 
 export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBack }: Props) {
   const isNew = post === null;
-  const isCustom = !!post && CUSTOM_POST_SLUGS.includes(post.slug);
 
   const [text, setText] = useState<Record<Locale, Fields>>(() => ({
     th: fieldsFor(post, 'th'),
@@ -127,7 +147,7 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
     const problems: string[] = [];
     if (!text.th.title.trim()) problems.push('ใส่หัวข้อภาษาไทย');
     if (!text.th.description.trim()) problems.push('ใส่คำอธิบายสั้นภาษาไทย');
-    if (!isCustom && !text.th.content.trim()) problems.push('ใส่เนื้อหาภาษาไทย');
+    if (!text.th.content.trim()) problems.push('ใส่เนื้อหาภาษาไทย');
     if (!cover && !post?.image) problems.push('เพิ่มรูปปก');
     if (!tag) problems.push('เลือกแท็ก (ถ้ายังไม่มี สร้างได้ที่แท็บแท็ก)');
     if (!SLUG_RE.test(finalSlug)) problems.push('ลิงก์ของโพสต์ใช้ได้แค่ a-z, 0-9 และขีด -');
@@ -151,9 +171,9 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
         slug: finalSlug,
         title: pick('title'),
         description: pick('description'),
-        content: isCustom ? post.content : pick('content'),
+        content: pick('content'),
         date,
-        readTime: isCustom ? post.readTime : estimateReadTime(text.th.content),
+        readTime: estimateReadTime(text.th.content),
         tag,
         image: post?.image ?? '',
       },
@@ -197,22 +217,16 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
             />
           </label>
 
-          {isCustom ? (
-            <p className={styles.notice}>
-              โพสต์นี้ใช้หน้าที่ออกแบบพิเศษ เนื้อหาต้องแก้ในโค้ด ที่นี่แก้ได้เฉพาะหัวข้อ คำอธิบาย รูปปก แท็ก และวันที่
-            </p>
-          ) : (
-            <label className={styles.field}>
-              <span className={styles.label}>เนื้อหา</span>
-              <span className={styles.hint}>เว้นบรรทัดว่างเพื่อขึ้นย่อหน้าใหม่</span>
-              <textarea
-                className={`${styles.input} ${styles.contentArea}`}
-                rows={16}
-                value={text.th.content}
-                onChange={(e) => setField('th', 'content', e.target.value)}
-              />
-            </label>
-          )}
+          <label className={styles.field}>
+            <span className={styles.label}>เนื้อหา</span>
+            <MarkdownHint />
+            <textarea
+              className={`${styles.input} ${styles.contentArea}`}
+              rows={16}
+              value={text.th.content}
+              onChange={(e) => setField('th', 'content', e.target.value)}
+            />
+          </label>
 
           <details className={styles.disclosure}>
             <summary>ภาษาอื่น (ไม่บังคับ)</summary>
@@ -247,17 +261,15 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
                 onChange={(e) => setField(extraLang, 'description', e.target.value)}
               />
             </label>
-            {!isCustom && (
-              <label className={styles.field}>
-                <span className={styles.label}>เนื้อหา</span>
-                <textarea
-                  className={`${styles.input} ${styles.contentArea}`}
-                  rows={10}
-                  value={text[extraLang].content}
-                  onChange={(e) => setField(extraLang, 'content', e.target.value)}
-                />
-              </label>
-            )}
+            <label className={styles.field}>
+              <span className={styles.label}>เนื้อหา</span>
+              <textarea
+                className={`${styles.input} ${styles.contentArea}`}
+                rows={10}
+                value={text[extraLang].content}
+                onChange={(e) => setField(extraLang, 'content', e.target.value)}
+              />
+            </label>
           </details>
         </div>
 

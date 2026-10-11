@@ -63,7 +63,13 @@
     "min_read": "นาทีอ่าน",
     "filter_all": "ทั้งหมด",
     "filter_label": "กรองตามแท็ก",
-    "empty": "ยังไม่มีบทความ"
+    "empty": "ยังไม่มีบทความ",
+    "read_time": "อ่าน {minutes} นาที",
+    "pagination": "เลือกหน้า",
+    "prev_page": "หน้าก่อนหน้า",
+    "next_page": "หน้าถัดไป",
+    "back_to_all": "รวมบทความ",
+    "toc": "สารบัญ"
   },
   "contact": {
     "label": "ติดต่อ",
