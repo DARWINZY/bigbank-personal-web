@@ -69,7 +69,9 @@
     "prev_page": "Previous page",
     "next_page": "Next page",
     "back_to_all": "All posts",
-    "toc": "Contents"
+    "toc": "Contents",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "contact": {
     "label": "Contact",

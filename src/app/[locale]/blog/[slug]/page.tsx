@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import { FiArrowLeft, FiCalendar, FiClock, FiList } from 'react-icons/fi';
 import TableOfContents from '@/components/blog/TableOfContents';
+import CodeBlock from '@/components/blog/CodeBlock';
 import { getToc } from '@/lib/markdown';
 import { routing } from '@/i18n/routing';
 import styles from '@/styles/blog-post.module.css';
@@ -127,7 +128,13 @@ export default async function BlogPostPage({ params }: Props) {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeSlug]}
-              components={markdownComponents}
+              components={{
+                ...markdownComponents,
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                pre: ({ node, ...props }) => (
+                  <CodeBlock {...props} copyLabel={t('copy')} copiedLabel={t('copied')} />
+                ),
+              }}
             >
               {content}
             </ReactMarkdown>
