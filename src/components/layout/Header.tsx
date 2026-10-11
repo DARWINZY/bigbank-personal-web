@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import styles from '@/styles/header.module.css';
@@ -37,36 +38,27 @@ export default function Header() {
     router.push(`/${newLocale}${currentPath || ''}`);
   };
 
-  const scrollToSection = (id: string) => {
-    setIsMobileOpen(false);
-    if (pathname === `/${locale}`) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      router.push(`/${locale}/#${id}`);
-    }
-  };
+  const isActive = (item: string) => pathname.startsWith(`/${locale}/${item}`);
 
   return (
     <>
       <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
         <div className={styles.headerInner}>
-          <a href={`/${locale}`} className={styles.logo} aria-label="Home">
+          <Link href={`/${locale}`} className={styles.logo} aria-label="Home">
             Bigbank
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav}>
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item}
-                className={styles.navLink}
-                onClick={() => scrollToSection(item)}
+                href={`/${locale}/${item}`}
+                className={`${styles.navLink} ${isActive(item) ? styles.navLinkActive : ''}`}
+                aria-current={isActive(item) ? 'page' : undefined}
               >
                 {t(item)}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -142,13 +134,15 @@ export default function Header() {
           ✕
         </button>
         {navItems.map((item) => (
-          <button
+          <Link
             key={item}
-            className={styles.mobileNavLink}
-            onClick={() => scrollToSection(item)}
+            href={`/${locale}/${item}`}
+            className={`${styles.mobileNavLink} ${isActive(item) ? styles.navLinkActive : ''}`}
+            aria-current={isActive(item) ? 'page' : undefined}
+            onClick={() => setIsMobileOpen(false)}
           >
             {t(item)}
-          </button>
+          </Link>
         ))}
       </div>
     </>

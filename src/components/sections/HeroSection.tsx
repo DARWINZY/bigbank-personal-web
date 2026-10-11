@@ -1,6 +1,7 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import FloatingParticles from '@/components/ui/FloatingParticles';
@@ -14,12 +15,7 @@ import profileImg from '@/../public/images/profile.png';
 export default function HeroSection() {
   const t = useTranslations('hero');
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const locale = useLocale();
 
   return (
     <section className={styles.hero} id="hero">
@@ -94,20 +90,20 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.7 }}
           >
             <MagneticButton>
-              <button
+              <Link
+                href={`/${locale}/portfolio`}
                 className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}
-                onClick={() => scrollToSection('portfolio')}
               >
                 {t('cta_primary')}
-              </button>
+              </Link>
             </MagneticButton>
             <MagneticButton>
-              <button
+              <Link
+                href={`/${locale}/contact`}
                 className={`${uiStyles.btn} ${uiStyles.btnSecondary}`}
-                onClick={() => scrollToSection('contact')}
               >
                 {t('cta_secondary')}
-              </button>
+              </Link>
             </MagneticButton>
           </motion.div>
         </div>

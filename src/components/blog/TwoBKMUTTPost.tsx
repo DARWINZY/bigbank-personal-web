@@ -322,7 +322,7 @@ export default function TwoBKMUTTPost() {
 
   return (
     <main className={styles.pageContainer}>
-      <Link href={`/${locale}/#blog`} className={styles.backBtn}>
+      <Link href={`/${locale}/blog`} className={styles.backBtn}>
         <FiArrowLeft size={18} />
         <span>กลับหน้าหลัก</span>
       </Link>

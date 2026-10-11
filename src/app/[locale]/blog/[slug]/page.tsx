@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { blogPosts } from '@/data/blog';
+import { blogPosts, getTag, localize, readableTextColor, CUSTOM_POST_SLUGS } from '@/data/blog';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: Props) {
   if (!post) return { title: 'Post Not Found' };
   
   return {
-    title: `${post.title[locale as keyof typeof post.title]} | Bigbank Blog`,
-    description: post.description[locale as keyof typeof post.description],
+    title: `${localize(post.title, locale)} | Bigbank Blog`,
+    description: localize(post.description, locale),
   };
 }
 
@@ -48,16 +48,17 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
-  if (slug === '2b-kmutt') {
+  if (CUSTOM_POST_SLUGS.includes(slug)) {
     return <TwoBKMUTTPost />;
   }
 
   const t = await getTranslations({ locale, namespace: 'blog' });
+  const tag = getTag(post.tag);
 
   return (
     <div className={styles.postPage}>
       <div className={styles.postContainer}>
-        <Link href={`/${locale}/#blog`} className={styles.backButton}>
+        <Link href={`/${locale}/blog`} className={styles.backButton}>
           <FiArrowLeft size={20} />
           <span>{locale === 'th' ? 'กลับหน้าหลัก' : locale === 'en' ? 'Back' : locale === 'lo' ? 'ກັບຄືນ' : '返回'}</span>
         </Link>
@@ -65,7 +66,7 @@ export default async function BlogPostPage({ params }: Props) {
         <article className={styles.postCard}>
           <Image
             src={post.image}
-            alt={post.title[locale as keyof typeof post.title]}
+            alt={localize(post.title, locale)}
             width={800}
             height={400}
             className={styles.postImage}
@@ -73,15 +74,20 @@ export default async function BlogPostPage({ params }: Props) {
           />
           
           <div className={styles.postMeta}>
-            <span className={styles.postCategory}>{post.category}</span>
+            <span
+              className={styles.postCategory}
+              style={{ background: tag.color, color: readableTextColor(tag.color) }}
+            >
+              {tag.label}
+            </span>
             <span>{post.date}</span>
             <span>{post.readTime} {t('min_read')}</span>
           </div>
           
-          <h1 className={styles.postTitle}>{post.title[locale as keyof typeof post.title]}</h1>
+          <h1 className={styles.postTitle}>{localize(post.title, locale)}</h1>
           
           <div className={styles.postContent}>
-            {post.content[locale as keyof typeof post.content]}
+            {localize(post.content, locale)}
           </div>
         </article>
       </div>

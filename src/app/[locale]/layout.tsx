@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Inter, Noto_Sans_Thai, Noto_Sans_Lao, Playfair_Display } from 'next/font/google';
+import { Inter, Noto_Sans_Thai, Noto_Sans_Lao, Noto_Serif_Lao, Trirong, Playfair_Display } from 'next/font/google';
 import ClickRippleEffect from '@/components/ui/ClickRippleEffect';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import CustomCursor from '@/components/ui/CustomCursor';
@@ -29,6 +29,20 @@ const notoSansLao = Noto_Sans_Lao({
   subsets: ['lao'],
   display: 'swap',
   variable: '--font-noto-lao',
+});
+
+const notoSerifLao = Noto_Serif_Lao({
+  subsets: ['lao'],
+  weight: ['600'],
+  display: 'swap',
+  variable: '--font-noto-serif-lao',
+});
+
+const trirong = Trirong({
+  subsets: ['thai'],
+  weight: ['600'],
+  display: 'swap',
+  variable: '--font-trirong',
 });
 
 const playfair = Playfair_Display({
@@ -101,7 +115,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   return (
-    <html lang={locale} className={`${inter.variable} ${notoSansThai.variable} ${notoSansLao.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${notoSansThai.variable} ${notoSansLao.variable} ${notoSerifLao.variable} ${trirong.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         <meta
           httpEquiv="Content-Security-Policy"

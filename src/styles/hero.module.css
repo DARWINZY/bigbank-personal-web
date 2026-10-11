@@ -113,28 +113,37 @@
 .heroNameAccent {
   background: linear-gradient(
     to right,
-    #ff0000,
-    #ff7f00,
-    #ffff00,
-    #00ff00,
-    #00ffff,
-    #0000ff,
-    #8b00ff,
-    #ff0000
+    var(--color-accent-hover),
+    var(--color-accent)
   );
-  background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: rgbFlow 3s linear infinite;
   display: inline-block;
   padding-bottom: 0.1em;
   padding-top: 0.1em;
 }
 
-@keyframes rgbFlow {
-  0% { background-position: 0% center; }
-  100% { background-position: -200% center; }
+/* Thai name uses a display serif that pairs with Playfair */
+html[lang="th"] .heroName {
+  font-family: var(--font-trirong), var(--font-thai);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Room for stacked Thai/Lao marks (e.g. ๊ over ิ) so background-clip doesn't cut them */
+html[lang="th"] .heroNameAccent,
+html[lang="lo"] .heroNameAccent {
+  padding-top: 0.35em;
+  margin-top: -0.25em;
+  padding-bottom: 0.15em;
+}
+
+/* Lao name uses a display serif that pairs with Playfair */
+html[lang="lo"] .heroName {
+  font-family: var(--font-noto-serif-lao), var(--font-lao);
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .heroFullName {

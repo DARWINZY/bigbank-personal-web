@@ -60,7 +60,10 @@
     "description": "Articles about web development, tips, tricks, and experiences.",
     "read_more": "Read More",
     "view_all": "View All Posts",
-    "min_read": "min read"
+    "min_read": "min read",
+    "filter_all": "All",
+    "filter_label": "Filter by tag",
+    "empty": "No posts yet"
   },
   "contact": {
     "label": "Contact",

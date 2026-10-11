@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://bigbank.nightbears.co';
 
   // We can add more routes here as the site grows
-  const routes = [''];
+  const routes = ['', '/about', '/portfolio', '/blog', '/contact'];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 

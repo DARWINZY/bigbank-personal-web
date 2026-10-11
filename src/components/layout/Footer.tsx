@@ -1,6 +1,7 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 import { socialLinks } from '@/data/social';
 import styles from '@/styles/footer.module.css';
 
@@ -9,12 +10,7 @@ const navItems = ['about', 'portfolio', 'blog', 'contact'] as const;
 export default function Footer() {
   const t = useTranslations();
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const locale = useLocale();
 
   return (
     <footer className={styles.footer}>
@@ -23,13 +19,13 @@ export default function Footer() {
 
         <nav className={styles.footerLinks}>
           {navItems.map((item) => (
-            <button
+            <Link
               key={item}
+              href={`/${locale}/${item}`}
               className={styles.footerLink}
-              onClick={() => scrollToSection(item)}
             >
               {t(`nav.${item}`)}
-            </button>
+            </Link>
           ))}
         </nav>
 

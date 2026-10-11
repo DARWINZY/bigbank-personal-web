@@ -321,3 +321,12 @@
     padding: 80px 24px 32px;
   }
 }
+
+/* Active page */
+.navLinkActive {
+  color: var(--color-accent);
+}
+
+.navLink.navLinkActive::after {
+  transform: translateX(-50%) scaleX(1);
+}

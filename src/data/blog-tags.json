@@ -1,0 +1,6 @@
+[
+  { "id": "experience", "label": "Experience", "color": "#0EA5E9" },
+  { "id": "knowledge", "label": "Knowledge", "color": "#10B981" },
+  { "id": "project", "label": "Project", "color": "#F59E0B" },
+  { "id": "life", "label": "Life", "color": "#EC4899" }
+]

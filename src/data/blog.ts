@@ -1,55 +1,58 @@
+import postsData from './blog-posts.json';
+import tagsData from './blog-tags.json';
+
+// Posts and tags live in JSON so the studio dashboard can edit them through the GitHub API.
+
+export type Locale = 'th' | 'en' | 'lo' | 'zh';
+
+/** Thai is required; other languages fall back to Thai when empty. */
+export type LocalizedText = { th: string } & Partial<Record<Exclude<Locale, 'th'>, string>>;
+
+export interface BlogTag {
+  id: string;
+  label: string;
+  color: string;
+}
+
 export interface BlogPost {
   id: string;
   slug: string;
-  title: {
-    th: string;
-    en: string;
-    lo: string;
-    zh: string;
-  };
-  description: {
-    th: string;
-    en: string;
-    lo: string;
-    zh: string;
-  };
-  content: {
-    th: string;
-    en: string;
-    lo: string;
-    zh: string;
-  };
+  title: LocalizedText;
+  description: LocalizedText;
+  content: LocalizedText;
   date: string;
   readTime: number;
-  category: string;
+  tag: string;
   image: string;
 }
 
-export const blogPosts: BlogPost[] = [
-  {
-    id: '2b-kmutt-camp',
-    slug: '2b-kmutt',
-    title: {
-      th: '2B-KMUTT Future Leader Camp 🌟',
-      en: '2B-KMUTT Future Leader Camp 🌟',
-      lo: '2B-KMUTT Future Leader Camp 🌟',
-      zh: '2B-KMUTT Future Leader Camp 🌟',
-    },
-    description: {
-      th: 'ประสบการณ์ 20 วัน ที่เปลี่ยนคุณจากนักเรียน สู่ นักวิจัย กับค่ายสุดเข้มข้นที่มจธ.',
-      en: '20 days of transformation from a student to a researcher at KMUTT.',
-      lo: 'ປະສົບການ 20 ວັນ ທີ່ປ່ຽນຄຸນຈາກນັກຮຽນ ສູ່ ນັກວິໄຈ ກັບຄ່າຍສຸດເຂັ້ມຂົ້ນທີ່ ມຈທ.',
-      zh: '在国王科技大学，用20天时间从学生转变为研究人员。',
-    },
-    content: {
-      th: '', // We will use custom component instead
-      en: '',
-      lo: '',
-      zh: '',
-    },
-    date: '2026-06-15',
-    readTime: 10,
-    category: 'Experience',
-    image: '/images/blog/2bkmutt-hover.png',
-  }
-];
+/** Posts whose page is a hand-built component instead of `content`. */
+export const CUSTOM_POST_SLUGS = ['2b-kmutt'];
+
+export const blogPosts: BlogPost[] = [...(postsData as BlogPost[])].sort((a, b) =>
+  b.date.localeCompare(a.date)
+);
+
+export const blogTags: BlogTag[] = tagsData as BlogTag[];
+
+const FALLBACK_TAG_COLOR = '#64748B';
+
+export function getTag(id: string, tags: BlogTag[] = blogTags): BlogTag {
+  return tags.find((t) => t.id === id) ?? { id, label: id, color: FALLBACK_TAG_COLOR };
+}
+
+export function localize(text: LocalizedText, locale: string): string {
+  return text[locale as Locale] || text.th;
+}
+
+/** Black or white, whichever reads better on the given hex background. */
+export function readableTextColor(hex: string): string {
+  const m = hex.replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+  if (!m) return '#FFFFFF';
+  const [r, g, b] = m.slice(1).map((v) => {
+    const c = parseInt(v, 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luminance > 0.4 ? '#0F172A' : '#FFFFFF';
+}

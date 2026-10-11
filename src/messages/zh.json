@@ -49,7 +49,10 @@
     "description": "关于网页开发、技术和经验的分享文章。",
     "read_more": "阅读更多",
     "view_all": "查看所有文章",
-    "min_read": "分钟阅读"
+    "min_read": "分钟阅读",
+    "filter_all": "全部",
+    "filter_label": "按标签筛选",
+    "empty": "暂无文章"
   },
   "contact": {
     "label": "联系",
