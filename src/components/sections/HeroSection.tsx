@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import FloatingParticles from '@/components/ui/FloatingParticles';
 import RotatingText from '@/components/ui/RotatingText';
 import TextReveal from '@/components/ui/TextReveal';
-import MagneticButton from '@/components/ui/MagneticButton';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
 
@@ -88,22 +87,18 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <MagneticButton>
-              <Link
-                href={`/${locale}/portfolio`}
-                className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}
-              >
-                {t('cta_primary')}
-              </Link>
-            </MagneticButton>
-            <MagneticButton>
-              <Link
-                href={`/${locale}/contact`}
-                className={`${uiStyles.btn} ${uiStyles.btnSecondary}`}
-              >
-                {t('cta_secondary')}
-              </Link>
-            </MagneticButton>
+            <Link
+              href={`/${locale}/portfolio`}
+              className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}
+            >
+              {t('cta_primary')}
+            </Link>
+            <Link
+              href={`/${locale}/contact`}
+              className={`${uiStyles.btn} ${uiStyles.btnSecondary}`}
+            >
+              {t('cta_secondary')}
+            </Link>
           </motion.div>
         </div>
 

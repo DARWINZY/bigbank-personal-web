@@ -6,7 +6,6 @@ import { FiExternalLink, FiGithub, FiAward, FiCalendar } from 'react-icons/fi';
 import type { Project } from '@/data/projects';
 import { awardLabel as getAwardLabel, type Award } from '@/data/awards';
 import { displayYear } from '@/lib/format';
-import { useTiltEffect } from '@/hooks/useTiltEffect';
 import uiStyles from '@/styles/ui.module.css';
 
 type Locale = 'th' | 'en' | 'lo' | 'zh';
@@ -23,16 +22,6 @@ const awardCardClass: Record<Award, string> = {
   bronze: uiStyles.projectCardBronze,
 };
 
-function TiltCard({ children, className }: { children: React.ReactNode, className?: string }) {
-  const tiltRef = useTiltEffect();
-  return (
-    <div ref={tiltRef} className={`${className} ${uiStyles.tiltCard}`}>
-      {children}
-      <div className={`tilt-shine ${uiStyles.tiltShine}`}></div>
-    </div>
-  );
-}
-
 interface Props {
   project: Project;
   /** Image `sizes`; the default fits the two-column portfolio grid. */
@@ -45,7 +34,7 @@ export default function ProjectCard({ project, sizes = '(max-width: 480px) 96px,
   const awardLabel = getAwardLabel(project, locale);
 
   return (
-    <TiltCard className={`${uiStyles.projectCard} ${project.award ? awardCardClass[project.award] : ''}`}>
+    <div className={`${uiStyles.projectCard} ${project.award ? awardCardClass[project.award] : ''}`}>
       <div className={uiStyles.projectCardImage}>
         {project.award && (
           <div className={`${uiStyles.awardBadge} ${awardBadgeClass[project.award]}`}>
@@ -130,6 +119,6 @@ export default function ProjectCard({ project, sizes = '(max-width: 480px) 96px,
           )}
         </div>
       </div>
-    </TiltCard>
+    </div>
   );
 }

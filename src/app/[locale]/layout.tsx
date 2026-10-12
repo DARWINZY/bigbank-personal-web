@@ -5,9 +5,7 @@ import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Inter, Noto_Sans_Thai, Noto_Sans_Lao, Noto_Serif_Lao, Trirong, Playfair_Display } from 'next/font/google';
-import ClickRippleEffect from '@/components/ui/ClickRippleEffect';
 import ScrollProgress from '@/components/ui/ScrollProgress';
-import CustomCursor from '@/components/ui/CustomCursor';
 import BackToTop from '@/components/ui/BackToTop';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { LenisProvider } from '@/components/providers/LenisProvider';
@@ -158,9 +156,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <LenisProvider>
             <MotionProvider>
             <NextIntlClientProvider locale={locale} messages={messages}>
-              <CustomCursor />
               <ScrollProgress />
-              <ClickRippleEffect />
               <Header />
               <main id="main" tabIndex={-1}>{children}</main>
               <Footer />

@@ -4,7 +4,6 @@ import { useRef, useState, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
-import MagneticButton from '@/components/ui/MagneticButton';
 import { socialLinks } from '@/data/social';
 import styles from '@/styles/contact.module.css';
 import uiStyles from '@/styles/ui.module.css';
@@ -144,16 +143,13 @@ export default function ContactSection() {
                   required
                 />
               </div>
-              <MagneticButton className={styles.formSubmit}>
-                <button
-                  type="submit"
-                  className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}
-                  style={{ width: '100%' }}
-                  disabled={status === 'sending'}
-                >
-                  {status === 'sending' ? t('form.sending') : t('form.send')}
-                </button>
-              </MagneticButton>
+              <button
+                type="submit"
+                className={`${uiStyles.btn} ${uiStyles.btnPrimary} ${styles.formSubmit}`}
+                disabled={status === 'sending'}
+              >
+                {status === 'sending' ? t('form.sending') : t('form.send')}
+              </button>
               {status === 'success' && (
                 <p className={`${styles.formMessage} ${styles.formSuccess}`}>
                   {t('form.success')}
