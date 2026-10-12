@@ -32,12 +32,23 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (isMobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
+    if (!isMobileOpen) return;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileOpen(false);
+    };
+    // The menu only exists below the desktop breakpoint; close it if the screen grows past it
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const onBreakpoint = () => {
+      if (desktop.matches) setIsMobileOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    desktop.addEventListener('change', onBreakpoint);
+    return () => {
       document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
+      window.removeEventListener('keydown', onKey);
+      desktop.removeEventListener('change', onBreakpoint);
+    };
   }, [isMobileOpen]);
 
   const switchLocale = (newLocale: string) => {
@@ -95,12 +106,41 @@ export default function Header() {
               className={`${styles.hamburger} ${isMobileOpen ? styles.hamburgerOpen : ''}`}
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label="Toggle menu"
+              aria-expanded={isMobileOpen}
+              aria-controls="mobile-menu"
             >
               <span className={styles.hamburgerLine} />
               <span className={styles.hamburgerLine} />
               <span className={styles.hamburgerLine} />
             </button>
           </div>
+
+          {/* Mobile Menu: a small card under the hamburger, which turns into its close button */}
+          <AnimatePresence>
+            {isMobileOpen && (
+              <motion.div
+                id="mobile-menu"
+                className={styles.mobileMenu}
+                initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                transition={{ duration: 0.18, ease: 'easeOut' }}
+              >
+                {navItems.map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${locale}/${item}`}
+                    className={`${styles.mobileNavLink} ${isActive(item) ? styles.navLinkActive : ''}`}
+                    aria-current={isActive(item) ? 'page' : undefined}
+                    onClick={() => setIsMobileOpen(false)}
+                  >
+                    {t(item)}
+                  </Link>
+                ))}
+                {renderLanguages(styles.mobileLang)}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </header>
 
@@ -108,7 +148,7 @@ export default function Header() {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            className={`${styles.mobileOverlay} ${styles.mobileOverlayOpen}`}
+            className={styles.mobileOverlay}
             onClick={() => setIsMobileOpen(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -116,29 +156,6 @@ export default function Header() {
           />
         )}
       </AnimatePresence>
-
-      {/* Mobile Menu */}
-      <div className={`${styles.mobileMenu} ${isMobileOpen ? styles.mobileMenuOpen : ''}`}>
-        <button
-          className={styles.mobileCloseBtn}
-          onClick={() => setIsMobileOpen(false)}
-          aria-label="Close menu"
-        >
-          ✕
-        </button>
-        {navItems.map((item) => (
-          <Link
-            key={item}
-            href={`/${locale}/${item}`}
-            className={`${styles.mobileNavLink} ${isActive(item) ? styles.navLinkActive : ''}`}
-            aria-current={isActive(item) ? 'page' : undefined}
-            onClick={() => setIsMobileOpen(false)}
-          >
-            {t(item)}
-          </Link>
-        ))}
-        {renderLanguages(styles.mobileLang)}
-      </div>
     </>
   );
 }

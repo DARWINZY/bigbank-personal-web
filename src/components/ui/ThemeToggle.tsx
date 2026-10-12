@@ -21,9 +21,11 @@ export default function ThemeToggle() {
       className={styles.themeToggle}
       onClick={toggleTheme}
       aria-label="Toggle Dark Mode"
+      aria-pressed={theme === 'dark'}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
-      {theme === 'dark' ? <BsSun size={18} /> : <BsMoon size={18} />}
+      {/* The icon shows the current theme */}
+      {theme === 'dark' ? <BsMoon size={18} /> : <BsSun size={18} />}
     </button>
   );
 }

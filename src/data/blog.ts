@@ -41,8 +41,16 @@ export function getTag(id: string, tags: BlogTag[] = blogTags): BlogTag {
 const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-LA', zh: 'zh-CN' };
 
 /** e.g. "11 ตุลาคม 2569" in Thai, "11 October 2026" in English. */
+// Chrome ships without Lao date names and would format "lo" dates in English, which no longer
+// matches the HTML Node built, so the page fails to hydrate. Spell Lao dates out instead.
+const LAO_MONTHS = ['ມັງກອນ', 'ກຸມພາ', 'ມີນາ', 'ເມສາ', 'ພຶດສະພາ', 'ມິຖຸນາ', 'ກໍລະກົດ', 'ສິງຫາ', 'ກັນຍາ', 'ຕຸລາ', 'ພະຈິກ', 'ທັນວາ'];
+
 export function formatPostDate(date: string, locale: string): string {
   // "2026-10-11" parses as UTC midnight; formatting in UTC keeps the same day everywhere
+  if (locale === 'lo') {
+    const d = new Date(date);
+    return `${d.getUTCDate()} ${LAO_MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+  }
   return new Intl.DateTimeFormat(dateLocales[locale] ?? locale, {
     day: 'numeric',
     month: 'long',
