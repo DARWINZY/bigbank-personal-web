@@ -91,7 +91,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-accent-hover);
+  color: var(--color-accent-text);
 }
 
 .heroGreeting {
@@ -315,24 +315,30 @@ html[lang="lo"] .heroName {
 
 @media (max-width: 480px) {
   .hero {
-    padding-top: 100px;
-    padding-bottom: 60px;
+    padding-top: 84px;
+    padding-bottom: 40px;
   }
 
   .heroContent {
-    gap: 32px;
+    gap: 24px;
+  }
+
+  .heroText {
+    gap: 12px;
   }
 
   .heroImageContainer {
-    max-width: 220px;
+    max-width: 168px;
+    border-radius: var(--radius-lg);
   }
 
   .heroName {
-    font-size: var(--text-3xl);
+    font-size: var(--text-4xl);
   }
 
   .heroFullName {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
+    margin-top: 0;
   }
 
   .heroTagline {
@@ -340,16 +346,16 @@ html[lang="lo"] .heroName {
   }
 
   .heroGreeting {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
   }
 
   .heroDesc {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     line-height: 1.7;
   }
 
   .heroBadge {
-    padding: 6px 14px;
+    padding: 5px 12px;
   }
 
   .heroBadgeText {
@@ -357,22 +363,24 @@ html[lang="lo"] .heroName {
   }
 
   .heroButtons {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 4px;
   }
 
   .heroImageDecor {
-    width: 60px;
-    height: 60px;
-    top: -12px;
-    right: -12px;
+    width: 44px;
+    height: 44px;
+    top: -10px;
+    right: -10px;
+    border-width: 2px;
+    border-radius: var(--radius-md);
   }
 
   .heroImageDecor2 {
-    width: 50px;
-    height: 50px;
-    bottom: -10px;
-    left: -10px;
+    width: 36px;
+    height: 36px;
+    bottom: -8px;
+    left: -8px;
+    border-radius: var(--radius-sm);
   }
 }

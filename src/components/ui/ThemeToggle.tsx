@@ -1,20 +1,15 @@
 'use client';
 
 import { useTheme } from '@/components/providers/ThemeProvider';
-import { useEffect, useState } from 'react';
 import { BsSun, BsMoon } from 'react-icons/bs';
 import styles from '@/styles/header.module.css';
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <div className={styles.themeToggle} style={{ width: 36, height: 36 }} />;
+  // Theme is only known in the browser; keep the space so the header doesn't shift
+  if (theme === undefined) {
+    return <div className={styles.themeToggle} aria-hidden="true" />;
   }
 
   const toggleTheme = () => {

@@ -11,7 +11,10 @@ import CustomCursor from '@/components/ui/CustomCursor';
 import BackToTop from '@/components/ui/BackToTop';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { LenisProvider } from '@/components/providers/LenisProvider';
+import { MotionProvider } from '@/components/providers/MotionProvider';
 import type { Metadata } from 'next';
+import { buildMetadata, SITE_URL } from '@/lib/seo';
+import { CLOUDFLARE_ANALYTICS_TOKEN } from '@/lib/analytics';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -61,33 +64,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' });
 
   return {
-    title: t('title'),
-    description: t('description'),
+    metadataBase: new URL(SITE_URL),
+    ...buildMetadata({ locale, title: t('title'), description: t('description') }),
     keywords: ['Bigbank', 'Nattapong Pongnukrohsiri', 'Software Engineer', 'Portfolio', 'Nightbears Technology', 'Web Developer', 'React', 'Next.js', 'รับทำเว็บไซต์', 'รับเขียนโปรแกรม', 'ณัฐพงษ์ พงษ์นุเคราะห์ศิริ', 'บิ๊กแบงค์'],
-    authors: [{ name: 'Nattapong Pongnukrohsiri', url: 'https://bigbank.nightbears.co' }],
+    authors: [{ name: 'Nattapong Pongnukrohsiri', url: SITE_URL }],
     creator: 'Nattapong Pongnukrohsiri',
-    alternates: {
-      canonical: `https://bigbank.nightbears.co/${locale}`,
-      languages: {
-        th: 'https://bigbank.nightbears.co/th',
-        en: 'https://bigbank.nightbears.co/en',
-        lo: 'https://bigbank.nightbears.co/lo',
-        zh: 'https://bigbank.nightbears.co/zh',
-      },
-    },
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      url: `https://bigbank.nightbears.co/${locale}`,
-      siteName: 'Bigbank Portfolio',
-      locale: locale === 'th' ? 'th_TH' : locale === 'en' ? 'en_US' : locale === 'lo' ? 'lo_LA' : 'zh_CN',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-    },
     robots: {
       index: true,
       follow: true,
@@ -107,6 +88,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
 
+  const common = await getTranslations({ locale, namespace: 'common' });
+
   let messages;
   try {
     messages = (await import(`@/messages/${locale}.json`)).default;
@@ -119,9 +102,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <head>
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co;"
+          content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://cloudflareinsights.com;"
         />
-        <link rel="icon" href="/icon.png" type="image/png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -171,17 +153,30 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body>
+        <a href="#main" className="skip-link">{common('skip_to_content')}</a>
         <ThemeProvider>
           <LenisProvider>
+            <MotionProvider>
             <NextIntlClientProvider locale={locale} messages={messages}>
               <CustomCursor />
               <ScrollProgress />
               <ClickRippleEffect />
               <Header />
-              <main>{children}</main>
+              <main id="main" tabIndex={-1}>{children}</main>
               <Footer />
               <BackToTop />
+              {CLOUDFLARE_ANALYTICS_TOKEN && (
+                // Cloudflare's snippet as is. next/script would add a non-CORS preload that a
+                // module script can't reuse, so the beacon downloaded twice.
+                <script
+                  type="module"
+                  defer
+                  src="https://static.cloudflareinsights.com/beacon.min.js"
+                  data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN })}
+                />
+              )}
             </NextIntlClientProvider>
+            </MotionProvider>
           </LenisProvider>
         </ThemeProvider>
       </body>

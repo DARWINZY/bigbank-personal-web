@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   type BlogPost,
   type BlogTag,
@@ -10,9 +10,13 @@ import {
 } from '@/data/blog';
 import { compressImage } from '@/lib/github-cms';
 import { previewUrl } from './preview';
+import ContentEditor from './ContentEditor';
 import styles from '@/styles/studio.module.css';
 
 export type PostDraft = BlogPost;
+
+/** An image added to the content, uploaded together with the post. */
+export type StagedImage = { path: string; blob: Blob; url: string };
 
 type Fields = { title: string; description: string; content: string };
 type FieldKey = keyof Fields;
@@ -25,7 +29,11 @@ const EXTRA_LANGS: { id: Exclude<Locale, 'th'>; label: string }[] = [
 
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
-const today = () => new Date().toISOString().slice(0, 10);
+// Local calendar date (toISOString would give yesterday before 7am in Thailand)
+const today = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
 
 function slugify(text: string): string {
   return text
@@ -81,7 +89,7 @@ interface Props {
   tags: BlogTag[];
   takenSlugs: string[];
   busy: boolean;
-  onSave: (draft: PostDraft, cover: Blob | null) => void;
+  onSave: (draft: PostDraft, cover: Blob | null, images: StagedImage[]) => void;
   onBack: () => void;
 }
 
@@ -104,6 +112,7 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
   const [extraLang, setExtraLang] = useState<Exclude<Locale, 'th'>>('en');
   const [errors, setErrors] = useState<string[]>([]);
   const [dirty, setDirty] = useState(false);
+  const [staged, setStaged] = useState<StagedImage[]>([]);
 
   // New posts get a slug from the English title, or the date when there isn't one
   const autoSlug = useMemo(
@@ -122,6 +131,32 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
   useEffect(() => () => {
     if (coverUrl) URL.revokeObjectURL(coverUrl);
   }, [coverUrl]);
+
+  // Free the preview blob URLs when the editor closes
+  const stagedRef = useRef(staged);
+  useEffect(() => {
+    stagedRef.current = staged;
+  }, [staged]);
+  useEffect(() => () => stagedRef.current.forEach((img) => URL.revokeObjectURL(img.url)), []);
+
+  /** Compress an image for the content; it's uploaded with the post when saved. */
+  const stageImage = async (file: File): Promise<string | null> => {
+    if (!file.type.startsWith('image/')) return null;
+    try {
+      const blob = await compressImage(file);
+      // The slug field may be mid-edit; only a valid slug goes into a file name
+      const prefix = SLUG_RE.test(finalSlug) ? finalSlug : 'post';
+      const path = `/images/blog/${prefix}-${Date.now()}-${staged.length + 1}.jpg`;
+      setStaged((prev) => [...prev, { path, blob, url: URL.createObjectURL(blob) }]);
+      setDirty(true);
+      return path;
+    } catch {
+      setErrors(['อ่านไฟล์รูปนี้ไม่ได้ ลองใช้ไฟล์ JPG หรือ PNG']);
+      return null;
+    }
+  };
+
+  const resolveImage = (src: string) => staged.find((img) => img.path === src)?.url ?? previewUrl(src);
 
   const setField = (lang: Locale, key: FieldKey, value: string) => {
     setDirty(true);
@@ -164,6 +199,10 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
       return out;
     };
 
+    // Only upload images that are still in the text
+    const allContent = (Object.keys(text) as Locale[]).map((l) => text[l].content).join(' ');
+    const used = staged.filter((img) => allContent.includes(img.path));
+
     setDirty(false);
     onSave(
       {
@@ -177,7 +216,8 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
         tag,
         image: post?.image ?? '',
       },
-      cover
+      cover,
+      used
     );
   };
 
@@ -217,16 +257,16 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
             />
           </label>
 
-          <label className={styles.field}>
+          <div className={styles.field}>
             <span className={styles.label}>เนื้อหา</span>
             <MarkdownHint />
-            <textarea
-              className={`${styles.input} ${styles.contentArea}`}
-              rows={16}
+            <ContentEditor
               value={text.th.content}
-              onChange={(e) => setField('th', 'content', e.target.value)}
+              onChange={(v) => setField('th', 'content', v)}
+              onPickImage={stageImage}
+              resolveImage={resolveImage}
             />
-          </label>
+          </div>
 
           <details className={styles.disclosure}>
             <summary>ภาษาอื่น (ไม่บังคับ)</summary>
@@ -261,15 +301,17 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
                 onChange={(e) => setField(extraLang, 'description', e.target.value)}
               />
             </label>
-            <label className={styles.field}>
+            <div className={styles.field}>
               <span className={styles.label}>เนื้อหา</span>
-              <textarea
-                className={`${styles.input} ${styles.contentArea}`}
-                rows={10}
+              <ContentEditor
+                key={extraLang}
                 value={text[extraLang].content}
-                onChange={(e) => setField(extraLang, 'content', e.target.value)}
+                onChange={(v) => setField(extraLang, 'content', v)}
+                rows={10}
+                onPickImage={stageImage}
+                resolveImage={resolveImage}
               />
-            </label>
+            </div>
           </details>
         </div>
 

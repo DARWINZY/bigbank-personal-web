@@ -8,7 +8,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import styles from '@/styles/header.module.css';
 
-const navItems = ['about', 'portfolio', 'blog', 'contact'] as const;
+const navItems = ['about', 'portfolio', 'resume', 'blog', 'contact'] as const;
+
+const languages = [
+  { code: 'th', label: 'ไทย', name: 'Thai' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'lo', label: 'ລາວ', name: 'Lao' },
+  { code: 'zh', label: '中文', name: 'Chinese' },
+] as const;
 
 export default function Header() {
   const t = useTranslations('nav');
@@ -40,11 +47,27 @@ export default function Header() {
 
   const isActive = (item: string) => pathname.startsWith(`/${locale}/${item}`);
 
+  const renderLanguages = (className: string) => (
+    <div className={className}>
+      {languages.map((lang) => (
+        <button
+          key={lang.code}
+          className={`${styles.langBtn} ${locale === lang.code ? styles.langBtnActive : ''}`}
+          onClick={() => switchLocale(lang.code)}
+          aria-label={`Switch to ${lang.name}`}
+          aria-pressed={locale === lang.code}
+        >
+          {lang.label}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <>
       <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
         <div className={styles.headerInner}>
-          <Link href={`/${locale}`} className={styles.logo} aria-label="Home">
+          <Link href={`/${locale}`} className={styles.logo}>
             Bigbank
           </Link>
 
@@ -65,37 +88,7 @@ export default function Header() {
           {/* Right Controls */}
           <div className={styles.headerRight}>
             <ThemeToggle />
-            {/* Language Switcher */}
-            <div className={styles.langSwitcher}>
-              <button
-                className={`${styles.langBtn} ${locale === 'th' ? styles.langBtnActive : ''}`}
-                onClick={() => switchLocale('th')}
-                aria-label="Switch to Thai"
-              >
-                ไทย
-              </button>
-              <button
-                className={`${styles.langBtn} ${locale === 'en' ? styles.langBtnActive : ''}`}
-                onClick={() => switchLocale('en')}
-                aria-label="Switch to English"
-              >
-                EN
-              </button>
-              <button
-                className={`${styles.langBtn} ${locale === 'lo' ? styles.langBtnActive : ''}`}
-                onClick={() => switchLocale('lo')}
-                aria-label="Switch to Lao"
-              >
-                ລາວ
-              </button>
-              <button
-                className={`${styles.langBtn} ${locale === 'zh' ? styles.langBtnActive : ''}`}
-                onClick={() => switchLocale('zh')}
-                aria-label="Switch to Chinese"
-              >
-                中文
-              </button>
-            </div>
+            {renderLanguages(styles.langSwitcher)}
 
             {/* Hamburger */}
             <button
@@ -144,6 +137,7 @@ export default function Header() {
             {t(item)}
           </Link>
         ))}
+        {renderLanguages(styles.mobileLang)}
       </div>
     </>
   );

@@ -11,7 +11,7 @@
   left: 0;
   top: 0;
   white-space: nowrap;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 @media (max-width: 900px) {

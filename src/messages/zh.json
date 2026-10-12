@@ -1,10 +1,12 @@
 {
   "metadata": {
     "title": "纳塔蓬·蓬努克罗西里 (Bigbank) - 软件工程师",
-    "description": "纳塔蓬·蓬努克罗西里 (Nattapong Pongnukrohsiri / Bigbank) 的个人作品集。Nightbears Technology 的高中生软件工程师，专注于开发现代化网站与应用。"
+    "description": "纳塔蓬·蓬努克罗西里 (Nattapong Pongnukrohsiri / Bigbank) 的个人作品集。Nightbears Technology 的高中生软件工程师，专注于开发现代化网站与应用。",
+    "about_description": "认识 Bigbank（纳塔蓬·蓬努克罗西里）：一名 Sci-Math-Eng 方向的高中生，小学五年级开始写代码，对计算机工程、人工智能和机器人感兴趣。",
+    "portfolio_description": "Bigbank 的奖项、项目与营队经历，从编程竞赛到与 KMUTT FIBO 合作的 AI 项目。",
+    "resume_description": "Bigbank 的简历：奖项、比赛、营队、项目和技能，可下载为 PDF。"
   },
   "nav": {
-    "home": "首页",
     "about": "关于",
     "portfolio": "作品",
     "blog": "博客",
@@ -18,7 +20,7 @@
     "fullName": "纳塔蓬·蓬努克罗西里",
     "tagline1": "High School",
     "tagline2": "Software Engineer",
-    "description": "一名热爱编程的高中生，同时也是 Nightbears Technology 的软件工程师。尽管我年纪不大，但我已经准备好迎接企业级项目的挑战，将您的想法转化为功能强大的应用程序和网站。",
+    "description": "一名 Sci-Math-Eng 方向的高中生，小学五年级开始写代码。我喜欢先了解使用者的问题，再设计合适的系统，目前与 Nightbears Technology 团队一起开发网站和软件。",
     "cta_primary": "我们的作品",
     "cta_secondary": "项目咨询",
     "scroll_hint": "向下滚动查看更多"
@@ -29,27 +31,25 @@
     "description1": "我是 Nattapong Pongnukrohsiri (Bigbank)，一名来自 Nightbears Technology 的高中生软件工程师。出于对编程的极度热爱，我不断提升自己，直到获得在真正的软件公司工作的机会，为客户提供顶级的解决方案。",
     "description2": "年龄绝不是创新的障碍！从网站开发 (Next.js, React) 到移动应用程序 (Flutter)，我与 Nightbears 的专家团队随时准备为您提供从头到尾的项目支持。",
     "stats": {
-      "projects": "个项目",
-      "experience": "年经验",
-      "clients": "个客户",
-      "satisfaction": "满意度"
+      "projects": "项目与活动",
+      "awards": "竞赛奖项",
+      "coding": "开始写代码",
+      "coding_value": "五年级",
+      "competing": "首次参赛",
+      "competing_value": "初一"
     }
   },
   "portfolio": {
     "label": "作品",
     "title": "引以为傲的项目",
-    "description": "为客户设计和开发的网站作品案例。",
+    "description": "我参与过的项目、获得的奖项和参加过的营队。",
     "view_live": "访问网站",
-    "view_code": "查看源码",
-    "view_all": "查看全部"
+    "view_code": "查看源码"
   },
   "blog": {
     "label": "博客",
     "title": "知识分享",
     "description": "关于网页开发、技术和经验的分享文章。",
-    "read_more": "阅读更多",
-    "view_all": "查看所有文章",
-    "min_read": "分钟阅读",
     "filter_all": "全部",
     "filter_label": "按标签筛选",
     "empty": "暂无文章",
@@ -60,7 +60,15 @@
     "back_to_all": "全部文章",
     "toc": "目录",
     "copy": "复制",
-    "copied": "已复制"
+    "copied": "已复制",
+    "share": "分享这篇文章",
+    "copy_link": "复制链接",
+    "link_copied": "链接已复制",
+    "share_more": "更多",
+    "prev_post": "上一篇",
+    "next_post": "下一篇",
+    "related": "相关文章",
+    "copy_failed": "复制失败"
   },
   "contact": {
     "label": "联系",
@@ -86,6 +94,102 @@
     "built_with": "使用 Next.js 构建"
   },
   "common": {
-    "language": "ZH"
+    "skip_to_content": "跳到主要内容"
+  },
+  "home": {
+    "featured": {
+      "title": "精选作品",
+      "view_all": "查看全部作品"
+    },
+    "project": {
+      "label": "最新项目",
+      "title": "先筛后修",
+      "summary": "一个帮摄影师先剔除模糊和闭眼照片的 AI，让他们把时间留给修图。",
+      "context": "一次拍摄可产出约 1,000–3,000 张照片",
+      "before_label": "全部手动筛选",
+      "before_value": "8–24 小时",
+      "after_label": "目标：AI 初筛",
+      "after_value": "15–30 分钟",
+      "steps": [
+        {
+          "title": "归类同一场景",
+          "text": "为每张照片生成 pHash，差异小于 10 位即视为同一场景。"
+        },
+        {
+          "title": "检测人脸",
+          "text": "InsightFace 检测人脸并对齐 106 个面部关键点。"
+        },
+        {
+          "title": "检查眼睛与清晰度",
+          "text": "EAR 低于 0.20 视为闭眼，并参考人脸检测分数判断清晰度。"
+        },
+        {
+          "title": "保住关键照片",
+          "text": "如果某个场景没有所有人都睁眼的照片，只剔除超过一半人闭眼的照片。"
+        },
+        {
+          "title": "分类到文件夹",
+          "text": "分为 Keep、Blur_photo 和 Blink_photo，交给摄影师复查。"
+        }
+      ],
+      "credit": "与 KMUTT FIBO 合作，于 2B-KMUTT 第 20 期营队完成",
+      "link": "阅读 2B-KMUTT 营队文章"
+    },
+    "latest": {
+      "title": "最新文章",
+      "view_all": "查看全部文章"
+    },
+    "cta": {
+      "title": "有项目想聊聊吗？",
+      "text": "网站、软件，或者想一起做项目，都欢迎联系我。",
+      "button": "联系我"
+    }
+  },
+  "resume": {
+    "download": "下载 PDF",
+    "role": "高二学生，Sci-Math-Eng 方向",
+    "summary": "对计算机工程、人工智能、机器人以及能解决实际问题的软件感兴趣。小学五年级开始写代码，初一第一次参加比赛。我喜欢先了解使用者的问题，再设计合适的解决方案。编程之外，我也是一名摄影师，会做平面设计和视频。",
+    "sections": {
+      "awards": "奖项",
+      "competitions": "比赛",
+      "camps": "营队",
+      "training": "培训",
+      "projects": "项目",
+      "skills": "技能"
+    },
+    "projects": [
+      {
+        "title": "先筛后修",
+        "text": "为人像照片初筛模糊和闭眼问题的 AI，在 2B-KMUTT 第 20 期营队与 KMUTT FIBO 合作完成"
+      },
+      {
+        "title": "个人作品集网站",
+        "text": "bigbank.nightbears.co，即本网站，支持四种语言并内置文章编辑系统"
+      },
+      {
+        "title": "善行记录网站",
+        "text": "学校的线上善行记录系统"
+      },
+      {
+        "title": "学生会值班记录网站",
+        "text": "学校学生会的值班记录系统"
+      }
+    ],
+    "skills": [
+      {
+        "label": "编程语言",
+        "items": "Python, C, C++"
+      },
+      {
+        "label": "网页",
+        "items": "HTML, CSS, JavaScript, React, Next.js"
+      },
+      {
+        "label": "设计与媒体",
+        "items": "Adobe Photoshop, Adobe Illustrator, Blender, 摄影"
+      }
+    ],
+    "website": "网站",
+    "updated": "更新于 {date}"
   }
 }

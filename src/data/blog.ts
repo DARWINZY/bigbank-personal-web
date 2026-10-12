@@ -42,10 +42,12 @@ const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-
 
 /** e.g. "11 ตุลาคม 2569" in Thai, "11 October 2026" in English. */
 export function formatPostDate(date: string, locale: string): string {
+  // "2026-10-11" parses as UTC midnight; formatting in UTC keeps the same day everywhere
   return new Intl.DateTimeFormat(dateLocales[locale] ?? locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
+    timeZone: 'UTC',
   }).format(new Date(date));
 }
 
@@ -53,7 +55,10 @@ export function localize(text: LocalizedText, locale: string): string {
   return text[locale as Locale] || text.th;
 }
 
-/** Black or white, whichever reads better on the given hex background. */
+const DARK_TEXT = '#0F172A';
+const DARK_TEXT_LUMINANCE = 0.0091;
+
+/** Dark or white text, whichever has the higher contrast ratio on the given hex background. */
 export function readableTextColor(hex: string): string {
   const m = hex.replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
   if (!m) return '#FFFFFF';
@@ -62,5 +67,7 @@ export function readableTextColor(hex: string): string {
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   });
   const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  return luminance > 0.4 ? '#0F172A' : '#FFFFFF';
+  const onWhite = 1.05 / (luminance + 0.05);
+  const onDark = (luminance + 0.05) / (DARK_TEXT_LUMINANCE + 0.05);
+  return onDark > onWhite ? DARK_TEXT : '#FFFFFF';
 }

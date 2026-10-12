@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { socialLinks } from '@/data/social';
 import styles from '@/styles/footer.module.css';
 
-const navItems = ['about', 'portfolio', 'blog', 'contact'] as const;
+const navItems = ['about', 'portfolio', 'resume', 'blog', 'contact'] as const;
 
 export default function Footer() {
   const t = useTranslations();

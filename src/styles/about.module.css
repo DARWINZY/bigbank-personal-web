@@ -78,7 +78,7 @@
 .aboutStatNumber {
   font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -100,27 +100,41 @@
 }
 
 @media (max-width: 480px) {
+  /* Photo and intro full width; stats sit two per row */
   .bentoGrid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .bentoCell {
+    border-radius: var(--radius-lg);
   }
 
   .bentoCellPhoto,
-  .bentoCellIntro,
-  .bentoCellStat {
-    grid-column: span 1;
+  .bentoCellIntro {
+    grid-column: span 2;
   }
 
   .bentoCellPhoto {
-    min-height: 250px;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
     grid-row: span 1;
   }
-  
+
   .bentoCellIntro {
-    padding: 24px;
+    padding: 18px;
+    gap: 12px;
   }
-  
+
   .bentoCellStat {
-    padding: 20px;
+    padding: 16px 12px;
+  }
+
+  .aboutStatNumber {
+    font-size: var(--text-2xl);
+    margin-bottom: 4px;
+  }
+
+  .aboutStatLabel {
+    font-size: var(--text-xs);
   }
 }

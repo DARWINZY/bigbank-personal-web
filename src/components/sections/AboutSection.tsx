@@ -4,18 +4,21 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
+import { projects } from '@/data/projects';
 import styles from '@/styles/about.module.css';
-import aboutImg from '@/../public/images/about-photo.jpg';
 
-const stats = [
-  { value: '10+', key: 'projects' },
-  { value: '2+', key: 'experience' },
-  { value: '8+', key: 'clients' },
-  { value: '100%', key: 'satisfaction' },
-];
+// Counted from the portfolio data, so the numbers stay true as entries are added
+const projectCount = projects.length;
+const awardCount = projects.filter((p) => p.award).length;
 
 export default function AboutSection() {
   const t = useTranslations('about');
+  const stats = [
+    { value: String(projectCount), key: 'projects' },
+    { value: String(awardCount), key: 'awards' },
+    { value: t('stats.coding_value'), key: 'coding' },
+    { value: t('stats.competing_value'), key: 'competing' },
+  ];
 
   return (
     <section className={`section ${styles.about}`} id="about">
@@ -32,7 +35,7 @@ export default function AboutSection() {
           {/* Main Photo Cell */}
           <AnimatedSection delay={0.1} className={`${styles.bentoCell} ${styles.bentoCellPhoto}`}>
             <Image
-              src={aboutImg.src}
+              src="/images/about-photo.jpg"
               alt="Bigbank — About Me"
               fill
               style={{ objectFit: 'cover' }}

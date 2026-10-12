@@ -10,7 +10,6 @@ import TextReveal from '@/components/ui/TextReveal';
 import MagneticButton from '@/components/ui/MagneticButton';
 import styles from '@/styles/hero.module.css';
 import uiStyles from '@/styles/ui.module.css';
-import profileImg from '@/../public/images/profile.png';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -129,10 +128,11 @@ export default function HeroSection() {
             style={{ originY: 1 }}
           >
             <Image
-              src={profileImg.src}
+              src="/images/profile.png"
               alt="Bigbank — Freelance Web Developer"
               width={440}
               height={587}
+              sizes="(max-width: 480px) 168px, (max-width: 900px) 300px, 440px"
               priority
             />
           </motion.div>

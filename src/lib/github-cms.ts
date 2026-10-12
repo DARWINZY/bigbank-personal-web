@@ -107,16 +107,23 @@ export async function commitFiles(token: string, changes: FileChange[], message:
   });
 }
 
-/** Shrinks an image to at most `maxWidth` and re-encodes it as WebP to keep the repo light. */
+/**
+ * Shrinks an image to at most `maxWidth` and re-encodes it as JPEG. JPEG rather than WebP
+ * because the cover doubles as the share image, and some chat apps can't preview WebP;
+ * the site itself serves resized WebP copies made at build time.
+ */
 export async function compressImage(file: File, maxWidth = 1600): Promise<Blob> {
   const bitmap = await createImageBitmap(file);
   const scale = Math.min(1, maxWidth / bitmap.width);
   const canvas = document.createElement('canvas');
   canvas.width = Math.round(bitmap.width * scale);
   canvas.height = Math.round(bitmap.height * scale);
-  canvas.getContext('2d')!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = '#FFFFFF'; // JPEG has no transparency
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
   bitmap.close();
   return new Promise((resolve, reject) =>
-    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('encode failed'))), 'image/webp', 0.85)
+    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('encode failed'))), 'image/jpeg', 0.85)
   );
 }

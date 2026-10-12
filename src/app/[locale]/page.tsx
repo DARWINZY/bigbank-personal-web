@@ -1,5 +1,9 @@
 import HeroSection from '@/components/sections/HeroSection';
 import TechMarquee from '@/components/sections/TechMarquee';
+import FeaturedWork from '@/components/home/FeaturedWork';
+import ProjectStory from '@/components/home/ProjectStory';
+import LatestPosts from '@/components/home/LatestPosts';
+import ContactCta from '@/components/home/ContactCta';
 
 import { setRequestLocale } from 'next-intl/server';
 
@@ -11,6 +15,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <HeroSection />
       <TechMarquee />
+      <FeaturedWork />
+      <ProjectStory />
+      <LatestPosts />
+      <ContactCta />
     </>
   );
 }

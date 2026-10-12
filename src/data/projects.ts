@@ -16,8 +16,19 @@ export interface Project {
   tags: string[];
   liveUrl?: string;
   codeUrl?: string;
+  /** Groups entries on the resume. */
+  category: 'competition' | 'camp' | 'training' | 'project';
   featured: boolean;
+  /** Shown in "Featured work" on the home page (keep it to about three). */
+  highlight?: boolean;
   award?: 'gold' | 'silver' | 'bronze';
+  /** Badge text when the prize isn't a medal, e.g. "Bronze Prize". */
+  awardText?: {
+    th: string;
+    en: string;
+    lo: string;
+    zh: string;
+  };
   badgeIconOnly?: boolean;
   year?: string;
   grade?: {
@@ -33,43 +44,23 @@ export const projects: Project[] = [
   {
     id: 'thailand-metaverse',
     title: {
-      th: 'Thailand Metaverse and Exhibition',
-      en: 'Thailand Metaverse and Exhibition',
-      lo: 'Thailand Metaverse and Exhibition',
-      zh: 'Thailand Metaverse and Exhibition',
+      th: 'Thailand Metaverse Hackathon #2',
+      en: 'Thailand Metaverse Hackathon #2',
+      lo: 'Thailand Metaverse Hackathon #2',
+      zh: 'Thailand Metaverse Hackathon #2',
     },
     description: {
-      th: 'คว้ารางวัลชนะเลิศการแข่งขัน Thailand Metaverse and Exhibition ด้วยแพลตฟอร์ม LiveVerse ที่ผสานเทคโนโลยี Metaverse เข้ากับความบันเทิงอย่างลงตัว',
-      en: 'Won first place at the Thailand Metaverse and Exhibition competition with LiveVerse — a platform that seamlessly blends Metaverse technology with entertainment.',
-      lo: 'ຄວ້າລາງວັນຊະນະເລີດການແຂ່ງຂັນ Thailand Metaverse and Exhibition ດ້ວຍແພລດຟອມ LiveVerse ທີ່ຜະສານເທັກໂນໂລຊີ Metaverse ເຂົ້າກັບຄວາມບັນເທີງຢ່າງລົງຕົວ',
-      zh: '凭借 LiveVerse 平台荣获 Thailand Metaverse and Exhibition 大赛冠军——该平台将元宇宙技术与娱乐完美融合。',
+      th: 'ชนะเลิศ Entertainment Track กับทีม EdVantage จากไอเดีย VR Concert ที่ผสม Gamification ผมรับหน้าที่ออกแบบระบบ สถาปัตยกรรม และ Flowchart จัดโดยวิศวกรรม จุฬาฯ',
+      en: 'Won the Entertainment Track with team EdVantage for a VR Concert idea with gamification. I designed the system, its architecture and the flowcharts. Organized by Engineering, Chulalongkorn University.',
+      lo: 'ຊະນະເລີດ Entertainment Track ກັບທີມ EdVantage ຈາກໄອເດຍ VR Concert ທີ່ຜະສົມ Gamification ຂ້ອຍຮັບໜ້າທີ່ອອກແບບລະບົບ ສະຖາປັດຕະຍະກຳ ແລະ Flowchart ຈັດໂດຍວິສະວະກຳ ຈຸລາລົງກອນ',
+      zh: '与 EdVantage 团队凭借融合游戏化的 VR 演唱会创意获得娱乐赛道冠军。我负责系统设计、架构和流程图。由朱拉隆功大学工程学院主办。',
     },
     image: '/images/projects/thailand-metaverse.jpg',
     tags: ['HTML', 'CSS', 'JavaScript'],
+    category: 'competition',
     featured: true,
+    highlight: true,
     award: 'gold',
-    year: '2569',
-    grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
-  },
-  {
-    id: '2b-kmutt-fibo',
-    title: {
-      th: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
-      en: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
-      lo: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
-      zh: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
-    },
-    description: {
-      th: 'ได้รับคัดเลือกจากผู้สมัครกว่า 4,000 คน (อัตรารับเพียง 1.6%) เข้าร่วมโปรแกรมวิจัยเชิงโครงงานที่สถาบันวิทยาการหุ่นยนต์ภาคสนาม (FIBO) มจธ. มุ่งเน้นด้านปัญญาประดิษฐ์ โดยประยุกต์ใช้โมเดล CNN Pre-trained สำหรับการตรวจจับภาพ',
-      en: 'Selected from over 4,000 applicants (1.6% acceptance rate) to join a project-based research program at the Institute of Field Robotics (FIBO), KMUTT. Focused on Artificial Intelligence, utilizing Convolutional Neural Network (CNN) pre-trained models for image detection.',
-      lo: 'ໄດ້ຮັບຄັດເລືອກຈາກຜູ້ສະໝັກກວ່າ 4,000 ຄົນ (ອັດຕາຮັບພຽງ 1.6%) ເຂົ້າຮ່ວມໂປຣແກຣມວິໄຈເຊີງໂຄງການທີ່ສະຖາບັນວິທະຍາການຫຸ່ນຍົນພາກສະໜາມ (FIBO) ມຈທ. ມຸ່ງເນັ້ນດ້ານ AI ໂດຍໃຊ້ໂມເດນ CNN Pre-trained ສຳລັບກວດຈັບພາບ',
-      zh: '从4,000多名申请者中脱颖而出（录取率仅1.6%），参加KMUTT现场机器人研究所（FIBO）基于项目的研究计划。专注于人工智能领域，利用CNN预训练模型进行图像检测。',
-    },
-    image: '/images/projects/2b-kmutt.jpg',
-    tags: ['CNN', 'Python', 'HTML', 'SQLite'],
-    featured: true,
-    award: 'gold',
-    badgeIconOnly: true,
     year: '2569',
     grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
   },
@@ -89,34 +80,13 @@ export const projects: Project[] = [
     },
     image: '/images/projects/kku-open-house.jpg',
     tags: ['Adobe Illustrator', 'Adobe Photoshop'],
+    category: 'competition',
     featured: true,
     award: 'gold',
     year: '2567',
     grade: { th: 'ม.2', en: 'Grade 8', lo: 'ມ.2', zh: '初二' },
   },
   // ══ 🥈 SILVER ════════════════════════════════════════════
-  {
-    id: 'click-camp-16',
-    title: {
-      th: 'Click Camp 16',
-      en: 'Click Camp 16',
-      lo: 'Click Camp 16',
-      zh: 'Click Camp 16',
-    },
-    description: {
-      th: 'เข้าร่วมค่ายโดยคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยมหิดล เรียนรู้การสร้าง AI พื้นฐาน และเจาะลึก Cyber Security ด้วยเครื่องมือจริง',
-      en: 'Attended a camp hosted by the Computer Engineering department at Mahidol University. Learned foundational AI development and explored Cyber Security with industry-standard tools.',
-      lo: 'ເຂົ້າຮ່ວມຄ່າຍໂດຍຄະນະວິສະວະກຳສາດ ສາຂາວິສະວະກຳຄອມພິວເຕີ ມະຫາວິທະຍາໄລມະຫິດົນ ຮຽນຮູ້ການສ້າງ AI ພື້ນຖານ ແລະ ສຳຫຼວດ Cyber Security ດ້ວຍເຄື່ອງມືຈິງ',
-      zh: '参加玛希隆大学计算机工程系举办的营地，学习基础AI开发，并使用专业工具深入探索网络安全。',
-    },
-    image: '/images/projects/cc16.jpg',
-    tags: ['Python', 'Streamlit', 'WireShark', 'Burp Suite'],
-    featured: true,
-    award: 'silver',
-    badgeIconOnly: true,
-    year: '2568',
-    grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
-  },
   {
     id: 'silpahattakam-71',
     title: {
@@ -133,6 +103,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/silpahattakam-71.jpg',
     tags: ['Construct 2'],
+    category: 'competition',
     featured: true,
     award: 'silver',
     year: '2566',
@@ -140,9 +111,32 @@ export const projects: Project[] = [
   },
   // ══ 🥉 BRONZE ════════════════════════════════════════════
   {
+    id: 'coding-thailand-2026',
+    title: {
+      th: 'Coding Thailand 2026: AI Inspires the Future',
+      en: 'Coding Thailand 2026: AI Inspires the Future',
+      lo: 'Coding Thailand 2026: AI Inspires the Future',
+      zh: 'Coding Thailand 2026: AI Inspires the Future',
+    },
+    description: {
+      th: 'ได้ Bronze Prize ระดับประเทศ และ Silver Prize ระดับภูมิภาคอีสานตอนล่าง กับทีม Sleep',
+      en: 'Bronze Prize at the national level and Silver Prize in the Lower Northeast region, with team Sleep.',
+      lo: 'ໄດ້ Bronze Prize ລະດັບປະເທດ ແລະ Silver Prize ລະດັບພາກອີສານຕອນລຸ່ມ ກັບທີມ Sleep',
+      zh: '与 Sleep 团队获得全国赛铜奖，以及东北部下区赛银奖。',
+    },
+    image: '/images/projects/coding-thailand-2026.jpg',
+    tags: [],
+    category: 'competition',
+    featured: true,
+    highlight: true,
+    award: 'bronze',
+    awardText: { th: 'Bronze Prize', en: 'Bronze Prize', lo: 'Bronze Prize', zh: '铜奖' },
+    year: '2569',
+  },
+  {
     id: 'silpahattakam-70',
     title: {
-      th: 'ศิลปะหัตถกรรม ครั้งที่ 70',
+      th: 'ศิลปหัตถกรรม ครั้งที่ 70',
       en: 'National Arts & Crafts Competition #70',
       lo: 'ສິລະປະຫັດຖະກຳ ຄັ້ງທີ 70',
       zh: '第70届艺术工艺大赛',
@@ -155,12 +149,35 @@ export const projects: Project[] = [
     },
     image: '/images/projects/silpahattakam-70.jpg',
     tags: ['C++'],
+    category: 'competition',
     featured: true,
     award: 'bronze',
     year: '2565',
     grade: { th: 'ม.1', en: 'Grade 7', lo: 'ມ.1', zh: '初一' },
   },
   // ══ ไม่มีเหรียญ (ปีล่าสุดก่อน) ═════════════════════════
+  {
+    id: '2b-kmutt-fibo',
+    title: {
+      th: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
+      en: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
+      lo: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
+      zh: 'Researcher, 2B-KMUTT (Batch 20) — FIBO, KMUTT',
+    },
+    description: {
+      th: 'ใช้ชีวิต 20 วันที่ มจธ. ในค่าย 2B-KMUTT รุ่นที่ 20 ทำงานกับ FIBO ในโปรเจกต์ AI คัดกรองรูปถ่ายบุคคลเบื้องต้น แยกรูปเบลอและรูปที่มีคนหลับตาออกให้ช่างภาพ ด้วย InsightFace, pHash และ EAR',
+      en: 'Spent 20 days at KMUTT in 2B-KMUTT Batch 20, working with FIBO on an AI project that pre-screens portrait photos, setting aside blurry shots and closed eyes for photographers, using InsightFace, pHash and EAR.',
+      lo: 'ໃຊ້ຊີວິດ 20 ວັນທີ່ ມຈທ. ໃນຄ່າຍ 2B-KMUTT ລຸ້ນທີ 20 ເຮັດວຽກກັບ FIBO ໃນໂປຣເຈັກ AI ຄັດກອງຮູບຖ່າຍບຸກຄົນເບື້ອງຕົ້ນ ແຍກຮູບມົວ ແລະ ຮູບທີ່ມີຄົນຫຼັບຕາອອກໃຫ້ຊ່າງພາບ ດ້ວຍ InsightFace, pHash ແລະ EAR',
+      zh: '在 KMUTT 参加为期 20 天的 2B-KMUTT 第 20 期营队，与 FIBO 合作开发 AI 项目，为摄影师初步筛选人像照片，剔除模糊和闭眼的照片，使用 InsightFace、pHash 和 EAR。',
+    },
+    image: '/images/projects/2b-kmutt.jpg',
+    tags: ['InsightFace', 'pHash', 'Python', 'HTML', 'SQLite'],
+    category: 'camp',
+    featured: true,
+    highlight: true,
+    year: '2569',
+    grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
+  },
   {
     id: 'it-clash',
     title: {
@@ -177,6 +194,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/it-clash.jpg',
     tags: ['Python'],
+    category: 'competition',
     featured: true,
     year: '2569',
     grade: { th: 'ม.5', en: 'Grade 11', lo: 'ມ.5', zh: '高二' },
@@ -197,6 +215,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/rsca.jpg',
     tags: ['Blender', 'Python'],
+    category: 'competition',
     featured: true,
     year: '2569',
     grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
@@ -217,6 +236,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/jwc14.jpg',
     tags: ['TypeScript', 'Next.js'],
+    category: 'camp',
     featured: true,
     year: '2569',
     grade: { th: 'ม.5', en: 'Grade 11', lo: 'ມ.5', zh: '高二' },
@@ -237,9 +257,31 @@ export const projects: Project[] = [
     },
     image: '/images/projects/robotics-ai.jpg',
     tags: ['Python', 'C', 'Arduino'],
+    category: 'camp',
     featured: true,
     year: '2569',
     grade: { th: 'ม.5', en: 'Grade 11', lo: 'ມ.5', zh: '高二' },
+  },
+  {
+    id: 'click-camp-16',
+    title: {
+      th: 'Click Camp 16',
+      en: 'Click Camp 16',
+      lo: 'Click Camp 16',
+      zh: 'Click Camp 16',
+    },
+    description: {
+      th: 'เข้าร่วมค่ายโดยคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยมหิดล เรียนรู้การสร้าง AI พื้นฐาน และเจาะลึก Cyber Security ด้วยเครื่องมือจริง',
+      en: 'Attended a camp hosted by the Computer Engineering department at Mahidol University. Learned foundational AI development and explored Cyber Security with industry-standard tools.',
+      lo: 'ເຂົ້າຮ່ວມຄ່າຍໂດຍຄະນະວິສະວະກຳສາດ ສາຂາວິສະວະກຳຄອມພິວເຕີ ມະຫາວິທະຍາໄລມະຫິດົນ ຮຽນຮູ້ການສ້າງ AI ພື້ນຖານ ແລະ ສຳຫຼວດ Cyber Security ດ້ວຍເຄື່ອງມືຈິງ',
+      zh: '参加玛希隆大学计算机工程系举办的营地，学习基础AI开发，并使用专业工具深入探索网络安全。',
+    },
+    image: '/images/projects/cc16.jpg',
+    tags: ['Python', 'Streamlit', 'WireShark', 'Burp Suite'],
+    category: 'camp',
+    featured: true,
+    year: '2568',
+    grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
   },
   {
     id: 'env-science-camp',
@@ -257,6 +299,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/env-science-camp.jpg',
     tags: ['Basic Sci'],
+    category: 'camp',
     featured: true,
     year: '2568',
     grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
@@ -278,6 +321,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/scientist-path-thammasat.jpg',
     tags: ['Basic Sci'],
+    category: 'camp',
     featured: true,
     year: '2568',
     grade: { th: 'ม.4', en: 'Grade 10', lo: 'ມ.4', zh: '高一' },
@@ -298,6 +342,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/ypls.jpg',
     tags: ['English'],
+    category: 'training',
     featured: true,
     year: '2567',
     grade: { th: 'ม.3', en: 'Grade 9', lo: 'ມ.3', zh: '初三' },
@@ -318,6 +363,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/erican-malaysia.jpg',
     tags: ['English'],
+    category: 'training',
     featured: true,
     year: '2567',
     grade: { th: 'ม.3', en: 'Grade 9', lo: 'ມ.3', zh: '初三' },
@@ -338,6 +384,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/english-channel-camp.jpg',
     tags: ['English'],
+    category: 'training',
     featured: true,
     year: '2567',
     grade: { th: 'ม.3', en: 'Grade 9', lo: 'ມ.3', zh: '初三' },
@@ -359,6 +406,7 @@ export const projects: Project[] = [
     },
     image: '/images/projects/sirindhorn-good-deeds.png',
     tags: ['Nest.js', 'TypeScript', 'Cloudflare'],
+    category: 'project',
     featured: true,
     year: '2569',
     grade: { th: 'ม.5', en: 'Grade 11', lo: 'ມ.5', zh: '高二' },

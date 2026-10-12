@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ComponentProps } from 'react';
 import { FiCheck, FiCopy } from 'react-icons/fi';
+import { copyText } from '@/lib/clipboard';
 import styles from '@/styles/blog-post.module.css';
 
 /** Markdown code block with a copy button. */
@@ -13,11 +14,10 @@ export default function CodeBlock({ children, copyLabel, copiedLabel, ...props }
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(preRef.current?.innerText.replace(/\n$/, '') ?? '');
+    if (await copyText(preRef.current?.innerText.replace(/\n$/, '') ?? '')) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {}
+    }
   };
 
   return (

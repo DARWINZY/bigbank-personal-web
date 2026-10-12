@@ -1,12 +1,13 @@
 {
   "metadata": {
     "title": "Nattapong Pongnukrohsiri (Bigbank) - Software Engineer",
-    "description": "Portfolio of Nattapong Pongnukrohsiri (Bigbank), a High School Software Engineer at Nightbears Technology specializing in modern web and app development."
+    "description": "Portfolio of Nattapong Pongnukrohsiri (Bigbank), a High School Software Engineer at Nightbears Technology specializing in modern web and app development.",
+    "about_description": "Meet Bigbank (Nattapong Pongnukrohsiri), a Sci-Math-Eng high school student who started coding in fifth grade and is into computer engineering, AI and robotics.",
+    "portfolio_description": "Awards, projects and camps from Bigbank, from programming contests to an AI project with FIBO, KMUTT.",
+    "resume_description": "Bigbank's resume: awards, competitions, camps, projects and skills. Downloadable as PDF."
   },
   "nav": {
-    "home": "Home",
     "about": "About",
-    "skills": "Skills",
     "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Contact",
@@ -19,7 +20,7 @@
     "fullName": "Nattapong Pongnukrohsiri",
     "tagline1": "High School",
     "tagline2": "Software Engineer",
-    "description": "A high schooler passionate about coding and a Software Engineer at Nightbears Technology. Despite my age, I'm ready to tackle enterprise-level projects, turning your ideas into functional apps and websites.",
+    "description": "A Sci-Math-Eng student who has been coding since fifth grade. I like to understand the people who will use something before I design it, and I build websites and software with the Nightbears Technology team.",
     "cta_primary": "Our Work",
     "cta_secondary": "Consult Project",
     "scroll_hint": "Scroll down to explore"
@@ -30,37 +31,25 @@
     "description1": "I'm Nattapong Pongnukrohsiri (Bigbank), a High School Software Engineer from Nightbears Technology. I started with a deep passion for coding and developed my skills until I earned the opportunity to work at a real Software House, delivering top-tier solutions.",
     "description2": "Age is no barrier to innovation! From web development (Next.js, React) to mobile applications (Flutter), my expert team at Nightbears and I are ready to handle your project from start to finish.",
     "stats": {
-      "projects": "Projects",
-      "experience": "Years Exp.",
-      "clients": "Clients",
-      "satisfaction": "Satisfaction"
-    }
-  },
-  "skills": {
-    "label": "Skills",
-    "title": "Tech Stack",
-    "description": "I use modern technologies to build high-performance websites.",
-    "categories": {
-      "frontend": "Frontend",
-      "backend": "Backend",
-      "tools": "Tools"
+      "projects": "Projects & activities",
+      "awards": "Competition awards",
+      "coding": "Started coding",
+      "coding_value": "Grade 5",
+      "competing": "First competition",
+      "competing_value": "Grade 7"
     }
   },
   "portfolio": {
     "label": "Portfolio",
     "title": "Featured Projects",
-    "description": "A showcase of websites I've designed and developed for clients.",
+    "description": "Projects, awards and camps I've taken part in.",
     "view_live": "Live Demo",
-    "view_code": "Source Code",
-    "view_all": "View All"
+    "view_code": "Source Code"
   },
   "blog": {
     "label": "Blog",
     "title": "Knowledge Sharing",
     "description": "Articles about web development, tips, tricks, and experiences.",
-    "read_more": "Read More",
-    "view_all": "View All Posts",
-    "min_read": "min read",
     "filter_all": "All",
     "filter_label": "Filter by tag",
     "empty": "No posts yet",
@@ -71,7 +60,15 @@
     "back_to_all": "All posts",
     "toc": "Contents",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "share": "Share this post",
+    "copy_link": "Copy link",
+    "link_copied": "Link copied",
+    "share_more": "More",
+    "prev_post": "Previous post",
+    "next_post": "Next post",
+    "related": "Related posts",
+    "copy_failed": "Couldn't copy"
   },
   "contact": {
     "label": "Contact",
@@ -97,7 +94,102 @@
     "built_with": "Built with Next.js"
   },
   "common": {
-    "language": "EN",
-    "switch_language": "TH"
+    "skip_to_content": "Skip to main content"
+  },
+  "home": {
+    "featured": {
+      "title": "Featured work",
+      "view_all": "See all work"
+    },
+    "project": {
+      "label": "Latest project",
+      "title": "Cull Before Edit",
+      "summary": "An AI helper that sets aside blurry shots and closed eyes first, so photographers have more time left to edit.",
+      "context": "A single shoot can produce 1,000–3,000 photos",
+      "before_label": "Culling by hand",
+      "before_value": "8–24 hrs",
+      "after_label": "Goal: AI rough cull",
+      "after_value": "15–30 min",
+      "steps": [
+        {
+          "title": "Group the same scene",
+          "text": "Each photo gets a pHash; photos less than 10 bits apart count as one scene."
+        },
+        {
+          "title": "Find faces",
+          "text": "InsightFace detects faces and aligns 106 facial landmarks."
+        },
+        {
+          "title": "Check eyes and sharpness",
+          "text": "An EAR below 0.20 counts as closed eyes; the face detection score helps judge sharpness."
+        },
+        {
+          "title": "Keep the key shots",
+          "text": "If no photo in a scene has everyone's eyes open, only photos where more than half the people blink are set aside."
+        },
+        {
+          "title": "Sort into folders",
+          "text": "Keep, Blur_photo and Blink_photo, for the photographer to check."
+        }
+      ],
+      "credit": "Built with FIBO, KMUTT, at 2B-KMUTT Batch 20",
+      "link": "Read about the 2B-KMUTT camp"
+    },
+    "latest": {
+      "title": "Latest posts",
+      "view_all": "See all posts"
+    },
+    "cta": {
+      "title": "Have a project in mind?",
+      "text": "Message me about websites, software, or a project to build together.",
+      "button": "Contact me"
+    }
+  },
+  "resume": {
+    "download": "Download PDF",
+    "role": "Grade 11 student, Sci-Math-Eng program",
+    "summary": "Interested in computer engineering, AI, robotics and software that solves real problems. I started coding in fifth grade and entered my first competition in seventh grade. I like to understand the people who will use something before designing the fix. Outside of code I'm a photographer, and I also do graphics and video.",
+    "sections": {
+      "awards": "Awards",
+      "competitions": "Competitions",
+      "camps": "Camps",
+      "training": "Training",
+      "projects": "Projects",
+      "skills": "Skills"
+    },
+    "projects": [
+      {
+        "title": "Cull Before Edit",
+        "text": "An AI that pre-screens portrait photos for blur and closed eyes, built with FIBO, KMUTT, at 2B-KMUTT Batch 20"
+      },
+      {
+        "title": "Portfolio website",
+        "text": "bigbank.nightbears.co, this site, in four languages with a built-in blog editor"
+      },
+      {
+        "title": "Good-deeds record website",
+        "text": "An online good-deeds record system for my school"
+      },
+      {
+        "title": "Student council duty website",
+        "text": "A duty log for my school's student council"
+      }
+    ],
+    "skills": [
+      {
+        "label": "Programming",
+        "items": "Python, C, C++"
+      },
+      {
+        "label": "Web",
+        "items": "HTML, CSS, JavaScript, React, Next.js"
+      },
+      {
+        "label": "Graphics & media",
+        "items": "Adobe Photoshop, Adobe Illustrator, Blender, photography"
+      }
+    ],
+    "website": "Website",
+    "updated": "Updated {date}"
   }
 }

@@ -223,15 +223,54 @@
 
 @media (max-width: 640px) {
   .blog {
-    padding: 112px 0 72px;
+    padding: 88px 0 56px;
   }
 
   .pageTitle {
+    margin-bottom: 20px;
     font-size: var(--text-3xl);
   }
 
+  .filters {
+    gap: 6px;
+    margin: -4px 0 20px;
+  }
+
+  .filterChip {
+    gap: 6px;
+    padding: 5px 12px;
+  }
+
+  .blogGrid {
+    gap: 16px;
+  }
+
+  .blogCard {
+    border-radius: var(--radius-lg);
+  }
+
+  .blogCardTag {
+    top: 10px;
+    left: 10px;
+    padding: 3px 10px;
+  }
+
   .blogCardBody {
-    padding: 20px;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .blogCardTitle {
+    font-size: var(--text-lg);
+  }
+
+  .blogCardDesc {
+    font-size: var(--text-sm);
+  }
+
+  .blogCardMeta {
+    padding-top: 4px;
+    font-size: var(--text-xs);
   }
 }
 

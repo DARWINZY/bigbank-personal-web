@@ -11,8 +11,8 @@ export default function CustomCursor() {
   const outlineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if it's a touch device
-    if (window.matchMedia('(pointer: coarse)').matches) {
+    // Off for touch screens, and for visitors who asked for reduced motion
+    if (window.matchMedia('(pointer: coarse), (prefers-reduced-motion: reduce)').matches) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsTouchDevice(true);
       return;

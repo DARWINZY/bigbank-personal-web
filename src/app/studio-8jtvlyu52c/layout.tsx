@@ -17,7 +17,6 @@ export default function StudioLayout({ children }: { children: React.ReactNode }
     <html lang="th" data-theme="light" className={`${inter.variable} ${notoSansThai.variable}`}>
       <head>
         <meta name="referrer" content="no-referrer" />
-        <link rel="icon" href="/icon.png" type="image/png" />
       </head>
       <body>{children}</body>
     </html>

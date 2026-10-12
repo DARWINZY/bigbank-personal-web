@@ -18,7 +18,8 @@ import {
 } from '@/lib/github-cms';
 import ConnectPanel from './ConnectPanel';
 import PostList from './PostList';
-import PostEditor, { type PostDraft } from './PostEditor';
+import PostEditor, { type PostDraft, type StagedImage } from './PostEditor';
+import { studioImagesIn, unusedImages } from './images';
 import TagManager from './TagManager';
 import styles from '@/styles/studio.module.css';
 
@@ -27,8 +28,6 @@ const TOKEN_KEY = 'studio-gh-token';
 type View = { kind: 'list' } | { kind: 'edit'; post: BlogPost | null };
 type Toast = { kind: 'ok' | 'error'; text: string; withActions?: boolean };
 
-/** Files the studio uploaded itself; only these are safe to delete automatically. */
-const isStudioImage = (src: string) => /^\/images\/blog\/[a-z0-9-]+-\d{13}\.webp$/.test(src);
 
 function describeError(err: unknown): string {
   if (err instanceof GitHubError) {
@@ -129,23 +128,27 @@ export default function Studio() {
     }
   }
 
-  const savePost = async (draft: PostDraft, cover: Blob | null) => {
+  const savePost = async (draft: PostDraft, cover: Blob | null, images: StagedImage[]) => {
     const ok = await run(async ({ posts: fresh }) => {
       const changes: FileChange[] = [];
       let image = draft.image;
       if (cover) {
-        image = `/images/blog/${draft.slug}-${Date.now()}.webp`;
+        image = `/images/blog/${draft.slug}-${Date.now()}.jpg`;
         changes.push({ path: `${IMAGE_DIR}/${image.split('/').pop()}`, base64: await blobToBase64(cover) });
+      }
+      for (const img of images) {
+        changes.push({ path: `public${img.path}`, base64: await blobToBase64(img.blob) });
       }
 
       const post: BlogPost = { ...draft, image };
       const existing = fresh.find((p) => p.id === post.id);
       const next = existing ? fresh.map((p) => (p.id === post.id ? post : p)) : [post, ...fresh];
 
-      // Drop the old studio-uploaded cover if nothing uses it anymore
-      if (existing && existing.image !== image && isStudioImage(existing.image)
-        && !next.some((p) => p.image === existing.image)) {
-        changes.push({ path: `public${existing.image}`, base64: null });
+      // Delete images the old version used (cover or content) that no post uses anymore
+      if (existing) {
+        for (const src of unusedImages(studioImagesIn(existing), next)) {
+          changes.push({ path: `public${src}`, base64: null });
+        }
       }
 
       changes.push({ path: POSTS_PATH, base64: toJsonFile(next) });
@@ -162,8 +165,8 @@ export default function Studio() {
     run(async ({ posts: fresh }) => {
       const next = fresh.filter((p) => p.id !== post.id);
       const changes: FileChange[] = [{ path: POSTS_PATH, base64: toJsonFile(next) }];
-      if (isStudioImage(post.image) && !next.some((p) => p.image === post.image)) {
-        changes.push({ path: `public${post.image}`, base64: null });
+      for (const src of unusedImages(studioImagesIn(post), next)) {
+        changes.push({ path: `public${src}`, base64: null });
       }
       return { changes, message: `Delete blog post: ${post.slug}`, done: 'ลบโพสต์แล้ว' };
     });

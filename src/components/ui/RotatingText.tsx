@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import styles from '@/styles/rotating-text.module.css';
 
 interface RotatingTextProps {
@@ -11,13 +11,15 @@ interface RotatingTextProps {
 
 export default function RotatingText({ words, interval = 3000 }: RotatingTextProps) {
   const [index, setIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion) return;
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, interval);
     return () => clearInterval(timer);
-  }, [words.length, interval]);
+  }, [words.length, interval, reduceMotion]);
 
   return (
     <span className={styles.container}>

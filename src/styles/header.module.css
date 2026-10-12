@@ -40,7 +40,7 @@
 }
 
 .logo:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 /* Desktop Nav */
@@ -61,7 +61,7 @@
 }
 
 .navLink:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .navLink::after {
@@ -104,8 +104,8 @@
 }
 
 .themeToggle:hover {
-  background: var(--color-white);
-  color: var(--color-accent);
+  background: var(--color-card-bg);
+  color: var(--color-accent-text);
   box-shadow: var(--shadow-sm);
   border-color: var(--color-accent-light);
 }
@@ -132,8 +132,8 @@
 }
 
 .langBtnActive {
-  background: var(--color-white);
-  color: var(--color-accent);
+  background: var(--color-card-bg);
+  color: var(--color-accent-text);
   box-shadow: var(--shadow-sm);
 }
 
@@ -204,7 +204,7 @@
   right: 0;
   width: min(380px, 85vw);
   height: 100vh;
-  background: var(--color-white);
+  background: var(--color-card-bg);
   z-index: calc(var(--z-header) + 1);
   padding: 100px 32px 40px;
   transform: translateX(100%);
@@ -232,7 +232,7 @@
 
 .mobileNavLink:hover {
   background: var(--color-bg-secondary);
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   padding-left: 28px;
 }
 
@@ -254,7 +254,7 @@
 
 .mobileCloseBtn:hover {
   background: var(--color-bg-secondary);
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 @media (max-width: 900px) {
@@ -284,47 +284,106 @@
   }
 }
 
+/* Language row inside the mobile menu (header switcher is hidden on phones) */
+.mobileLang {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .headerRight > .langSwitcher {
+    display: none;
+  }
+
+  .mobileLang {
+    display: flex;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mobileLang .langBtn {
+    flex: 1;
+    padding: 10px 0;
+    font-size: var(--text-sm);
+    letter-spacing: normal;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .mobileLang .langBtnActive {
+    border-color: var(--color-accent-light);
+    background: var(--color-accent-ultra-light);
+    box-shadow: none;
+  }
+}
+
 @media (max-width: 480px) {
   .header {
-    padding: 12px 16px;
+    padding: 10px 16px;
   }
 
   .headerScrolled {
-    padding: 10px 16px;
+    padding: 8px 16px;
+  }
+
+  .headerRight {
+    gap: 8px;
   }
 
   .logo {
     font-size: 22px;
   }
 
-  .langSwitcher {
-    padding: 2px;
-  }
-
-  .langBtn {
-    padding: 4px 6px;
-    font-size: 9px;
-    letter-spacing: 0.04em;
+  .themeToggle {
+    width: 34px;
+    height: 34px;
   }
 
   .hamburger {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
+    gap: 4px;
   }
 
   .hamburgerLine {
-    width: 18px;
+    width: 16px;
+  }
+
+  .hamburgerOpen .hamburgerLine:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .hamburgerOpen .hamburgerLine:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
   }
 
   .mobileMenu {
     width: 100vw;
-    padding: 80px 24px 32px;
+    padding: 72px 20px 24px;
+    gap: 4px;
+  }
+
+  .mobileNavLink {
+    padding: 12px 16px;
+  }
+
+  .mobileNavLink:hover {
+    padding-left: 20px;
+  }
+
+  .mobileCloseBtn {
+    top: 12px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 }
 
 /* Active page */
 .navLinkActive {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .navLink.navLinkActive::after {

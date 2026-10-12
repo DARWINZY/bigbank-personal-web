@@ -83,17 +83,20 @@
   border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
+/* Honeypot field: off-screen rather than display:none, which some bots skip */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Social Info */
 .contactInfo {
   display: flex;
   flex-direction: column;
   gap: 32px;
-}
-
-.contactInfoText {
-  font-size: var(--text-lg);
-  color: var(--color-text-secondary);
-  line-height: 1.8;
 }
 
 .contactOr {
@@ -138,7 +141,7 @@
 .contactSocialLink:hover {
   border-color: var(--color-accent-light);
   background: var(--color-accent-ultra-light);
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   transform: translateY(-2px);
 }
 
@@ -198,31 +201,56 @@
 @media (max-width: 900px) {
   .contactGrid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 24px;
+  }
+
+  /* Phones: quick social links first, then "or", then the form */
+  .contactInfoWrap {
+    order: -1;
+  }
+
+  .contactInfo {
+    gap: 24px;
+  }
+
+  .contactOr {
+    order: 1;
   }
 }
 
 @media (max-width: 480px) {
-  .contactGrid {
-    gap: 32px;
+  .contactForm {
+    gap: 14px;
   }
 
   .contactSocialGrid {
-    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .contactSocialLink {
-    padding: 14px 16px;
+    gap: 10px;
+    padding: 12px 14px;
   }
 
-  .contactInfoText {
-    font-size: var(--text-base);
+  .contactSocialIcon {
+    width: 32px;
+    height: 32px;
   }
 
+  .formLabel {
+    font-size: var(--text-xs);
+  }
+
+  /* 16px keeps iOS Safari from zooming in when a field gets focus */
   .formInput,
   .formTextarea {
-    padding: 12px 14px;
-    font-size: var(--text-sm);
+    padding: 11px 14px;
+    font-size: 16px;
+    border-width: 1.5px;
+  }
+
+  .formTextarea {
+    min-height: 120px;
   }
 
   .formSubmit {

@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bigbank.nightbears.co
 
-## Getting Started
+พอร์ตโฟลิโอของบิ๊กแบงค์ ณัฐพงษ์ พงษ์นุเคราะห์ศิริ รองรับ 4 ภาษา (ไทย อังกฤษ ลาว จีน) สร้างด้วย Next.js แบบ static export และ deploy ขึ้น GitHub Pages อัตโนมัติเมื่อ push ขึ้น `main`
 
-First, run the development server:
+## รันในเครื่อง
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # ย่อรูป แล้ว build เป็นไฟล์ static ในโฟลเดอร์ out/
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Next.js เวอร์ชันนี้มี breaking changes จากเวอร์ชันเก่า อ่านคู่มือใน `node_modules/next/dist/docs/` ก่อนแก้โค้ด (ดู `AGENTS.md`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## โครงสร้าง
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| ที่อยู่ | มีอะไร |
+|---|---|
+| `src/app/[locale]/` | หน้าเว็บทุกภาษา: หน้าแรก, เกี่ยวกับ, ผลงาน, เรซูเม่, บทความ, ติดต่อ |
+| `src/app/(root)/` | หน้าโดเมนเปล่า พาไปภาษาที่ตรงกับเครื่องคนเข้า (บอทไปหน้าไทยเสมอ) |
+| `src/app/global-not-found.tsx` | หน้า 404 ทั้ง 4 ภาษา พร้อมแนะนำหน้าที่น่าจะหมายถึง |
+| `src/app/studio-*/` | dashboard ส่วนตัวสำหรับเขียนบทความ (ดูหัวข้อด้านล่าง) |
+| `src/data/projects.ts` | ข้อมูลผลงาน รางวัล ค่าย ใช้ทั้งหน้าผลงาน หน้าแรก เรซูเม่ และตัวเลขในหน้าเกี่ยวกับ |
+| `src/data/blog-posts.json`, `blog-tags.json` | บทความและแท็ก (dashboard เป็นคนแก้ไฟล์นี้) |
+| `src/messages/*.json` | ข้อความทุกภาษา ทุกไฟล์ต้องมี key ตรงกัน |
+| `src/lib/` | SEO, image loader, การต่อ GitHub ของ dashboard, analytics |
+| `scripts/optimize-images.mjs` | สร้างรูปหลายขนาดตอน build |
 
-## Learn More
+## เขียนบทความผ่าน dashboard
 
-To learn more about Next.js, take a look at the following resources:
+dashboard อยู่ที่ URL ตามชื่อโฟลเดอร์ `src/app/studio-*/` ไม่มีลิงก์จากหน้าไหน และ Google ไม่เก็บ แต่สิ่งที่กันคนอื่นจริงๆ คือโทเคน GitHub ที่มีแค่เจ้าของ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. เปิดครั้งแรก สร้าง Fine-grained token ตามขั้นตอนบนหน้า (สิทธิ์ **Contents: Read and write** เฉพาะ repo นี้) แล้ววาง เบราว์เซอร์จะจำไว้
+2. เขียนโพสต์: มีแถบปุ่มจัดรูปแบบ ปุ่มแทรกรูป และแท็บ "ดูตัวอย่าง" ที่หน้าตาเหมือนหน้าโพสต์จริง
+3. กดเผยแพร่ ระบบจะ commit ขึ้น `main` แล้ว GitHub Actions build เว็บใหม่ ใช้เวลาราว 2 นาที
+4. **ก่อนแก้โค้ดในเครื่องทุกครั้ง ให้ `git pull`** เพราะ dashboard บันทึกตรงขึ้น GitHub ไม่ได้บันทึกลงเครื่อง
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+รูปที่อัปจาก dashboard ถูกย่อเป็น JPEG ไม่เกิน 1600px ถ้าลบโพสต์หรือเอารูปออกจากเนื้อหา ไฟล์รูปที่ไม่มีโพสต์ไหนใช้แล้วจะถูกลบให้ด้วย
 
-## Deploy on Vercel
+## เพิ่มหรือแก้ผลงาน
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+แก้ใน `src/data/projects.ts` ทุกรายการมีข้อความ 4 ภาษา และช่องสำคัญคือ
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `category`: `competition` | `camp` | `training` | `project` ใช้จัดกลุ่มในหน้าเรซูเม่ (รายการ `project` ไม่ขึ้นในเรซูเม่ หัวข้อโปรเจกต์ของเรซูเม่ให้แก้ที่ `resume.projects` ใน `src/messages/*.json`)
+- `award`: `gold` | `silver` | `bronze` ใส่เฉพาะรางวัลจริง ถ้ารางวัลไม่ได้เป็นเหรียญ ให้ใส่ข้อความเองใน `awardText` เช่น "Bronze Prize"
+- `highlight: true`: ขึ้นใน "ผลงานเด่น" หน้าแรก ควรมีราว 3 รายการ
+- `year`: เขียนเป็น พ.ศ. (เช่น `'2569'`) หน้าภาษาอื่นจะแสดงเป็น ค.ศ. ให้เอง
+- `image`: path ใน `public/images/...` ถ้ายังไม่มีรูปให้ใส่ `''` การ์ดจะแสดงตัวอักษรแทน
+
+ตัวเลขในหน้าเกี่ยวกับ (จำนวนผลงาน จำนวนรางวัล) นับจากไฟล์นี้อัตโนมัติ
+
+## รูปภาพ
+
+วางรูปต้นฉบับใน `public/images/` ได้เลย ตอน build สคริปต์ `scripts/optimize-images.mjs` จะสร้างไฟล์ WebP หลายขนาดไว้ใน `public/_img/` (ไม่ commit) แล้ว `next/image` จะเลือกขนาดที่พอดีกับจอให้ ระหว่าง dev จะใช้ไฟล์ต้นฉบับ ถ้าอยากดูไฟล์ที่ย่อแล้วในเครื่อง ให้รัน `npm run images`
+
+รูปพรีวิวตอนแชร์ลิงก์อยู่ที่ `public/og/{th,en,lo,zh}.png` (1200×630) ถ้าเปลี่ยนรูปโปรไฟล์หรือชื่อ ต้องสร้างรูปชุดนี้ใหม่
+
+## ตั้งค่าภายนอก
+
+- **นับคนเข้าเว็บ:** ใช้ Cloudflare Web Analytics (ดูสถิติที่ dash.cloudflare.com → Web Analytics) token อยู่ใน `src/lib/analytics.ts` ถ้าเว้นว่าง ระบบจะไม่โหลดอะไรเลย
+- **ฟอร์มติดต่อ:** ส่งผ่าน FormSubmit ถ้าได้รหัส alias จาก FormSubmit แล้ว ให้ตั้ง `NEXT_PUBLIC_FORMSUBMIT_TOKEN` ตอน build เพื่อไม่ต้องใส่อีเมลจริงไว้ในโค้ด ฟอร์มมีช่องดักบอทและกับดักเวลาอยู่แล้ว
+
+## Deploy
+
+push ขึ้น `main` → `.github/workflows/nextjs.yml` ติดตั้ง dependency, ย่อรูป, `next build` แล้วอัปโฟลเดอร์ `out/` ขึ้น GitHub Pages
