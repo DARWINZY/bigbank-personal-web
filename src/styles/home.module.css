@@ -302,6 +302,11 @@ html[lang='zh'] .storyTitle {
     flex: 0 0 min(82%, 340px);
     scroll-snap-align: start;
   }
+
+  /* Nothing to swipe to, so a lone post takes the full row */
+  .postItem:only-child {
+    flex-basis: min(100%, 480px);
+  }
 }
 
 @media (max-width: 768px) {
