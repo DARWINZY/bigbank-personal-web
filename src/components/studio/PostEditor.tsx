@@ -24,7 +24,6 @@ type FieldKey = keyof Fields;
 const EXTRA_LANGS: { id: Exclude<Locale, 'th'>; label: string }[] = [
   { id: 'en', label: 'English' },
   { id: 'lo', label: 'ລາວ' },
-  { id: 'zh', label: '中文' },
 ];
 
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -100,7 +99,6 @@ export default function PostEditor({ post, tags, takenSlugs, busy, onSave, onBac
     th: fieldsFor(post, 'th'),
     en: fieldsFor(post, 'en'),
     lo: fieldsFor(post, 'lo'),
-    zh: fieldsFor(post, 'zh'),
   }));
   const [tag, setTag] = useState(post?.tag ?? tags[0]?.id ?? '');
   const [date, setDate] = useState(post?.date ?? today());

@@ -2,7 +2,6 @@ const languages = [
   { href: '/th/', label: 'ภาษาไทย' },
   { href: '/en/', label: 'English' },
   { href: '/lo/', label: 'ພາສາລາວ' },
-  { href: '/zh/', label: '中文' },
 ];
 
 /** Shown only for the moment before the redirect, or if it never happens. */

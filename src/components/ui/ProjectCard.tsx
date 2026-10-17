@@ -8,7 +8,7 @@ import { awardLabel as getAwardLabel, type Award } from '@/data/awards';
 import { displayYear } from '@/lib/format';
 import uiStyles from '@/styles/ui.module.css';
 
-type Locale = 'th' | 'en' | 'lo' | 'zh';
+type Locale = 'th' | 'en' | 'lo';
 
 const awardBadgeClass: Record<Award, string> = {
   gold: uiStyles.awardBadgeGold,

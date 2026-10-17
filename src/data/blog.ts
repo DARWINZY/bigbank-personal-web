@@ -3,7 +3,7 @@ import tagsData from './blog-tags.json';
 
 // Posts and tags live in JSON so the studio dashboard can edit them through the GitHub API.
 
-export type Locale = 'th' | 'en' | 'lo' | 'zh';
+export type Locale = 'th' | 'en' | 'lo';
 
 /** Thai is required; other languages fall back to Thai when empty. */
 export type LocalizedText = { th: string } & Partial<Record<Exclude<Locale, 'th'>, string>>;
@@ -38,7 +38,7 @@ export function getTag(id: string, tags: BlogTag[] = blogTags): BlogTag {
   return tags.find((t) => t.id === id) ?? { id, label: id, color: FALLBACK_TAG_COLOR };
 }
 
-const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-LA', zh: 'zh-CN' };
+const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-LA' };
 
 /** e.g. "11 ตุลาคม 2569" in Thai, "11 October 2026" in English. */
 // Chrome ships without Lao date names and would format "lo" dates in English, which no longer

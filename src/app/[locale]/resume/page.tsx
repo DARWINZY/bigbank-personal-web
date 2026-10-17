@@ -10,11 +10,11 @@ import { buildMetadata, SITE_URL } from '@/lib/seo';
 import styles from '@/styles/resume.module.css';
 
 type Props = { params: Promise<{ locale: string }> };
-type Locale = 'th' | 'en' | 'lo' | 'zh';
+type Locale = 'th' | 'en' | 'lo';
 type Item = { title: string; text: string };
 type Skill = { label: string; items: string };
 
-const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-LA', zh: 'zh-CN' };
+const dateLocales: Record<string, string> = { th: 'th-TH', en: 'en-GB', lo: 'lo-LA' };
 const instagram = socialLinks.find((l) => l.name === 'Instagram');
 const instagramHandle = instagram ? `@${instagram.url.replace(/\/+$/, '').split('/').pop()}` : null;
 

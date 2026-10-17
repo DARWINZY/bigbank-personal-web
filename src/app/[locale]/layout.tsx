@@ -81,7 +81,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  if (!routing.locales.includes(locale as "th" | "en" | "lo" | "zh")) {
+  if (!routing.locales.includes(locale as "th" | "en" | "lo")) {
     notFound();
   }
 

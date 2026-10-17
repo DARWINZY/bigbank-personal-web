@@ -6,7 +6,6 @@ import { blogPosts } from '@/data/blog';
 import th from '@/messages/th.json';
 import en from '@/messages/en.json';
 import lo from '@/messages/lo.json';
-import zh from '@/messages/zh.json';
 
 // Becomes out/404.html, which GitHub Pages serves for every missing URL in every language.
 
@@ -23,10 +22,9 @@ const strings: Record<Locale, Omit<NotFoundCopy, 'nav'>> = {
   th: { title: 'หาหน้านี้ไม่เจอ', description: 'ลิงก์อาจพิมพ์ผิด หรือหน้านี้ถูกย้ายไปแล้ว', didYouMean: 'หมายถึงหน้านี้หรือเปล่า', home: 'หน้าแรก' },
   en: { title: "We couldn't find this page", description: 'The link may have a typo, or the page has moved.', didYouMean: 'Did you mean', home: 'Home' },
   lo: { title: 'ບໍ່ພົບໜ້ານີ້', description: 'ລິ້ງອາດພິມຜິດ ຫຼື ໜ້ານີ້ຖືກຍ້າຍໄປແລ້ວ', didYouMean: 'ໝາຍເຖິງໜ້ານີ້ບໍ່', home: 'ໜ້າຫຼັກ' },
-  zh: { title: '找不到这个页面', description: '链接可能有误，或页面已移动。', didYouMean: '你是不是要找', home: '首页' },
 };
 
-const messages = { th, en, lo, zh };
+const messages = { th, en, lo };
 const copy = Object.fromEntries(
   (Object.keys(strings) as Locale[]).map((l) => [
     l,

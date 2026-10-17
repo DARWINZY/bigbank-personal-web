@@ -4,7 +4,7 @@ import { routing } from '@/i18n/routing';
 export const SITE_URL = 'https://bigbank.nightbears.co';
 export const SITE_NAME = 'Bigbank';
 
-const ogLocales: Record<string, string> = { th: 'th_TH', en: 'en_US', lo: 'lo_LA', zh: 'zh_CN' };
+const ogLocales: Record<string, string> = { th: 'th_TH', en: 'en_US', lo: 'lo_LA' };
 
 /** `('th', 'blog/x')` → `/th/blog/x/` (the site is exported with trailing slashes). */
 export function localePath(locale: string, path = ''): string {

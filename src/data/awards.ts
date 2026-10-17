@@ -1,12 +1,12 @@
 import type { Project } from './projects';
 
-type Locale = 'th' | 'en' | 'lo' | 'zh';
+type Locale = 'th' | 'en' | 'lo';
 export type Award = NonNullable<Project['award']>;
 
 const awardLabels: Record<Award, Record<Locale, string>> = {
-  gold: { th: 'เหรียญทอง', en: 'Gold', lo: 'ຫຼຽນຄຳ', zh: '金奖' },
-  silver: { th: 'เหรียญเงิน', en: 'Silver', lo: 'ຫຼຽນເງິນ', zh: '银奖' },
-  bronze: { th: 'เหรียญทองแดง', en: 'Bronze', lo: 'ຫຼຽນທອງແດງ', zh: '铜奖' },
+  gold: { th: 'เหรียญทอง', en: 'Gold', lo: 'ຫຼຽນຄຳ' },
+  silver: { th: 'เหรียญเงิน', en: 'Silver', lo: 'ຫຼຽນເງິນ' },
+  bronze: { th: 'เหรียญทองแดง', en: 'Bronze', lo: 'ຫຼຽນທອງແດງ' },
 };
 
 /** Badge text for a project's award: its own wording if set, else the medal name. */

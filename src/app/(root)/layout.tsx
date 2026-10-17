@@ -24,7 +24,6 @@ const pickLanguage = `(function () {
         var l = String(langs[i]).toLowerCase();
         if (l.indexOf('th') === 0) break;
         if (l.indexOf('lo') === 0) { target = '/lo/'; break; }
-        if (l.indexOf('zh') === 0) { target = '/zh/'; break; }
         if (l.indexOf('en') === 0) { target = '/en/'; break; }
       }
     }

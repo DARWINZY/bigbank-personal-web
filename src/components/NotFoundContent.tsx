@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from '@/styles/not-found.module.css';
 
-export type Locale = 'th' | 'en' | 'lo' | 'zh';
+export type Locale = 'th' | 'en' | 'lo';
 
 export interface NotFoundCopy {
   title: string;
@@ -13,7 +13,7 @@ export interface NotFoundCopy {
   nav: Record<(typeof PAGES)[number], string>;
 }
 
-const LOCALES: Locale[] = ['th', 'en', 'lo', 'zh'];
+const LOCALES: Locale[] = ['th', 'en', 'lo'];
 const PAGES = ['about', 'portfolio', 'resume', 'blog', 'contact'] as const;
 
 interface Props {

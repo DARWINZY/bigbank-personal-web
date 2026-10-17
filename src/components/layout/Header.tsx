@@ -13,7 +13,6 @@ const languages = [
   { code: 'th', label: 'ไทย', name: 'Thai' },
   { code: 'en', label: 'EN', name: 'English' },
   { code: 'lo', label: 'ລາວ', name: 'Lao' },
-  { code: 'zh', label: '中文', name: 'Chinese' },
 ] as const;
 
 export default function Header() {
