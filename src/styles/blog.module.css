@@ -112,6 +112,12 @@
 
 .blogCardImage img {
   object-fit: cover;
+  transition: scale 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Inside an AnimatedSection the photo settles from a zoom as the card comes in */
+[data-revealed='false'] .blogCardImage img {
+  scale: 1.25;
 }
 
 .blogCardTag {

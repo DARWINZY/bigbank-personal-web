@@ -21,28 +21,64 @@
   z-index: 0;
 }
 
-.heroBgGlow1 {
+/* Aurora: soft radial glows drifting on slow, offset loops */
+.heroBgGlow1,
+.heroBgGlow2,
+.heroBgGlow3 {
   position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.heroBgGlow1 {
   top: -10%;
   right: -5%;
   width: 60vw;
   height: 60vw;
-  max-width: 700px;
-  max-height: 700px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
+  max-width: 760px;
+  max-height: 760px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.16) 0%, transparent 68%);
+  animation: auroraA 18s ease-in-out infinite alternate;
 }
 
 .heroBgGlow2 {
-  position: absolute;
   bottom: -20%;
   left: -10%;
   width: 50vw;
   height: 50vw;
-  max-width: 600px;
-  max-height: 600px;
-  background: radial-gradient(circle, rgba(186, 230, 253, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
+  max-width: 640px;
+  max-height: 640px;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.22) 0%, transparent 68%);
+  animation: auroraB 22s ease-in-out infinite alternate;
+}
+
+.heroBgGlow3 {
+  top: 30%;
+  left: 35%;
+  width: 36vw;
+  height: 36vw;
+  max-width: 460px;
+  max-height: 460px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.09) 0%, transparent 68%);
+  animation: auroraC 26s ease-in-out infinite alternate;
+}
+
+@keyframes auroraA {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-8vw, 6vh) scale(1.15); }
+  100% { transform: translate(-3vw, 14vh) scale(0.95); }
+}
+
+@keyframes auroraB {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10vw, -8vh) scale(1.2); }
+  100% { transform: translate(4vw, -16vh) scale(1.05); }
+}
+
+@keyframes auroraC {
+  0% { transform: translate(0, 0) scale(0.9); }
+  50% { transform: translate(-12vw, -10vh) scale(1.25); }
+  100% { transform: translate(8vw, 6vh) scale(1); }
 }
 
 /* Content */
@@ -110,12 +146,18 @@
   padding-top: 0.1em;
 }
 
+/* A highlight sweeps through the gradient name */
 .heroNameAccent {
   background: linear-gradient(
-    to right,
-    var(--color-accent-hover),
-    var(--color-accent)
+    100deg,
+    var(--color-accent-hover) 0%,
+    var(--color-accent) 30%,
+    #38BDF8 50%,
+    var(--color-accent) 70%,
+    var(--color-accent-hover) 100%
   );
+  background-size: 200% auto;
+  animation: nameShimmer 6s linear infinite;
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -129,6 +171,10 @@ html[lang="th"] .heroName {
   font-family: var(--font-trirong), var(--font-thai);
   font-weight: 600;
   letter-spacing: 0.01em;
+}
+
+@keyframes nameShimmer {
+  to { background-position: -200% center; }
 }
 
 /* Room for stacked Thai/Lao marks (e.g. ๊ over ิ) so background-clip doesn't cut them */
@@ -190,6 +236,76 @@ html[lang="lo"] .heroName {
   align-items: flex-end;
 }
 
+.heroImageEntrance {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Halo: a slowly turning colour ring plus two orbits, centred behind the photo */
+.heroHalo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(580px, 130%);
+  aspect-ratio: 1;
+  margin: calc(min(580px, 130%) / -2) 0 0 calc(min(580px, 130%) / -2);
+  pointer-events: none;
+}
+
+.heroHaloGlow {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #0EA5E9, #67E8F9, #818CF8, #38BDF8, #0EA5E9);
+  opacity: 0.4;
+  -webkit-mask-image: radial-gradient(circle, transparent 38%, #000 52%, transparent 70%);
+  mask-image: radial-gradient(circle, transparent 38%, #000 52%, transparent 70%);
+  animation: spin 14s linear infinite;
+}
+
+.heroOrbit {
+  position: absolute;
+  inset: 4%;
+  border: 1px dashed rgba(14, 165, 233, 0.35);
+  border-radius: 50%;
+  animation: spin 28s linear infinite;
+}
+
+.heroOrbitOuter {
+  inset: -6%;
+  border-style: solid;
+  border-color: rgba(14, 165, 233, 0.14);
+  animation-duration: 44s;
+  animation-direction: reverse;
+}
+
+.heroOrbitDot {
+  position: absolute;
+  top: -6px;
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.18), 0 0 18px 4px rgba(14, 165, 233, 0.55);
+}
+
+.heroOrbitOuter .heroOrbitDot {
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  background: #818CF8;
+  box-shadow: 0 0 14px 3px rgba(129, 140, 248, 0.55);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .heroImageContainer {
   position: relative;
   width: 100%;
@@ -197,7 +313,7 @@ html[lang="lo"] .heroName {
   aspect-ratio: 3 / 4;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-accent-ultra-light) 100%);
+  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
   box-shadow: var(--shadow-xl);
 }
 
@@ -206,6 +322,21 @@ html[lang="lo"] .heroName {
   height: 100%;
   object-fit: cover;
   object-position: top center;
+}
+
+/* A band of light passes over the photo every few seconds */
+.heroImageSheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.5) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: sheen 7s ease-in-out 2.4s infinite;
+  pointer-events: none;
+}
+
+@keyframes sheen {
+  0% { transform: translateX(-120%); }
+  22%, 100% { transform: translateX(120%); }
 }
 
 .heroImageDecor {
@@ -288,6 +419,11 @@ html[lang="lo"] .heroName {
     max-width: 300px;
   }
 
+  .heroHalo {
+    width: 400px;
+    margin: -200px 0 0 -200px;
+  }
+
   .heroName {
     font-size: var(--text-5xl);
   }
@@ -330,6 +466,11 @@ html[lang="lo"] .heroName {
   .heroImageContainer {
     max-width: 168px;
     border-radius: var(--radius-lg);
+  }
+
+  .heroHalo {
+    width: 250px;
+    margin: -125px 0 0 -125px;
   }
 
   .heroName {

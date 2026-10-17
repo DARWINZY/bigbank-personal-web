@@ -7,7 +7,6 @@ import Footer from '@/components/layout/Footer';
 import { Inter, Noto_Sans_Thai, Noto_Sans_Lao, Noto_Serif_Lao, Trirong, Playfair_Display } from 'next/font/google';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import BackToTop from '@/components/ui/BackToTop';
-import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 import { MotionProvider } from '@/components/providers/MotionProvider';
 import type { Metadata } from 'next';
@@ -133,48 +132,30 @@ export default async function LocaleLayout({ children, params }: Props) {
             }),
           }}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'light';
-                  if (theme === 'dark') {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                  } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
       </head>
       <body>
         <a href="#main" className="skip-link">{common('skip_to_content')}</a>
-        <ThemeProvider>
-          <LenisProvider>
-            <MotionProvider>
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              <ScrollProgress />
-              <Header />
-              <main id="main" tabIndex={-1}>{children}</main>
-              <Footer />
-              <BackToTop />
-              {CLOUDFLARE_ANALYTICS_TOKEN && (
-                // Cloudflare's snippet as is. next/script would add a non-CORS preload that a
-                // module script can't reuse, so the beacon downloaded twice.
-                <script
-                  type="module"
-                  defer
-                  src="https://static.cloudflareinsights.com/beacon.min.js"
-                  data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN })}
-                />
-              )}
-            </NextIntlClientProvider>
-            </MotionProvider>
-          </LenisProvider>
-        </ThemeProvider>
+        <LenisProvider>
+          <MotionProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <ScrollProgress />
+            <Header />
+            <main id="main" tabIndex={-1}>{children}</main>
+            <Footer />
+            <BackToTop />
+            {CLOUDFLARE_ANALYTICS_TOKEN && (
+              // Cloudflare's snippet as is. next/script would add a non-CORS preload that a
+              // module script can't reuse, so the beacon downloaded twice.
+              <script
+                type="module"
+                defer
+                src="https://static.cloudflareinsights.com/beacon.min.js"
+                data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN })}
+              />
+            )}
+          </NextIntlClientProvider>
+          </MotionProvider>
+        </LenisProvider>
       </body>
     </html>
   );

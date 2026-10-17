@@ -15,21 +15,24 @@ const parentVariant = (delay: number): Variants => ({
     opacity: 1,
     transition: {
       delay,
-      staggerChildren: 0.05,
+      staggerChildren: 0.045,
     },
   },
 });
 
 const childVariant: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: '0.6em', rotate: 6, filter: 'blur(8px)' },
   visible: {
     opacity: 1,
     y: 0,
+    rotate: 0,
+    filter: 'blur(0px)',
     transition: {
       type: 'spring',
-      damping: 12,
-      stiffness: 100,
+      damping: 14,
+      stiffness: 110,
     },
+    transitionEnd: { filter: 'none' },
   },
 };
 

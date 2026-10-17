@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function StudioLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="th" data-theme="light" className={`${inter.variable} ${notoSansThai.variable}`}>
+    <html lang="th" className={`${inter.variable} ${notoSansThai.variable}`}>
       <head>
         <meta name="referrer" content="no-referrer" />
       </head>

@@ -45,14 +45,9 @@ const copy = Object.fromEntries(
 
 const posts = blogPosts.map((p) => ({ slug: p.slug, title: p.title }));
 
-const themeScript = `(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();`;
-
 export default function GlobalNotFound() {
   return (
     <html lang="th" className={`${inter.variable} ${notoSansThai.variable} ${playfair.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body>
         <NotFoundContent copy={copy} posts={posts} />
       </body>

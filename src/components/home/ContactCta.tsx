@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { socialLinks } from '@/data/social';
+import AnimatedSection from '@/components/ui/AnimatedSection';
 import styles from '@/styles/home.module.css';
 import uiStyles from '@/styles/ui.module.css';
 
@@ -15,13 +16,13 @@ export default function ContactCta() {
   return (
     <section className={styles.cta} aria-labelledby="cta-title">
       <div className="container">
-        <div className={styles.ctaBox}>
+        <AnimatedSection className={styles.ctaBox}>
         <div>
           <h2 id="cta-title" className={styles.ctaTitle}>{t('title')}</h2>
           <p className={styles.ctaText}>{t('text')}</p>
         </div>
         <div className={styles.ctaActions}>
-          <Link href={`/${locale}/contact`} className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}>
+          <Link href={`/${locale}/contact`} className={`${uiStyles.btn} ${uiStyles.btnPrimary} ${uiStyles.btnShine}`}>
             {t('button')}
           </Link>
           {instagram && (
@@ -36,7 +37,7 @@ export default function ContactCta() {
             </a>
           )}
         </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

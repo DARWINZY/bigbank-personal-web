@@ -101,40 +101,6 @@
       "title": "Featured work",
       "view_all": "See all work"
     },
-    "project": {
-      "label": "Latest project",
-      "title": "Cull Before Edit",
-      "summary": "An AI helper that sets aside blurry shots and closed eyes first, so photographers have more time left to edit.",
-      "context": "A single shoot can produce 1,000–3,000 photos",
-      "before_label": "Culling by hand",
-      "before_value": "8–24 hrs",
-      "after_label": "Goal: AI rough cull",
-      "after_value": "15–30 min",
-      "steps": [
-        {
-          "title": "Group the same scene",
-          "text": "Each photo gets a pHash; photos less than 10 bits apart count as one scene."
-        },
-        {
-          "title": "Find faces",
-          "text": "InsightFace detects faces and aligns 106 facial landmarks."
-        },
-        {
-          "title": "Check eyes and sharpness",
-          "text": "An EAR below 0.20 counts as closed eyes; the face detection score helps judge sharpness."
-        },
-        {
-          "title": "Keep the key shots",
-          "text": "If no photo in a scene has everyone's eyes open, only photos where more than half the people blink are set aside."
-        },
-        {
-          "title": "Sort into folders",
-          "text": "Keep, Blur_photo and Blink_photo, for the photographer to check."
-        }
-      ],
-      "credit": "Built with FIBO, KMUTT, at 2B-KMUTT Batch 20",
-      "link": "Read about the 2B-KMUTT camp"
-    },
     "latest": {
       "title": "Latest posts",
       "view_all": "See all posts"

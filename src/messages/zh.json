@@ -101,40 +101,6 @@
       "title": "精选作品",
       "view_all": "查看全部作品"
     },
-    "project": {
-      "label": "最新项目",
-      "title": "先筛后修",
-      "summary": "一个帮摄影师先剔除模糊和闭眼照片的 AI，让他们把时间留给修图。",
-      "context": "一次拍摄可产出约 1,000–3,000 张照片",
-      "before_label": "全部手动筛选",
-      "before_value": "8–24 小时",
-      "after_label": "目标：AI 初筛",
-      "after_value": "15–30 分钟",
-      "steps": [
-        {
-          "title": "归类同一场景",
-          "text": "为每张照片生成 pHash，差异小于 10 位即视为同一场景。"
-        },
-        {
-          "title": "检测人脸",
-          "text": "InsightFace 检测人脸并对齐 106 个面部关键点。"
-        },
-        {
-          "title": "检查眼睛与清晰度",
-          "text": "EAR 低于 0.20 视为闭眼，并参考人脸检测分数判断清晰度。"
-        },
-        {
-          "title": "保住关键照片",
-          "text": "如果某个场景没有所有人都睁眼的照片，只剔除超过一半人闭眼的照片。"
-        },
-        {
-          "title": "分类到文件夹",
-          "text": "分为 Keep、Blur_photo 和 Blink_photo，交给摄影师复查。"
-        }
-      ],
-      "credit": "与 KMUTT FIBO 合作，于 2B-KMUTT 第 20 期营队完成",
-      "link": "阅读 2B-KMUTT 营队文章"
-    },
     "latest": {
       "title": "最新文章",
       "view_all": "查看全部文章"

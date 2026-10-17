@@ -23,7 +23,7 @@ export default function PortfolioSection() {
 
         <div className={styles.portfolioGrid}>
           {projects.filter(p => p.featured).map((project, index) => (
-            <AnimatedSection key={project.id} delay={index * 0.1}>
+            <AnimatedSection key={project.id} delay={(index % 2) * 0.12} tilt>
               <ProjectCard project={project} />
             </AnimatedSection>
           ))}

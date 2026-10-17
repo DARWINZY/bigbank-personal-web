@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import PostCard from '@/components/blog/PostCard';
+import AnimatedSection from '@/components/ui/AnimatedSection';
+import TextReveal from '@/components/ui/TextReveal';
 import { blogPosts } from '@/data/blog';
 import styles from '@/styles/home.module.css';
 
@@ -18,13 +20,17 @@ export default function LatestPosts() {
     <section className={`section ${styles.latest}`} aria-labelledby="latest-title">
       <div className="container">
         <div className={styles.sectionHead}>
-          <h2 id="latest-title" className={styles.sectionTitle}>{t('title')}</h2>
+          <h2 id="latest-title" className={styles.sectionTitle}>
+            <TextReveal text={t('title')} />
+          </h2>
           <Link href={`/${locale}/blog`} className={styles.viewAll}>{t('view_all')}</Link>
         </div>
         {/* Phones: a swipeable row instead of three tall cards */}
         <div className={styles.postRow}>
-          {latest.map((post) => (
-            <PostCard key={post.id} post={post} headingLevel="h3" className={styles.postItem} />
+          {latest.map((post, index) => (
+            <AnimatedSection key={post.id} delay={index * 0.12} tilt className={styles.postItem}>
+              <PostCard post={post} headingLevel="h3" />
+            </AnimatedSection>
           ))}
         </div>
       </div>

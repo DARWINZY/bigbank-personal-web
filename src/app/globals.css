@@ -1,16 +1,16 @@
 /* ========================================
    Bigbank Portfolio — Design System
-   Theme: Clean White + Sky Blue
+   Theme: Clean White + Light Gray, Sky Blue accent
    ======================================== */
 
 /* Fonts loaded via next/font/google in layout.tsx */
 
 /* ---- CSS Variables ---- */
 :root {
-  /* Colors — White + Sky Blue */
+  /* Colors — White + light gray surfaces, Sky Blue accent */
   --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F0F7FF;
-  --color-bg-tertiary: #E8F1FD;
+  --color-bg-secondary: #F3F4F6;
+  --color-bg-tertiary: #E9EBEF;
   --color-accent: #0EA5E9;
   --color-accent-hover: #0284C7;
   --color-accent-light: #BAE6FD;
@@ -22,7 +22,7 @@
   --color-on-accent: #FFFFFF;
   --color-text-primary: #0F172A;
   --color-text-secondary: #475569;
-  --color-text-muted: #5F6E84; /* 5.2:1 on white, 4.8:1 on bg-secondary */
+  --color-text-muted: #5F6E84; /* 5.2:1 on white, 4.7:1 on bg-secondary */
   --color-border: #E2E8F0;
   --color-card-bg: #FFFFFF;
   --color-card-shadow: rgba(14, 165, 233, 0.08);
@@ -85,43 +85,6 @@
   --z-menu: 110;
   --z-overlay: 120;
   --z-modal: 130;
-}
-
-[data-theme='dark'] {
-  /* Colors — Deep Slate + Neon Cyan */
-  --color-bg-primary: #020617; /* Slate 950 */
-  --color-bg-secondary: #0F172A; /* Slate 900 */
-  --color-bg-tertiary: #1E293B; /* Slate 800 */
-  
-  --color-accent: #0EA5E9; /* Sky 500 */
-  --color-accent-hover: #38BDF8; /* Sky 400 */
-  --color-accent-light: rgba(14, 165, 233, 0.2);
-  --color-accent-ultra-light: rgba(14, 165, 233, 0.1);
-  --color-accent-text: #38BDF8;
-  --color-accent-fill: #38BDF8;
-  --color-accent-fill-hover: #7DD3FC;
-  --color-on-accent: #0F172A;
-  
-  --color-text-primary: #F8FAFC; /* Slate 50 */
-  --color-text-secondary: #CBD5E1; /* Slate 300 */
-  --color-text-muted: #94A3B8; /* Slate 400: 7:1 on bg, 6.9:1 on cards */
-  
-  --color-border: #334155; /* Slate 700 */
-  --color-card-bg: #0F172A; /* Slate 900 */
-  
-  --color-card-shadow: rgba(0, 0, 0, 0.3);
-  --color-card-shadow-hover: rgba(14, 165, 233, 0.25);
-  --color-overlay: rgba(2, 6, 23, 0.8);
-  --color-header-bg: rgba(2, 6, 23, 0.85);
-  --color-header-border: rgba(51, 65, 85, 0.5);
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.6);
-  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(51, 65, 85, 0.5);
-  --shadow-card-hover: 0 8px 32px rgba(14, 165, 233, 0.15), 0 0 0 1px rgba(14, 165, 233, 0.3);
 }
 
 /* ---- CSS Reset ---- */
@@ -286,9 +249,8 @@ h1, h2, h3, h4, h5, h6 {
     display: none !important;
   }
 
-  /* Always print the light palette, even from dark mode */
-  :root,
-  [data-theme='dark'] {
+  /* Print on plain white */
+  :root {
     --color-bg-primary: #FFFFFF;
     --color-bg-secondary: #FFFFFF;
     --color-card-bg: #FFFFFF;
@@ -303,6 +265,18 @@ h1, h2, h3, h4, h5, h6 {
 
   body {
     background: #FFFFFF;
+  }
+}
+
+/* ---- Page enter: [locale]/template.tsx remounts this wrapper on every navigation ---- */
+.page-enter {
+  animation: pageEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
   }
 }
 
