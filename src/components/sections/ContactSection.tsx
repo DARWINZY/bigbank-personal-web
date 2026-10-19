@@ -2,7 +2,6 @@
 
 import { useRef, useState, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import { socialLinks } from '@/data/social';
 import styles from '@/styles/contact.module.css';
@@ -16,9 +15,10 @@ export default function ContactSection() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const startedAt = useRef<number | null>(null);
 
-  const showResult = (result: 'success' | 'error') => {
-    setStatus(result);
-    setTimeout(() => setStatus('idle'), result === 'success' ? 6000 : 4000);
+  // The result stays until the person types again, so nobody misses it
+  const showResult = (result: 'success' | 'error') => setStatus(result);
+  const clearResult = () => {
+    if (status === 'success' || status === 'error') setStatus('idle');
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -77,119 +77,105 @@ export default function ContactSection() {
   };
 
   return (
-    <section className={`section ${styles.contact}`} id="contact">
+    <section className={styles.contact}>
       <div className="container">
-        <AnimatedSection>
-          <SectionTitle
-            label={t('label')}
-            title={t('title')}
-            description={t('description')}
-          />
-        </AnimatedSection>
+        <SectionTitle as="h1" label={t('label')} title={t('title')} description={t('description')} />
 
         <div className={styles.contactGrid}>
-          {/* Contact Form */}
-          <AnimatedSection direction="left" delay={0.1}>
-            <form
-              className={styles.contactForm}
-              onSubmit={handleSubmit}
-              onFocus={() => { startedAt.current ??= Date.now(); }}
+          <form
+            className={styles.contactForm}
+            onSubmit={handleSubmit}
+            onFocus={() => { startedAt.current ??= Date.now(); }}
+            onInput={clearResult}
+          >
+            {/* Honeypot: hidden from people, irresistible to form-filling bots */}
+            <div className={styles.honeypot} aria-hidden="true">
+              <label htmlFor="contact-website">Website</label>
+              <input id="contact-website" type="text" name="_honey" tabIndex={-1} autoComplete="off" />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="contact-name" className={styles.formLabel}>
+                {t('form.name')}
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                className={styles.formInput}
+                placeholder={t('form.name_placeholder')}
+                maxLength={100}
+                autoComplete="name"
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="contact-email" className={styles.formLabel}>
+                {t('form.email')}
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                className={styles.formInput}
+                placeholder={t('form.email_placeholder')}
+                maxLength={254}
+                autoComplete="email"
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="contact-message" className={styles.formLabel}>
+                {t('form.message')}
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                className={styles.formTextarea}
+                placeholder={t('form.message_placeholder')}
+                maxLength={5000}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className={`${uiStyles.btn} ${uiStyles.btnPrimary} ${styles.formSubmit}`}
+              disabled={status === 'sending'}
+              aria-busy={status === 'sending'}
             >
-              {/* Honeypot: hidden from people, irresistible to form-filling bots */}
-              <div className={styles.honeypot} aria-hidden="true">
-                <label htmlFor="contact-website">Website</label>
-                <input id="contact-website" type="text" name="_honey" tabIndex={-1} autoComplete="off" />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="contact-name" className={styles.formLabel}>
-                  {t('form.name')}
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  className={styles.formInput}
-                  placeholder={t('form.name_placeholder')}
-                  maxLength={100}
-                  autoComplete="name"
-                  required
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="contact-email" className={styles.formLabel}>
-                  {t('form.email')}
-                </label>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  className={styles.formInput}
-                  placeholder={t('form.email_placeholder')}
-                  maxLength={254}
-                  autoComplete="email"
-                  required
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="contact-message" className={styles.formLabel}>
-                  {t('form.message')}
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  className={styles.formTextarea}
-                  placeholder={t('form.message_placeholder')}
-                  maxLength={5000}
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className={`${uiStyles.btn} ${uiStyles.btnPrimary} ${styles.formSubmit}`}
-                disabled={status === 'sending'}
-              >
-                {status === 'sending' ? t('form.sending') : t('form.send')}
-              </button>
+              {status === 'sending' ? t('form.sending') : t('form.send')}
+            </button>
+            {/* Always in the page, so screen readers announce what appears inside it */}
+            <div aria-live="polite">
               {status === 'success' && (
                 <p className={`${styles.formMessage} ${styles.formSuccess}`}>
                   {t('form.success')}
                 </p>
               )}
               {status === 'error' && (
-                <p className={`${styles.formMessage} ${styles.formError}`}>
+                <p className={`${styles.formMessage} ${styles.formError}`} role="alert">
                   {t('form.error')}
                 </p>
               )}
-            </form>
-          </AnimatedSection>
-
-          {/* Social Info */}
-          <AnimatedSection direction="right" delay={0.2} className={styles.contactInfoWrap}>
-            <div className={styles.contactInfo}>
-              <div className={styles.contactOr}>
-                <span>{t('or')}</span>
-              </div>
-              <div className={styles.contactSocialGrid}>
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.contactSocialLink} ${link.name === 'Instagram' ? styles.contactSocialLinkGold : ''}`}
-                  >
-                    {link.name === 'Instagram' && (
-                      <span className={styles.contactSocialBadge}>{t('recommended')}</span>
-                    )}
-                    <div className={`${styles.contactSocialIcon} ${link.name === 'Instagram' ? styles.contactSocialIconGold : ''}`}>
-                      <link.icon size={18} />
-                    </div>
-                    {link.name}
-                  </a>
-                ))}
-              </div>
             </div>
-          </AnimatedSection>
+          </form>
+
+          {/* Phones show these first: one tap to message is quicker than the form */}
+          <aside className={styles.contactInfo}>
+            <p className={styles.contactOr}>{t('or')}</p>
+            <ul className={styles.socialList}>
+              {socialLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.socialRow}>
+                    <span className={styles.socialIcon} data-network={link.name.toLowerCase()}>
+                      <link.icon size={18} aria-hidden="true" />
+                    </span>
+                    <span className={styles.socialName}>{link.name}</span>
+                    {link.name === 'Instagram' && <span className={styles.recommended}>{t('recommended')}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </div>
     </section>

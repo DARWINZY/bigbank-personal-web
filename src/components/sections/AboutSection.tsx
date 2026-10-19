@@ -1,8 +1,5 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionTitle from '@/components/ui/SectionTitle';
 import { projects } from '@/data/projects';
 import styles from '@/styles/about.module.css';
@@ -11,6 +8,7 @@ import styles from '@/styles/about.module.css';
 const projectCount = projects.length;
 const awardCount = projects.filter((p) => p.award).length;
 
+/** Apple-style bento: gray tiles for the photo, the intro and four big numbers. */
 export default function AboutSection() {
   const t = useTranslations('about');
   const stats = [
@@ -21,42 +19,30 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className={`section ${styles.about}`} id="about">
+    <section className={styles.about}>
       <div className="container">
-        <AnimatedSection>
-          <SectionTitle
-            label={t('label')}
-            title={t('title')}
-            align="left"
-          />
-        </AnimatedSection>
+        <SectionTitle as="h1" label={t('label')} title={t('title')} />
 
         <div className={styles.bentoGrid}>
-          {/* Main Photo Cell */}
-          <AnimatedSection delay={0.1} className={`${styles.bentoCell} ${styles.bentoCellPhoto}`}>
+          <div className={`${styles.tile} ${styles.tilePhoto}`}>
             <Image
               src="/images/about-photo.jpg"
-              alt="Bigbank — About Me"
+              alt={t('title')}
               fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 500px"
             />
-          </AnimatedSection>
+          </div>
 
-          {/* Intro Cell */}
-          <AnimatedSection delay={0.2} className={`${styles.bentoCell} ${styles.bentoCellIntro}`}>
+          <div className={`${styles.tile} ${styles.tileIntro}`}>
             <p className={styles.aboutText}>{t('description1')}</p>
             <p className={styles.aboutText}>{t('description2')}</p>
-          </AnimatedSection>
+          </div>
 
-          {/* Stats Cells */}
-          {stats.map((stat, index) => (
-            <AnimatedSection key={stat.key} delay={0.3 + index * 0.1} className={`${styles.bentoCell} ${styles.bentoCellStat}`}>
-              <div className={styles.aboutStatNumber}>{stat.value}</div>
-              <div className={styles.aboutStatLabel}>
-                {t(`stats.${stat.key}`)}
-              </div>
-            </AnimatedSection>
+          {stats.map((stat) => (
+            <div key={stat.key} className={`${styles.tile} ${styles.tileStat}`}>
+              <p className={styles.statValue}>{stat.value}</p>
+              <p className={styles.statLabel}>{t(`stats.${stat.key}`)}</p>
+            </div>
           ))}
         </div>
       </div>

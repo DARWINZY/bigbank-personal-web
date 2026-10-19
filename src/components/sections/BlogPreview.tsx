@@ -30,7 +30,7 @@ export default function BlogPreview() {
 
   const goTo = (n: number) => {
     setPage(n);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (

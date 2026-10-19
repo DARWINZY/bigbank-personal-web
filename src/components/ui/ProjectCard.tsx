@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { FiExternalLink, FiGithub, FiAward, FiCalendar } from 'react-icons/fi';
 import type { Project } from '@/data/projects';
 import { awardLabel as getAwardLabel, type Award } from '@/data/awards';
 import { displayYear } from '@/lib/format';
@@ -10,38 +9,36 @@ import uiStyles from '@/styles/ui.module.css';
 
 type Locale = 'th' | 'en' | 'lo';
 
-const awardBadgeClass: Record<Award, string> = {
-  gold: uiStyles.awardBadgeGold,
-  silver: uiStyles.awardBadgeSilver,
-  bronze: uiStyles.awardBadgeBronze,
-};
-
-const awardCardClass: Record<Award, string> = {
-  gold: uiStyles.projectCardGold,
-  silver: uiStyles.projectCardSilver,
-  bronze: uiStyles.projectCardBronze,
+const awardClass: Record<Award, string> = {
+  gold: uiStyles.awardGold,
+  silver: uiStyles.awardSilver,
+  bronze: uiStyles.awardBronze,
 };
 
 interface Props {
   project: Project;
   /** Image `sizes`; the default fits the two-column portfolio grid. */
   sizes?: string;
+  /** Home page: three lines of description, the portfolio shows it all. */
+  clampDescription?: boolean;
+  /** h2 on the portfolio page; h3 where the cards sit under a section heading. */
+  headingLevel?: 'h2' | 'h3';
 }
 
-export default function ProjectCard({ project, sizes = '(max-width: 480px) 96px, (max-width: 768px) 720px, 600px' }: Props) {
+export default function ProjectCard({
+  project,
+  sizes = '(max-width: 480px) 84px, (max-width: 768px) 720px, 500px',
+  clampDescription = false,
+  headingLevel = 'h3',
+}: Props) {
   const t = useTranslations('portfolio');
   const locale = useLocale() as Locale;
   const awardLabel = getAwardLabel(project, locale);
+  const Heading = headingLevel;
 
   return (
-    <div className={`${uiStyles.projectCard} ${project.award ? awardCardClass[project.award] : ''}`}>
+    <article className={uiStyles.projectCard}>
       <div className={uiStyles.projectCardImage}>
-        {project.award && (
-          <div className={`${uiStyles.awardBadge} ${awardBadgeClass[project.award]}`}>
-            <FiAward size={14} />
-            {!project.badgeIconOnly && awardLabel}
-          </div>
-        )}
         {project.image ? (
           <Image
             src={project.image}
@@ -49,7 +46,6 @@ export default function ProjectCard({ project, sizes = '(max-width: 480px) 96px,
             width={640}
             height={400}
             sizes={sizes}
-            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
           />
         ) : (
           <div className={uiStyles.projectCardPlaceholder} aria-hidden="true">
@@ -57,68 +53,44 @@ export default function ProjectCard({ project, sizes = '(max-width: 480px) 96px,
           </div>
         )}
       </div>
-      <div className={uiStyles.projectCardContent}>
-        <h3 className={uiStyles.projectCardTitle}>
-          {project.title[locale]}
-        </h3>
-        {/* Phones only: award and year move next to the thumbnail */}
-        <div className={uiStyles.projectCardMeta}>
-          {project.award && (
-            <span className={`${uiStyles.awardChip} ${awardBadgeClass[project.award]}`}>
-              <FiAward size={11} aria-hidden="true" />
-              {project.badgeIconOnly ? null : awardLabel}
-            </span>
+
+      <div className={uiStyles.projectCardBody}>
+        <div className={uiStyles.projectCardHead}>
+          {project.award && awardLabel && (
+            <p className={`${uiStyles.projectCardAward} ${awardClass[project.award]}`}>{awardLabel}</p>
           )}
+          <Heading className={uiStyles.projectCardTitle}>{project.title[locale]}</Heading>
           {project.year && (
-            <span className={uiStyles.projectCardYear}>
-              {displayYear(project.year, locale)} {project.grade && `(${project.grade[locale]})`}
-            </span>
+            <p className={uiStyles.projectCardYear}>
+              {displayYear(project.year, locale)}
+              {project.grade && ` · ${project.grade[locale]}`}
+            </p>
           )}
         </div>
-        <p className={uiStyles.projectCardDesc}>
+
+        <p className={`${uiStyles.projectCardDesc} ${clampDescription ? uiStyles.projectCardDescClamp : ''}`}>
           {project.description[locale]}
         </p>
-        <div className={uiStyles.projectCardTags}>
-          {project.tags.map((tag) => (
-            <span key={tag} className={uiStyles.projectCardTag}>
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className={`${uiStyles.projectCardLinks} ${project.year ? uiStyles.projectCardLinksYear : ''}`}>
-          {project.year ? (
-            <div className={uiStyles.projectCardLink} style={{ cursor: 'default' }}>
-              <FiCalendar size={14} />
-              {displayYear(project.year, locale)} {project.grade && `(${project.grade[locale]})`}
-            </div>
-          ) : (
-            <>
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={uiStyles.projectCardLink}
-                >
-                  <FiExternalLink size={14} />
-                  {t('view_live')}
-                </a>
-              )}
-              {project.codeUrl && (
-                <a
-                  href={project.codeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={uiStyles.projectCardLink}
-                >
-                  <FiGithub size={14} />
-                  {t('view_code')}
-                </a>
-              )}
-            </>
-          )}
-        </div>
+
+        {project.tags.length > 0 && (
+          <p className={uiStyles.projectCardTags}>{project.tags.join(' · ')}</p>
+        )}
+
+        {(project.liveUrl || project.codeUrl) && (
+          <div className={uiStyles.projectCardLinks}>
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={uiStyles.chevronLink}>
+                {t('view_live')}
+              </a>
+            )}
+            {project.codeUrl && (
+              <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className={uiStyles.chevronLink}>
+                {t('view_code')}
+              </a>
+            )}
+          </div>
+        )}
       </div>
-    </div>
+    </article>
   );
 }

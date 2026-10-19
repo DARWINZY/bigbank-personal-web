@@ -1,28 +1,27 @@
 /* ========================================
-   Resume: a document sheet on screen, a clean A4 page in print
+   Resume: a white document resting on gray on screen (elevation 1), a clean A4 page in print
    ======================================== */
 
 .page {
   min-height: 100vh;
-  padding: 112px 20px 96px;
+  padding: var(--space-12) var(--section-padding-x) var(--section-padding-y);
   background: var(--color-bg-secondary);
 }
 
 .sheet {
   max-width: 860px;
   margin: 0 auto;
-  padding: 56px 64px 40px;
+  padding: var(--space-14) var(--space-16) var(--space-10);
   background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-raised);
 }
 
 .head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 24px;
+  gap: var(--space-6);
 }
 
 /* Same display face as the hero name */
@@ -30,7 +29,7 @@
   padding-top: 0.1em;
   font-family: var(--font-serif);
   font-size: var(--text-4xl);
-  font-weight: 700;
+  font-weight: var(--weight-semibold);
   line-height: 1.25;
   color: var(--color-text-primary);
 }
@@ -38,33 +37,31 @@
 html[lang='th'] .name {
   padding-top: 0.3em;
   font-family: var(--font-trirong), var(--font-thai);
-  font-weight: 600;
 }
 
 html[lang='lo'] .name {
   padding-top: 0.3em;
   font-family: var(--font-noto-serif-lao), var(--font-lao);
-  font-weight: 600;
 }
 
 .nickname {
   font-size: 0.6em;
-  font-weight: 500;
+  font-weight: var(--weight-regular);
   color: var(--color-text-muted);
 }
 
 .role {
-  margin-top: 6px;
+  margin-top: var(--space-1-5);
   font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-accent-text);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
 }
 
 .contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 20px;
-  margin-top: 12px;
+  gap: var(--space-1) var(--space-5);
+  margin-top: var(--space-3);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   list-style: none;
@@ -73,39 +70,26 @@ html[lang='lo'] .name {
 .contact li {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-1-5);
 }
 
-.contact a:hover {
+.contact a {
   color: var(--color-accent-text);
 }
 
+.contact a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* The button itself is the shared small primary pill; this only keeps it from shrinking */
 .printButton {
-  display: inline-flex;
   flex-shrink: 0;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-on-accent);
-  background: var(--color-accent-fill);
-  border-radius: var(--radius-md);
-  transition: background var(--transition-fast);
-}
-
-.printButton:hover {
-  background: var(--color-accent-fill-hover);
-}
-
-.printButton:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
 }
 
 .summary {
-  margin-top: 24px;
-  padding-bottom: 28px;
+  margin-top: var(--space-6);
+  padding-bottom: var(--space-7);
   font-size: var(--text-base);
   line-height: 1.75;
   color: var(--color-text-secondary);
@@ -116,23 +100,23 @@ html[lang='lo'] .name {
 .section {
   display: grid;
   grid-template-columns: 140px minmax(0, 1fr);
-  gap: 24px;
-  padding: 22px 0;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
 .sectionLabel {
   padding-top: 2px;
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: var(--weight-semibold);
   line-height: 1.5;
-  color: var(--color-accent-text);
+  color: var(--color-text-primary);
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-3);
   list-style: none;
 }
 
@@ -140,7 +124,7 @@ html[lang='lo'] .name {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-4);
   break-inside: avoid;
 }
 
@@ -153,14 +137,14 @@ html[lang='lo'] .name {
 
 .entryTitle {
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   line-height: 1.5;
   color: var(--color-text-primary);
 }
 
 .entryNote {
   font-size: var(--text-sm);
-  line-height: 1.6;
+  line-height: var(--leading-body);
   color: var(--color-text-secondary);
 }
 
@@ -168,37 +152,38 @@ html[lang='lo'] .name {
   display: inline-flex;
   flex-shrink: 0;
   align-items: baseline;
-  gap: 10px;
+  gap: var(--space-3);
   font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
   color: var(--color-text-muted);
   white-space: nowrap;
 }
 
 .award {
-  padding: 1px 8px;
+  padding: 1px var(--space-2);
   font-size: var(--text-xs);
-  font-weight: 700;
-  color: var(--color-accent-text);
-  background: var(--color-accent-ultra-light);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
   border-radius: var(--radius-full);
 }
 
 .skills {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .skillRow {
   display: grid;
   grid-template-columns: 140px minmax(0, 1fr);
-  gap: 16px;
+  gap: var(--space-4);
   font-size: var(--text-sm);
-  line-height: 1.6;
+  line-height: var(--leading-body);
 }
 
 .skillRow dt {
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
 }
 
@@ -207,25 +192,24 @@ html[lang='lo'] .name {
 }
 
 .updated {
-  margin-top: 20px;
+  margin-top: var(--space-5);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   text-align: right;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 767px) {
   .page {
-    padding: 80px 12px 56px;
+    padding: var(--space-4) var(--space-3) var(--space-14);
   }
 
   .sheet {
-    padding: 28px 20px 24px;
-    border-radius: var(--radius-md);
+    padding: var(--space-7) var(--space-5) var(--space-6);
   }
 
   .head {
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-4);
   }
 
   .name {
@@ -234,8 +218,8 @@ html[lang='lo'] .name {
 
   .section {
     grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
-    padding: 18px 0;
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
   }
 
   .entry {
@@ -260,7 +244,6 @@ html[lang='lo'] .name {
   .sheet {
     max-width: none;
     padding: 0;
-    border: none;
     border-radius: 0;
     box-shadow: none;
   }

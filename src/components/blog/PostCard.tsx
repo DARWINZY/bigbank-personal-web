@@ -1,7 +1,6 @@
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiClock } from 'react-icons/fi';
 import { type BlogPost, formatPostDate, getTag, localize, readableTextColor } from '@/data/blog';
 import styles from '@/styles/blog.module.css';
 
@@ -26,7 +25,7 @@ export default function PostCard({ post, priority = false, headingLevel = 'h2', 
           src={post.image}
           alt={localize(post.title, locale)}
           fill
-          sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 320px"
           priority={priority}
         />
         <span
@@ -39,13 +38,11 @@ export default function PostCard({ post, priority = false, headingLevel = 'h2', 
       <div className={styles.blogCardBody}>
         <Heading className={styles.blogCardTitle}>{localize(post.title, locale)}</Heading>
         <p className={styles.blogCardDesc}>{localize(post.description, locale)}</p>
-        <div className={styles.blogCardMeta}>
+        <p className={styles.blogCardMeta}>
           <time dateTime={post.date}>{formatPostDate(post.date, locale)}</time>
-          <span className={styles.readTime}>
-            <FiClock size={14} aria-hidden="true" />
-            {t('read_time', { minutes: post.readTime })}
-          </span>
-        </div>
+          <span aria-hidden="true"> · </span>
+          {t('read_time', { minutes: post.readTime })}
+        </p>
       </div>
     </Link>
   );

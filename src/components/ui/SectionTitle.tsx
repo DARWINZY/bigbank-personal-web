@@ -1,20 +1,20 @@
 import styles from '@/styles/ui.module.css';
-import TextReveal from '@/components/ui/TextReveal';
 
 interface SectionTitleProps {
   label: string;
   title: string;
   description?: string;
   align?: 'left' | 'center';
+  /** h1 when the title heads its own page. */
+  as?: 'h1' | 'h2';
 }
 
-export default function SectionTitle({ label, title, description, align = 'center' }: SectionTitleProps) {
+/** Eyebrow, headline and an optional intro line, Apple style. */
+export default function SectionTitle({ label, title, description, align = 'left', as: Heading = 'h2' }: SectionTitleProps) {
   return (
     <div className={`${styles.sectionTitle} ${align === 'center' ? styles.sectionTitleCenter : ''}`}>
-      <span className={styles.sectionLabel}>{label}</span>
-      <h2 className={styles.sectionHeading}>
-        <TextReveal text={title} />
-      </h2>
+      <p className={styles.sectionLabel}>{label}</p>
+      <Heading className={styles.sectionHeading}>{title}</Heading>
       {description && <p className={styles.sectionDescription}>{description}</p>}
     </div>
   );

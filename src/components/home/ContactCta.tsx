@@ -1,9 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { socialLinks } from '@/data/social';
-import AnimatedSection from '@/components/ui/AnimatedSection';
 import styles from '@/styles/home.module.css';
 import uiStyles from '@/styles/ui.module.css';
 
@@ -16,28 +13,20 @@ export default function ContactCta() {
   return (
     <section className={styles.cta} aria-labelledby="cta-title">
       <div className="container">
-        <AnimatedSection className={styles.ctaBox}>
-        <div>
+        <div className={styles.ctaBox}>
           <h2 id="cta-title" className={styles.ctaTitle}>{t('title')}</h2>
           <p className={styles.ctaText}>{t('text')}</p>
+          <div className={styles.ctaActions}>
+            <Link href={`/${locale}/contact`} className={`${uiStyles.btn} ${uiStyles.btnPrimary}`}>
+              {t('button')}
+            </Link>
+            {instagram && (
+              <a href={instagram.url} target="_blank" rel="noopener noreferrer" className={uiStyles.chevronLink}>
+                {instagram.name}
+              </a>
+            )}
+          </div>
         </div>
-        <div className={styles.ctaActions}>
-          <Link href={`/${locale}/contact`} className={`${uiStyles.btn} ${uiStyles.btnPrimary} ${uiStyles.btnShine}`}>
-            {t('button')}
-          </Link>
-          {instagram && (
-            <a
-              href={instagram.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${uiStyles.btn} ${uiStyles.btnSecondary}`}
-            >
-              <instagram.icon size={16} />
-              {instagram.name}
-            </a>
-          )}
-        </div>
-        </AnimatedSection>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import HeroSection from '@/components/sections/HeroSection';
-import TechMarquee from '@/components/sections/TechMarquee';
+import TechStack from '@/components/home/TechStack';
 import FeaturedWork from '@/components/home/FeaturedWork';
 import LatestPosts from '@/components/home/LatestPosts';
 import ContactCta from '@/components/home/ContactCta';
@@ -13,7 +13,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <HeroSection />
-      <TechMarquee />
+      <TechStack />
       <FeaturedWork />
       <LatestPosts />
       <ContactCta />

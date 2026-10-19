@@ -1,310 +1,232 @@
 /* ========================================
-   Header Styles
+   Global nav: a thin translucent bar, Apple style. It never changes as the page scrolls.
    ======================================== */
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
   z-index: var(--z-header);
-  padding: 20px 40px;
-  transition: all var(--transition-base);
-}
-
-.headerScrolled {
+  height: var(--nav-height);
   background: var(--color-header-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 20px rgba(14, 165, 233, 0.06);
-  padding: 14px 40px;
-  border-bottom: 1px solid var(--color-header-border);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: var(--shadow-nav);
 }
 
 .headerInner {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
+  height: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
+  padding: 0 var(--section-padding-x);
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  font-weight: 600;
+  justify-self: start;
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
   font-style: italic;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
   color: var(--color-text-primary);
-  letter-spacing: -0.02em;
-  transition: color var(--transition-fast);
 }
 
-.logo:hover {
-  color: var(--color-accent-text);
-}
-
-/* Desktop Nav */
+/* ---- Desktop links: muted, the current page dark ---- */
 .desktopNav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-1);
 }
 
 .navLink {
-  position: relative;
-  padding: 8px 16px;
+  padding: var(--space-1) var(--space-3);
   font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   transition: color var(--transition-fast);
-  border-radius: var(--radius-sm);
 }
 
-.navLink:hover {
-  color: var(--color-accent-text);
+.navLink:hover,
+.navLinkActive {
+  color: var(--color-text-primary);
 }
 
-.navLink::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 20px;
-  height: 2px;
-  background-color: var(--color-accent);
-  border-radius: var(--radius-full);
-  transition: transform var(--transition-base);
-}
-
-.navLink:hover::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-/* Right Controls */
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-self: end;
+  gap: var(--space-2);
 }
 
-/* Language Switcher */
+/* ---- Language switcher: plain words, the current one dark ---- */
 .langSwitcher {
   display: flex;
   align-items: center;
-  gap: 0;
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-full);
-  padding: 3px;
-  border: 1px solid var(--color-border);
+  gap: 2px;
 }
 
 .langBtn {
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.langBtn:hover,
+.langBtnActive {
+  color: var(--color-text-primary);
 }
 
 .langBtnActive {
-  background: var(--color-card-bg);
-  color: var(--color-accent-text);
-  box-shadow: var(--shadow-sm);
+  font-weight: var(--weight-semibold);
 }
 
-.langBtn:not(.langBtnActive):hover {
+/* ---- Menu button: two lines that cross into an X ---- */
+.menuButton {
+  position: relative;
+  display: none;
+  width: var(--size-touch);
+  height: var(--size-touch);
+  margin-right: calc(var(--space-3) * -1);
   color: var(--color-text-primary);
 }
 
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: transparent;
-  transition: all var(--transition-fast);
-  gap: 5px;
+.menuLine {
+  position: absolute;
+  left: 13px;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform var(--transition-base), top var(--transition-base);
 }
 
-.hamburger:hover {
-  border-color: var(--color-accent-light);
-  background: var(--color-bg-secondary);
+.menuLine:first-child {
+  top: 18px;
 }
 
-.hamburgerLine {
-  width: 20px;
-  height: 2px;
-  background: var(--color-text-primary);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-base);
+.menuLine:last-child {
+  top: 25px;
 }
 
-.hamburgerOpen .hamburgerLine:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.menuButtonOpen .menuLine:first-child {
+  top: 21.5px;
+  transform: rotate(45deg);
 }
 
-.hamburgerOpen .hamburgerLine:nth-child(2) {
-  opacity: 0;
+.menuButtonOpen .menuLine:last-child {
+  top: 21.5px;
+  transform: rotate(-45deg);
 }
 
-.hamburgerOpen .hamburgerLine:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile Menu */
-.mobileOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.2);
-  z-index: calc(var(--z-header) - 1);
-}
-
+/* ---- Phone menu: a small popover (elevation 2), not a full-screen sheet ---- */
 .mobileMenu {
   position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: min(232px, calc(100vw - 32px));
-  max-height: calc(100dvh - 80px);
-  overflow-y: auto;
-  display: flex;
+  top: calc(100% + var(--space-2));
+  right: calc(var(--section-padding-x) - var(--space-2));
+  display: none;
   flex-direction: column;
-  gap: 2px;
-  padding: 6px;
+  width: min(248px, calc(100vw - 2 * var(--section-padding-x)));
+  max-height: calc(100dvh - var(--nav-height) - var(--space-6));
+  overflow-y: auto;
+  padding: var(--space-1-5);
   background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
-  transform-origin: top right;
+  box-shadow: var(--shadow-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility 0s linear var(--duration-base);
 }
 
+.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-base), visibility 0s;
+}
+
+/* Rows: radius-md inside the radius-lg popover (18 - 6 = 12) */
 .mobileNavLink {
-  display: block;
-  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  min-height: var(--size-touch);
+  padding: 0 var(--space-3);
   font-size: var(--text-base);
-  font-weight: 500;
   color: var(--color-text-primary);
-  border-radius: var(--radius-sm);
-  transition: background var(--transition-fast), color var(--transition-fast);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
 }
 
 .mobileNavLink:hover {
   background: var(--color-bg-secondary);
-  color: var(--color-accent-text);
 }
 
-.mobileNavLink.navLinkActive {
-  background: var(--color-accent-ultra-light);
+.mobileNavLinkActive {
+  font-weight: var(--weight-semibold);
+  background: var(--color-bg-secondary);
 }
 
-@media (max-width: 900px) {
-  .header {
-    padding: 16px 20px;
-  }
-
-  .headerScrolled {
-    padding: 12px 20px;
-  }
-
-  .desktopNav {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .langSwitcher {
-    padding: 2px;
-  }
-
-  .langBtn {
-    padding: 5px 8px;
-    font-size: 10px;
-  }
-}
-
-/* Language row inside the mobile menu (header switcher is hidden on phones) */
 .mobileLang {
-  display: none;
+  display: flex;
+  gap: var(--space-1);
+  margin-top: var(--space-1-5);
+  padding-top: var(--space-1-5);
+  border-top: 1px solid var(--color-hairline);
 }
 
-@media (max-width: 640px) {
+.mobileLang .langBtn {
+  flex: 1;
+  min-height: var(--size-touch);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+}
+
+.mobileLang .langBtn:hover {
+  background: var(--color-bg-secondary);
+}
+
+.mobileLang .langBtnActive {
+  background: var(--color-bg-secondary);
+}
+
+/* The page behind the open menu dims and blurs, like Apple's flyouts */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-header) - 1);
+  display: none;
+  background: var(--color-overlay);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility 0s linear var(--duration-base);
+}
+
+.mobileOverlayOpen {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-base), visibility 0s;
+}
+
+@media (max-width: 833px) {
+  .headerInner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .desktopNav,
   .headerRight > .langSwitcher {
     display: none;
   }
 
-  .mobileLang {
+  .menuButton,
+  .mobileOverlay {
+    display: block;
+  }
+
+  .mobileMenu {
     display: flex;
-    gap: 2px;
-    margin-top: 4px;
-    padding-top: 6px;
-    border-top: 1px solid var(--color-border);
   }
-
-  .mobileLang .langBtn {
-    flex: 1;
-    padding: 7px 0;
-    font-size: var(--text-xs);
-    letter-spacing: normal;
-    border-radius: var(--radius-sm);
-  }
-
-  .mobileLang .langBtnActive {
-    background: var(--color-accent-ultra-light);
-    box-shadow: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    padding: 10px 16px;
-  }
-
-  .headerScrolled {
-    padding: 8px 16px;
-  }
-
-  .headerRight {
-    gap: 8px;
-  }
-
-  .logo {
-    font-size: 22px;
-  }
-
-  .hamburger {
-    width: 36px;
-    height: 36px;
-    gap: 4px;
-  }
-
-  .hamburgerLine {
-    width: 16px;
-  }
-
-  .hamburgerOpen .hamburgerLine:nth-child(1) {
-    transform: rotate(45deg) translate(4px, 4px);
-  }
-
-  .hamburgerOpen .hamburgerLine:nth-child(3) {
-    transform: rotate(-45deg) translate(4px, -4px);
-  }
-}
-
-/* Active page */
-.navLinkActive {
-  color: var(--color-accent-text);
-}
-
-.navLink.navLinkActive::after {
-  transform: translateX(-50%) scaleX(1);
 }

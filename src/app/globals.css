@@ -1,90 +1,162 @@
 /* ========================================
-   Bigbank Portfolio — Design System
-   Theme: Clean White + Light Gray, Sky Blue accent
+   Bigbank Design System — tokens and base styles
+   Apple-style and light only: white and light gray surfaces, near-black type, one blue for
+   actions, fills for grouping, shadows only for what floats, motion only for state changes.
+
+   Breakpoints (media queries can't read custom properties, so they are written as numbers):
+     sm   ≤ 480px   phones
+     md   ≤ 767px   large phones, small tablets (cards turn into compact rows)
+     nav  ≤ 833px   the nav collapses into the menu button
+     lg   ≥ 1024px  desktop extras (table of contents sidebar, 3-column blog grid)
    ======================================== */
 
 /* Fonts loaded via next/font/google in layout.tsx */
 
-/* ---- CSS Variables ---- */
 :root {
-  /* Colors — White + light gray surfaces, Sky Blue accent */
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F3F4F6;
-  --color-bg-tertiary: #E9EBEF;
-  --color-accent: #0EA5E9;
-  --color-accent-hover: #0284C7;
-  --color-accent-light: #BAE6FD;
-  --color-accent-ultra-light: #E0F2FE;
-  /* Accent for small text and filled buttons; the bright accent stays for decoration */
-  --color-accent-text: #0369A1;
-  --color-accent-fill: #0369A1;
-  --color-accent-fill-hover: #075985;
-  --color-on-accent: #FFFFFF;
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #475569;
-  --color-text-muted: #5F6E84; /* 5.2:1 on white, 4.7:1 on bg-secondary */
-  --color-border: #E2E8F0;
-  --color-card-bg: #FFFFFF;
-  --color-card-shadow: rgba(14, 165, 233, 0.08);
-  --color-card-shadow-hover: rgba(14, 165, 233, 0.15);
-  --color-overlay: rgba(15, 23, 42, 0.5);
-  --color-white: #FFFFFF;
-  --color-success: #10B981;
-  --color-header-bg: rgba(255, 255, 255, 0.85);
-  --color-header-border: rgba(226, 232, 240, 0.5);
+  /* ---- Color: surfaces ---- */
+  --color-bg-primary: #FFFFFF;     /* page and white sections */
+  --color-bg-secondary: #F5F5F7;   /* gray sections; tiles, chips and code on white */
+  --color-bg-tertiary: #E8E8ED;    /* image placeholders; chip hover on white */
+  --color-fill-hover: #EDEDF0;     /* hover on a gray tile, row or post card */
+  --color-card-bg: #FFFFFF;        /* cards on a gray section, menus and popovers */
+  --color-white: #FFFFFF;          /* text on a dark (selected) chip */
 
-  /* Typography */
+  /* ---- Color: text ---- */
+  --color-text-primary: #1D1D1F;   /* headings and body: 15.5:1 on gray */
+  --color-text-secondary: #424245; /* long copy inside cards and tiles: 9.2:1 on gray */
+  --color-text-muted: #6A6A6F;     /* eyebrows, meta, captions: 4.6:1 even on fill-hover */
+  --color-icon-muted: #86868B;     /* chevrons and placeholder marks, never text: 3.3:1 */
+
+  /* ---- Color: action ---- */
+  --color-accent: #0071E3;         /* filled buttons, secondary button border, focus ring */
+  --color-accent-hover: #0066CC;   /* hover darkens: white on it 5.6:1 */
+  --color-accent-active: #0058B0;  /* pressed */
+  --color-accent-text: #0066CC;    /* links and link-style buttons: 5.1:1 on gray */
+  --color-accent-ultra-light: #E8F1FC; /* tint behind accent text (studio selection) */
+  --color-on-accent: #FFFFFF;      /* label on a blue fill: 4.7:1 */
+  --color-accent-fill: var(--color-accent);
+  --color-accent-fill-hover: var(--color-accent-hover);
+
+  /* ---- Color: lines ---- */
+  --color-border: #D2D2D7;         /* dividers between blocks (decorative) */
+  --color-border-control: #86868B; /* input borders: 3.6:1, enough to find the field */
+  --color-hairline: rgba(0, 0, 0, 0.08); /* nav edge, list separators, keylines */
+
+  /* ---- Color: status ---- */
+  --color-success-text: #1D6F35;
+  --color-success-bg: #E9F6EC;
+  --color-error: #D70015;          /* invalid field border and message: 5.4:1 */
+  --color-error-text: #B0001A;
+  --color-error-bg: #FDECEE;
+
+  /* ---- Color: award tiers (dot + label text) ---- */
+  --color-award-gold: #F2B705;
+  --color-award-gold-text: #946200;
+  --color-award-silver: #A1A1A6;
+  --color-award-silver-text: var(--color-text-muted);
+  --color-award-bronze: #CD7F32;
+  --color-award-bronze-text: #9C4A1A;
+
+  /* ---- Color: other brands, only beside their own names ---- */
+  --color-brand-facebook: #1877F2;
+  --color-brand-line: #06C755;
+  --gradient-brand-instagram: linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+
+  /* ---- Color: translucent layers ---- */
+  --color-header-bg: rgba(255, 255, 255, 0.8);
+  --color-overlay: rgba(232, 232, 237, 0.4);
+
+  /* ---- Type: families ---- */
   /* Every var() has a fallback: one font a layout didn't load must not void the whole stack */
   --font-sans: var(--font-inter, sans-serif), var(--font-noto-thai, sans-serif), var(--font-noto-lao, sans-serif), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: var(--font-playfair, Georgia), Georgia, serif;
   --font-thai: var(--font-noto-thai, sans-serif), var(--font-inter, sans-serif), var(--font-noto-lao, sans-serif), sans-serif;
   --font-lao: var(--font-noto-lao, sans-serif), var(--font-inter, sans-serif), var(--font-noto-thai, sans-serif), sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  /* Font Sizes: fluid between a 390px phone (min) and a 1280px desktop (max) */
-  --text-xs: 0.75rem;                                          /* 12px */
-  --text-sm: clamp(0.84375rem, 0.8301rem + 0.0562vw, 0.875rem); /* 13.5 → 14 */
-  --text-base: clamp(0.9375rem, 0.9101rem + 0.1124vw, 1rem);    /* 15 → 16 */
-  --text-lg: clamp(1rem, 0.9452rem + 0.2247vw, 1.125rem);       /* 16 → 18 */
-  --text-xl: clamp(1.0625rem, 0.9803rem + 0.3371vw, 1.25rem);   /* 17 → 20 */
-  --text-2xl: clamp(1.1875rem, 1.0506rem + 0.5618vw, 1.5rem);   /* 19 → 24 */
-  --text-3xl: clamp(1.375rem, 1.1559rem + 0.8989vw, 1.875rem);  /* 22 → 30 */
-  --text-4xl: clamp(1.625rem, 1.3511rem + 1.1236vw, 2.25rem);   /* 26 → 36 */
-  --text-5xl: clamp(2rem, 1.5618rem + 1.7978vw, 3rem);          /* 32 → 48 */
-  --text-6xl: clamp(2.375rem, 1.7725rem + 2.4719vw, 3.75rem);   /* 38 → 60 */
-  --text-7xl: clamp(2.75rem, 1.9831rem + 3.1461vw, 4.5rem);     /* 44 → 72 */
+  /* ---- Type: sizes, fluid between a 390px phone (min) and a 1280px desktop (max) ---- */
+  --text-xs: 0.75rem;                                           /* 12      caption, tag, award */
+  --text-footnote: 0.8125rem;                                   /* 13      footer */
+  --text-sm: clamp(0.84375rem, 0.8301rem + 0.0562vw, 0.875rem);  /* 13.5→14 callout, card copy, nav */
+  --text-base: clamp(1rem, 0.9726rem + 0.1124vw, 1.0625rem);     /* 16→17  body, buttons */
+  --text-lg: clamp(1.0625rem, 1.0077rem + 0.2247vw, 1.1875rem);  /* 17→19  intro, eyebrow */
+  --text-xl: clamp(1.1875rem, 1.1327rem + 0.2247vw, 1.3125rem);  /* 19→21  card title, dek */
+  --text-2xl: clamp(1.3125rem, 1.2303rem + 0.3371vw, 1.5rem);    /* 21→24  sub-section title */
+  --text-3xl: clamp(1.5rem, 1.2809rem + 0.8989vw, 2rem);         /* 24→32  hero tagline */
+  --text-4xl: clamp(1.75rem, 1.4213rem + 1.3483vw, 2.5rem);      /* 28→40  section title, post title */
+  --text-5xl: clamp(2rem, 1.5618rem + 1.7978vw, 3rem);           /* 32→48  page title */
+  --text-6xl: clamp(2.5rem, 1.8427rem + 2.6966vw, 4rem);         /* 40→64  big numbers */
+  --text-7xl: clamp(3rem, 2.1236rem + 3.5955vw, 5rem);           /* 48→80  hero name */
 
-  /* Spacing */
-  --section-padding-y: 120px;
-  --section-padding-x: 24px;
-  --container-max: 1280px;
-  --container-narrow: 960px;
+  /* ---- Type: weights and leading ---- */
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --leading-display: 1.1;  /* Latin headlines; Thai and Lao get --leading-heading-thai */
+  --leading-heading: 1.2;
+  --leading-heading-thai: 1.35;
+  --leading-body: 1.6;
+  --leading-prose: 1.8;
 
-  /* Border Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  /* ---- Space: a 4px grid (6px is the one half step: the inset that turns an
+     18px outer radius into a 12px inner one) ---- */
+  --space-1: 4px;
+  --space-1-5: 6px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-24: 96px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(14, 165, 233, 0.06);
-  --shadow-md: 0 4px 16px rgba(14, 165, 233, 0.08);
-  --shadow-lg: 0 8px 32px rgba(14, 165, 233, 0.1);
-  --shadow-xl: 0 12px 48px rgba(14, 165, 233, 0.12);
-  --shadow-card: 0 2px 12px rgba(14, 165, 233, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.5);
-  --shadow-card-hover: 0 8px 32px rgba(14, 165, 233, 0.12), 0 0 0 1px rgba(14, 165, 233, 0.2);
+  /* ---- Size ---- */
+  --nav-height: 48px;
+  --size-touch: 44px;       /* smallest tap target on a touch screen */
+  --size-control: 44px;     /* buttons */
+  --size-control-sm: 36px;  /* small buttons, chips on a mouse-driven screen */
+  --size-field: 52px;       /* text inputs */
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
-  --transition-spring: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* ---- Layout ---- */
+  --container-max: 1028px;  /* Apple's 980px content width plus the side padding */
+  --measure: 640px;         /* reading column: articles, intros */
+  --section-padding-y: var(--space-24);
+  --section-padding-x: var(--space-6);
+  --page-top: var(--space-16); /* from the nav to a page title */
 
-  /* Z-index scale */
+  /* ---- Radius: inner radius = outer radius - padding ---- */
+  --radius-xs: 6px;    /* inline code, small keylines */
+  --radius-sm: 8px;    /* icon squares, small buttons inside cards */
+  --radius-md: 12px;   /* inputs, thumbnails, rows inside a popover */
+  --radius-lg: 18px;   /* cards, popovers, tiles on phones */
+  --radius-xl: 28px;   /* large tiles and the closing panel */
+  --radius-full: 980px; /* pills: buttons, chips, tags */
+
+  /* ---- Elevation: a shadow means "this floats"; grouping uses fill instead ---- */
+  --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);   /* 1: cards resting on gray */
+  --shadow-overlay: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.14); /* 2: menus and popovers */
+  --shadow-keyline: 0 0 0 1px var(--color-hairline);                               /* a white control on a gray fill */
+  --shadow-nav: 0 1px 0 var(--color-hairline);                                     /* the edge under the nav */
+
+  /* ---- Focus ---- */
+  --focus-ring: 2px solid var(--color-accent); /* 4.3:1 on gray, 4.7:1 on white */
+  --focus-offset: 2px;
+
+  /* ---- Motion: state changes only ---- */
+  --duration-fast: 150ms;  /* color and fill on hover or press */
+  --duration-base: 240ms;  /* menus opening, the menu icon turning into an X */
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-fast: var(--duration-fast) var(--ease-standard);
+  --transition-base: var(--duration-base) var(--ease-standard);
+
+  /* ---- Layers ---- */
+  --z-popover: 20;
   --z-header: 100;
-  --z-menu: 110;
-  --z-overlay: 120;
-  --z-modal: 130;
+  --z-skip-link: 1000;
 }
 
 /* ---- CSS Reset ---- */
@@ -97,22 +169,29 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
   overflow-x: clip; /* clip, not hidden: hidden turns body into a scroll container and breaks position: sticky */
   max-width: 100vw;
+  /* In-page links (table of contents, skip link) stop below the sticky nav */
+  scroll-padding-top: calc(var(--nav-height) + var(--space-4));
 }
 
 body {
   font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
-  line-height: 1.7;
-  font-size: var(--text-base);
   overflow-x: clip;
   max-width: 100vw;
+}
+
+html[lang="en"] body {
+  line-height: 1.5;
+  letter-spacing: -0.011em;
 }
 
 html[lang="th"] body {
@@ -140,12 +219,18 @@ button {
   background: none;
   font-family: inherit;
   font-size: inherit;
+  letter-spacing: inherit;
   color: inherit;
 }
 
 input, textarea {
   font-family: inherit;
   font-size: inherit;
+  letter-spacing: inherit;
+}
+
+code, kbd, pre {
+  font-family: var(--font-mono);
 }
 
 ul, ol {
@@ -153,11 +238,22 @@ ul, ol {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
-  font-weight: 700;
+  line-height: var(--leading-heading);
+  font-weight: var(--weight-semibold);
+  text-wrap: balance;
 }
 
-/* ---- Utility Classes ---- */
+/* Thai and Lao stack marks above and below the line; give headings the room */
+html[lang="th"] :is(h1, h2, h3, h4),
+html[lang="lo"] :is(h1, h2, h3, h4) {
+  line-height: var(--leading-heading-thai);
+}
+
+html[lang="en"] :is(h1, h2, h3) {
+  letter-spacing: -0.02em;
+}
+
+/* ---- Layout helpers ---- */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -166,17 +262,9 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: var(--section-padding-x);
 }
 
-.container-narrow {
-  max-width: var(--container-narrow);
-}
-
 .section {
   padding-top: var(--section-padding-y);
   padding-bottom: var(--section-padding-y);
-}
-
-.section-alt {
-  background-color: var(--color-bg-secondary);
 }
 
 .sr-only {
@@ -191,49 +279,28 @@ h1, h2, h3, h4, h5, h6 {
   border-width: 0;
 }
 
-/* ---- Selection ---- */
 ::selection {
-  background-color: var(--color-accent-light);
-  color: var(--color-text-primary);
+  background-color: rgba(0, 113, 227, 0.2);
 }
 
-/* ---- Scrollbar ---- */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-accent-light);
-  border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
-}
-
-/* ---- Focus Ring ---- */
+/* ---- Focus: one solid ring for every focusable thing ---- */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 768px) {
+/* ---- Responsive spacing ---- */
+@media (max-width: 767px) {
   :root {
-    --section-padding-y: 64px;
-    --section-padding-x: 20px;
+    --section-padding-y: var(--space-16);
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --section-padding-y: 48px;
-    --section-padding-x: 16px;
+    --section-padding-y: var(--space-12);
+    --section-padding-x: var(--space-5);
+    --page-top: var(--space-8);
   }
 }
 
@@ -244,23 +311,15 @@ h1, h2, h3, h4, h5, h6 {
     margin: 14mm 16mm;
   }
 
-  /* Only the page content: no header, menus, footer, cursor or scroll bar */
+  /* Only the page content: no header, menus or footer */
   body > *:not(main) {
     display: none !important;
   }
 
-  /* Print on plain white */
   :root {
     --color-bg-primary: #FFFFFF;
     --color-bg-secondary: #FFFFFF;
     --color-card-bg: #FFFFFF;
-    --color-accent-hover: #0284C7;
-    --color-accent-ultra-light: #E0F2FE;
-    --color-accent-text: #0369A1;
-    --color-text-primary: #0F172A;
-    --color-text-secondary: #334155;
-    --color-text-muted: #5F6E84;
-    --color-border: #E2E8F0;
   }
 
   body {
@@ -268,39 +327,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ---- Page enter: [locale]/template.tsx remounts this wrapper on every navigation ---- */
-.page-enter {
-  animation: pageEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-}
-
-/* ---- Skip link: first thing a keyboard user can reach ---- */
+/* ---- Skip link: the first thing a keyboard user can reach ---- */
 .skip-link {
   position: fixed;
-  top: 12px;
-  left: 12px;
-  z-index: 10000;
-  padding: 10px 16px;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: var(--z-skip-link);
+  padding: 10px var(--space-4);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--color-on-accent);
   background: var(--color-accent-fill);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   transform: translateY(-200%);
-  transition: transform var(--transition-fast);
 }
 
 .skip-link:focus {
   transform: translateY(0);
 }
 
-/* ---- Reduced motion: no drifting, floating or smooth-scroll for people who ask for it ---- */
+/* ---- Reduced motion: no transitions at all for people who ask for it ---- */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -308,6 +354,5 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

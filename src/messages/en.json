@@ -11,19 +11,19 @@
     "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Contact",
-    "resume": "Resume"
+    "resume": "Resume",
+    "menu": "Menu",
+    "language": "Language"
   },
   "hero": {
-    "badge": "Available for Projects via Nightbears Tech",
     "greeting": "Hi, I'm",
     "name": "Bigbank",
     "fullName": "Nattapong Pongnukrohsiri",
     "tagline1": "High School",
     "tagline2": "Software Engineer",
     "description": "A Sci-Math-Eng student who has been coding since fifth grade. I like to understand the people who will use something before I design it, and I build websites and software with the Nightbears Technology team.",
-    "cta_primary": "Our Work",
-    "cta_secondary": "Consult Project",
-    "scroll_hint": "Scroll down to explore"
+    "cta_primary": "Our work",
+    "cta_secondary": "Consult project"
   },
   "about": {
     "label": "About",
@@ -41,14 +41,14 @@
   },
   "portfolio": {
     "label": "Portfolio",
-    "title": "Featured Projects",
+    "title": "Featured projects",
     "description": "Projects, awards and camps I've taken part in.",
-    "view_live": "Live Demo",
-    "view_code": "Source Code"
+    "view_live": "Live demo",
+    "view_code": "Source code"
   },
   "blog": {
     "label": "Blog",
-    "title": "Knowledge Sharing",
+    "title": "Knowledge sharing",
     "description": "Articles about web development, tips, tricks, and experiences.",
     "filter_all": "All",
     "filter_label": "Filter by tag",
@@ -72,7 +72,7 @@
   },
   "contact": {
     "label": "Contact",
-    "title": "Ready to Start Your Project?",
+    "title": "Ready to start your project?",
     "description": "Interested in developing software, an application, or bringing an idea to life? Reach out to me and the Nightbears Technology team. We offer free consultations!",
     "recommended": "Recommended",
     "form": {
@@ -82,7 +82,7 @@
       "email_placeholder": "email@example.com",
       "message": "Message",
       "message_placeholder": "Tell me about your project...",
-      "send": "Send Message",
+      "send": "Send message",
       "sending": "Sending...",
       "success": "Message sent! I'll get back to you ASAP.",
       "error": "Something went wrong. Please try again."
@@ -90,13 +90,19 @@
     "or": "Or reach me via"
   },
   "footer": {
-    "copyright": "© 2026 Bigbank. Made with ❤️",
-    "built_with": "Built with Next.js"
+    "copyright": "Copyright © 2026 Bigbank. All rights reserved.",
+    "built_with": "Built with Next.js",
+    "pages": "Pages",
+    "follow": "Follow",
+    "language": "Language"
   },
   "common": {
     "skip_to_content": "Skip to main content"
   },
   "home": {
+    "tools": {
+      "title": "Tools I use"
+    },
     "featured": {
       "title": "Featured work",
       "view_all": "See all work"

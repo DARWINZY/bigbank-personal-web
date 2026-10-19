@@ -1,123 +1,80 @@
 /* ========================================
-   Footer Styles
+   Footer: Apple's light gray directory and legal line
    ======================================== */
 
 .footer {
+  padding: var(--space-10) 0 var(--space-7);
+  font-size: var(--text-footnote);
+  line-height: 1.45;
+  color: var(--color-text-muted);
   background: var(--color-bg-secondary);
-  border-top: 1px solid var(--color-border);
-  padding: 60px 0 30px;
 }
 
-.footerInner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
+.directory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  max-width: var(--measure);
+  padding-bottom: var(--space-6);
 }
 
-.footerLogo {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 600;
-  font-style: italic;
+.columnTitle {
+  margin-bottom: var(--space-3);
+  font-size: inherit;
+  font-weight: var(--weight-semibold);
+  line-height: inherit;
+  letter-spacing: normal;
   color: var(--color-text-primary);
 }
 
-.footerLinks {
+.list li + li {
+  margin-top: var(--space-2);
+}
+
+.link {
+  color: var(--color-text-secondary);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.linkCurrent {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.legal {
   display: flex;
-  align-items: center;
-  gap: 24px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  gap: var(--space-1-5) var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
 }
 
-.footerLink {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  transition: color var(--transition-fast);
+/* Touch screens: 32px rows, so a thumb can pick one link out of the list */
+@media (pointer: coarse) {
+  .list li + li {
+    margin-top: 0;
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--space-8);
+  }
 }
 
-.footerLink:hover {
-  color: var(--color-accent-text);
-}
-
-.footerSocial {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footerSocialLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  background: var(--color-card-bg);
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
-  transition: all var(--transition-base);
-}
-
-.footerSocialLink:hover {
-  color: var(--color-accent-text);
-  border-color: var(--color-accent-light);
-  background: var(--color-accent-ultra-light);
-  transform: translateY(-2px);
-}
-
-.footerDivider {
-  width: 100%;
-  max-width: 200px;
-  height: 1px;
-  background: var(--color-border);
-}
-
-.footerBottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.footerCopyright {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-.footerBuiltWith {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .footer {
-    padding: 32px 0 20px;
+    padding: var(--space-7) 0 var(--space-6);
   }
 
-  .footerInner {
-    gap: 18px;
-  }
-
-  .footerLogo {
-    font-size: 20px;
-  }
-
-  .footerLinks {
-    gap: 8px 18px;
-  }
-
-  .footerSocial {
-    gap: 10px;
-  }
-
-  .footerSocialLink {
-    width: 36px;
-    height: 36px;
-  }
-
-  .footerCopyright {
-    font-size: var(--text-xs);
+  .directory {
+    gap: var(--space-4);
+    padding-bottom: var(--space-5);
   }
 }

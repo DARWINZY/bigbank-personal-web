@@ -11,10 +11,11 @@
     "portfolio": "ຜົນງານ",
     "blog": "ບົດຄວາມ",
     "contact": "ຕິດຕໍ່",
-    "resume": "ຊີວະປະຫວັດ"
+    "resume": "ຊີວະປະຫວັດ",
+    "menu": "ເມນູ",
+    "language": "ພາສາ"
   },
   "hero": {
-    "badge": "ຮັບພັດທະນາຊອບແວຜ່ານ Nightbears Tech",
     "greeting": "ສະບາຍດີ ຂ້ອຍແມ່ນ",
     "name": "ບິກແບ້ງ",
     "fullName": "ນັດທະພົງ ພົງນຸເຄາະສິຣິ",
@@ -22,8 +23,7 @@
     "tagline2": "Software Engineer",
     "description": "ນັກຮຽນສາຍ Sci-Math-Eng ທີ່ຂຽນໂຄ້ດມາຕັ້ງແຕ່ ປ.5 ມັກເລີ່ມຈາກເຂົ້າໃຈບັນຫາຂອງຜູ້ໃຊ້ກ່ອນ ແລ້ວຈຶ່ງອອກແບບລະບົບໃຫ້ກົງຈຸດ ຕອນນີ້ເຮັດເວັບ ແລະ ຊອບແວຮ່ວມກັບທີມ Nightbears Technology",
     "cta_primary": "ຜົນງານຂອງພວກເຮົາ",
-    "cta_secondary": "ປຶກສາໂປຣເຈັກ",
-    "scroll_hint": "ເລື່ອນລົງເພື່ອເບິ່ງເພີ່ມເຕີມ"
+    "cta_secondary": "ປຶກສາໂປຣເຈັກ"
   },
   "about": {
     "label": "ກ່ຽວກັບ",
@@ -90,13 +90,19 @@
     "or": "ຫຼືຕິດຕໍ່ຜ່ານ"
   },
   "footer": {
-    "copyright": "© 2026 Bigbank. ສ້າງດ້ວຍ ❤️",
-    "built_with": "ສ້າງດ້ວຍ Next.js"
+    "copyright": "Copyright © 2026 Bigbank. ສະຫງວນລິຂະສິດ",
+    "built_with": "ສ້າງດ້ວຍ Next.js",
+    "pages": "ເມນູ",
+    "follow": "ຕິດຕາມ",
+    "language": "ພາສາ"
   },
   "common": {
     "skip_to_content": "ຂ້າມໄປຫາເນື້ອຫາຫຼັກ"
   },
   "home": {
+    "tools": {
+      "title": "ເຄື່ອງມືທີ່ໃຊ້ປະຈຳ"
+    },
     "featured": {
       "title": "ຜົນງານເດັ່ນ",
       "view_all": "ເບິ່ງຜົນງານທັງໝົດ"

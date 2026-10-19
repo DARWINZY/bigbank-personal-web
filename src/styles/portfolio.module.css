@@ -1,20 +1,21 @@
 /* ========================================
-   Portfolio Section Styles
+   Portfolio: white cards resting on light gray, like the Apple Store
    ======================================== */
 
 .portfolio {
+  padding: var(--page-top) 0 var(--section-padding-y);
   background: var(--color-bg-secondary);
 }
 
 .portfolioGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .portfolioGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
   }
 }

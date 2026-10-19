@@ -6,8 +6,9 @@ import Link from 'next/link';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
-import { FiArrowLeft, FiArrowRight, FiCalendar, FiClock, FiList } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import TableOfContents from '@/components/blog/TableOfContents';
+import MobileToc from '@/components/blog/MobileToc';
 import CodeBlock from '@/components/blog/CodeBlock';
 import ShareBar from '@/components/blog/ShareBar';
 import PostCard from '@/components/blog/PostCard';
@@ -115,25 +116,11 @@ export default async function BlogPostPage({ params }: Props) {
       <div className={`${styles.layout} ${toc.length ? styles.layoutWithToc : ''}`}>
         <article className={styles.article}>
           <div className={styles.actions}>
-            <Link href={`/${locale}/blog`} className={styles.backButton}>
-              <FiArrowLeft size={16} aria-hidden="true" />
+            <Link href={`/${locale}/blog`} className={styles.backLink}>
+              <FiChevronLeft size={18} aria-hidden="true" />
               {t('back_to_all')}
             </Link>
-            {toc.length > 0 && (
-              <details className={styles.mobileToc}>
-                <summary className={styles.mobileTocButton}>
-                  <FiList size={16} aria-hidden="true" />
-                  {t('toc')}
-                </summary>
-                <ul className={styles.mobileTocList}>
-                  {toc.map((item) => (
-                    <li key={item.id}>
-                      <a href={`#${item.id}`}>{item.text}</a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            )}
+            {toc.length > 0 && <MobileToc items={toc} title={t('toc')} />}
           </div>
 
           <header className={styles.header}>
@@ -146,12 +133,9 @@ export default async function BlogPostPage({ params }: Props) {
               >
                 {tag.label}
               </span>
-              <span className={styles.metaItem}>
-                <FiCalendar size={14} aria-hidden="true" />
+              <span>
                 <time dateTime={post.date}>{formatPostDate(post.date, locale)}</time>
-              </span>
-              <span className={styles.metaItem}>
-                <FiClock size={14} aria-hidden="true" />
+                <span aria-hidden="true"> · </span>
                 {t('read_time', { minutes: post.readTime })}
               </span>
             </div>
@@ -166,8 +150,6 @@ export default async function BlogPostPage({ params }: Props) {
             sizes="(max-width: 720px) 100vw, 640px"
             priority
           />
-
-          <hr className={styles.divider} />
 
           <div className={styles.prose}>
             <ReactMarkdown
@@ -196,7 +178,7 @@ export default async function BlogPostPage({ params }: Props) {
               {older ? (
                 <Link href={`/${locale}/blog/${older.slug}`} className={styles.postNavLink}>
                   <span className={styles.postNavLabel}>
-                    <FiArrowLeft size={14} aria-hidden="true" />
+                    <FiChevronLeft size={14} aria-hidden="true" />
                     {t('prev_post')}
                   </span>
                   <span className={styles.postNavTitle}>{localize(older.title, locale)}</span>
@@ -206,7 +188,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <Link href={`/${locale}/blog/${newer.slug}`} className={`${styles.postNavLink} ${styles.postNavNext}`}>
                   <span className={styles.postNavLabel}>
                     {t('next_post')}
-                    <FiArrowRight size={14} aria-hidden="true" />
+                    <FiChevronRight size={14} aria-hidden="true" />
                   </span>
                   <span className={styles.postNavTitle}>{localize(newer.title, locale)}</span>
                 </Link>

@@ -11,10 +11,11 @@
     "portfolio": "ผลงาน",
     "blog": "บทความ",
     "contact": "ติดต่อ",
-    "resume": "เรซูเม่"
+    "resume": "เรซูเม่",
+    "menu": "เมนู",
+    "language": "ภาษา"
   },
   "hero": {
-    "badge": "รับพัฒนาซอฟต์แวร์ผ่าน Nightbears Tech",
     "greeting": "สวัสดีครับ ผม",
     "name": "บิ๊กแบงค์",
     "fullName": "ณัฐพงษ์ พงษ์นุเคราะห์ศิริ",
@@ -22,8 +23,7 @@
     "tagline2": "Software Engineer",
     "description": "นักเรียนสาย Sci-Math-Eng ที่เขียนโค้ดมาตั้งแต่ ป.5 ชอบเริ่มจากเข้าใจปัญหาของคนใช้ก่อน แล้วค่อยออกแบบระบบให้ตรงจุด ตอนนี้ทำเว็บและซอฟต์แวร์ร่วมกับทีม Nightbears Technology",
     "cta_primary": "ผลงานของเรา",
-    "cta_secondary": "ปรึกษาโปรเจกต์",
-    "scroll_hint": "เลื่อนลงเพื่อดูเพิ่มเติม"
+    "cta_secondary": "ปรึกษาโปรเจกต์"
   },
   "about": {
     "label": "เกี่ยวกับ",
@@ -90,13 +90,19 @@
     "or": "หรือติดต่อผ่าน"
   },
   "footer": {
-    "copyright": "© 2026 Bigbank. สร้างด้วย ❤️",
-    "built_with": "สร้างด้วย Next.js"
+    "copyright": "Copyright © 2026 Bigbank สงวนลิขสิทธิ์",
+    "built_with": "สร้างด้วย Next.js",
+    "pages": "เมนู",
+    "follow": "ติดตาม",
+    "language": "ภาษา"
   },
   "common": {
     "skip_to_content": "ข้ามไปยังเนื้อหาหลัก"
   },
   "home": {
+    "tools": {
+      "title": "เครื่องมือที่ใช้ประจำ"
+    },
     "featured": {
       "title": "ผลงานเด่น",
       "view_all": "ดูผลงานทั้งหมด"

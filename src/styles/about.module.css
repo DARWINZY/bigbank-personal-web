@@ -1,140 +1,120 @@
 /* ========================================
-   About Section Styles
+   About: an Apple-style bento of light gray tiles (elevation 0: fill, no shadow)
    ======================================== */
 
 .about {
-  background: var(--color-bg-secondary);
+  padding: var(--page-top) 0 var(--section-padding-y);
 }
 
+/* Photo and intro side by side, the four numbers in a row below */
 .bentoGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
 }
 
-.bentoCell {
-  background: var(--color-card-bg);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
+.tile {
+  position: relative;
   overflow: hidden;
-  transition: all var(--transition-base);
-  position: relative;
-  z-index: 1;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
 }
 
-.bentoCell:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-accent-light);
-  transform: translateY(-2px);
-}
-
-.bentoCellPhoto {
+.tilePhoto {
   grid-column: span 2;
-  grid-row: span 2;
-  min-height: 450px;
-  position: relative;
+  min-height: 380px;
 }
 
-.bentoCellPhoto img {
-  width: 100%;
-  height: 100%;
+.tilePhoto img {
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.bentoCellPhoto:hover img {
-  transform: scale(1.05);
-}
-
-.bentoCellIntro {
-  grid-column: span 2;
-  grid-row: span 1;
-  padding: 32px 40px;
+.tileIntro {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  gap: var(--space-4);
+  grid-column: span 2;
+  padding: var(--space-10);
 }
 
 .aboutText {
   font-size: var(--text-base);
+  line-height: var(--leading-body);
   color: var(--color-text-secondary);
-  line-height: 1.7;
 }
 
-.bentoCellStat {
-  grid-column: span 1;
-  grid-row: span 1;
-  padding: 24px;
+.tileStat {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-end;
+  min-height: 180px;
+  padding: var(--space-7);
 }
 
-.aboutStatNumber {
-  font-size: var(--text-3xl);
-  font-weight: 800;
-  color: var(--color-accent-text);
-  line-height: 1;
-  margin-bottom: 8px;
+.statValue {
+  font-size: var(--text-6xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-display);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
 }
 
-.aboutStatLabel {
+html[lang='th'] .statValue,
+html[lang='lo'] .statValue {
+  padding-top: 0.1em;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.statLabel {
+  margin-top: var(--space-2);
   font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-muted);
-  font-weight: 500;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .bentoGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
-  .bentoCellPhoto {
-    min-height: 350px;
+
+  .tilePhoto {
+    min-height: 0;
+    aspect-ratio: 3 / 2;
   }
 }
 
 @media (max-width: 480px) {
-  /* Photo and intro full width; stats sit two per row */
   .bentoGrid {
-    gap: 12px;
+    gap: var(--space-3);
   }
 
-  .bentoCell {
+  .tile {
     border-radius: var(--radius-lg);
   }
 
-  .bentoCellPhoto,
-  .bentoCellIntro {
-    grid-column: span 2;
+  .tileIntro {
+    gap: var(--space-3);
+    padding: var(--space-6) var(--space-5);
   }
 
-  .bentoCellPhoto {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
-    grid-row: span 1;
+  .aboutText {
+    font-size: var(--text-sm);
   }
 
-  .bentoCellIntro {
-    padding: 18px;
-    gap: 12px;
+  .tileStat {
+    min-height: 120px;
+    padding: var(--space-5);
   }
 
-  .bentoCellStat {
-    padding: 16px 12px;
+  .statValue {
+    font-size: var(--text-4xl);
   }
 
-  .aboutStatNumber {
-    font-size: var(--text-2xl);
-    margin-bottom: 4px;
-  }
-
-  .aboutStatLabel {
+  .statLabel {
+    margin-top: var(--space-1);
     font-size: var(--text-xs);
   }
 }
